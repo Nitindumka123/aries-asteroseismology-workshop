@@ -1,0 +1,173 @@
+---
+import Icon from './Icon.astro';
+import { carousel } from '../data/site';
+---
+<div class="carousel" data-carousel aria-roledescription="carousel" aria-label="ARIES International Workshop highlights">
+  <div class="carousel-viewport">
+    {carousel.map((s, i) => (
+      <figure class="slide" data-slide aria-hidden={i === 0 ? 'false' : 'true'} style={`--i:${i}`}>
+        <img src={s.src} alt={s.alt} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" width="1600" height="900" />
+        <figcaption class="slide-caption">
+          <div class="container caption-inner">
+            <span class="slide-kicker">{s.kicker}</span>
+            <h2 class="slide-title">{s.title}</h2>
+            <p class="slide-text">{s.text}</p>
+          </div>
+        </figcaption>
+      </figure>
+    ))}
+    <div class="carousel-scrim" aria-hidden="true"></div>
+  </div>
+
+  <button class="car-btn car-prev" data-prev aria-label="Previous slide"><Icon name="chevron-right" size={26} /></button>
+  <button class="car-btn car-next" data-next aria-label="Next slide"><Icon name="chevron-right" size={26} /></button>
+
+  <div class="carousel-controls container">
+    <div class="dots" role="tablist" aria-label="Choose slide">
+      {carousel.map((s, i) => (
+        <button class="dot" data-dot aria-label={`Go to slide ${i + 1}: ${s.title}`} aria-selected={i === 0 ? 'true' : 'false'} role="tab"></button>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .carousel { position: relative; background: var(--navy-950); }
+  .carousel-viewport { position: relative; height: clamp(380px, 58vw, 580px); overflow: hidden; }
+  .slide { position: absolute; inset: 0; margin: 0; opacity: 0; visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s; pointer-events: none; }
+  .slide[aria-hidden='false'] { opacity: 1; visibility: visible; z-index: 1; pointer-events: auto; }
+  .slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .carousel-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background: linear-gradient(90deg, rgba(11,21,51,0.82) 0%, rgba(11,21,51,0.5) 42%, rgba(11,21,51,0.15) 75%, transparent 100%),
+                linear-gradient(0deg, rgba(11,21,51,0.55) 0%, transparent 40%); }
+
+  .slide-caption { position: absolute; inset: 0; display: flex; align-items: center; z-index: 3; }
+  .caption-inner { max-width: 620px; }
+  .slide-kicker { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-head);
+    font-weight: 700; font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange-400);
+    margin-bottom: 0.8rem; }
+  .slide-kicker::before { content: ''; width: 28px; height: 3px; background: var(--orange-500); border-radius: 2px; }
+  .slide-title { color: #fff; font-size: clamp(1.8rem, 4vw, 2.9rem); line-height: 1.1; margin-bottom: 0.7rem; }
+  .slide-text { color: #d3dcef; font-size: clamp(1rem, 1.6vw, 1.2rem); max-width: 520px; }
+  /* subtle entrance for the active caption */
+  .slide[aria-hidden='false'] .caption-inner > * { animation: rise 0.7s ease both; }
+  .slide[aria-hidden='false'] .slide-title { animation-delay: 0.08s; }
+  .slide[aria-hidden='false'] .slide-text { animation-delay: 0.16s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+  .car-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+    width: 50px; height: 50px; border-radius: 50%; border: 0; display: grid; place-items: center;
+    background: rgba(255,255,255,0.14); color: #fff; backdrop-filter: blur(4px); transition: background 0.18s ease; cursor: pointer; }
+  .car-btn:hover { background: var(--orange-500); }
+  .car-prev { left: clamp(0.75rem, 3vw, 2rem); }
+  .car-prev :global(svg) { transform: rotate(180deg); }
+  .car-next { right: clamp(0.75rem, 3vw, 2rem); }
+
+  .carousel-controls { position: absolute; left: 50%; transform: translateX(-50%); bottom: 1.1rem; z-index: 5;
+    display: flex; align-items: center; justify-content: center; width: 100%; }
+  .dots { display: flex; gap: 0.5rem; }
+  .dot { width: 34px; height: 5px; border-radius: 3px; border: 0; background: rgba(255,255,255,0.4); cursor: pointer; transition: background 0.18s ease; padding: 0; }
+  .dot:hover { background: rgba(255,255,255,0.7); }
+  .dot[aria-selected='true'] { background: var(--orange-500); }
+
+  @media (max-width: 720px) {
+    .car-btn { width: 42px; height: 42px; }
+    .carousel-controls { bottom: 0.75rem; }
+  }
+</style>
+
+<script>
+  function setupCarousel() {
+    const root = document.querySelector('[data-carousel]');
+    if (!root) return;
+
+    if (root.hasAttribute('data-initialized')) return;
+    root.setAttribute('data-initialized', 'true');
+
+    const slides = Array.from(root.querySelectorAll('[data-slide]'));
+    const dots = Array.from(root.querySelectorAll('[data-dot]'));
+    const prev = root.querySelector('[data-prev]');
+    const next = root.querySelector('[data-next]');
+
+    if (!slides.length) return;
+
+    let index = 0;
+    let timer: ReturnType<typeof setInterval> | null = null;
+    const INTERVAL_MS = 4500;
+
+    function goToSlide(n: number) {
+      index = (n + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+      });
+      dots.forEach((dot, i) => {
+        dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
+      });
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      timer = setInterval(() => {
+        goToSlide(index + 1);
+      }, INTERVAL_MS);
+    }
+
+    function stopAutoplay() {
+      if (timer !== null) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    // Manual navigation shifts slide and resets the automatic cycle
+    next?.addEventListener('click', () => {
+      goToSlide(index + 1);
+      startAutoplay();
+    });
+
+    prev?.addEventListener('click', () => {
+      goToSlide(index - 1);
+      startAutoplay();
+    });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        goToSlide(i);
+        startAutoplay();
+      });
+    });
+
+    // Keyboard navigation
+    root.addEventListener('keydown', (e) => {
+      if ((e as KeyboardEvent).key === 'ArrowRight') {
+        goToSlide(index + 1);
+        startAutoplay();
+      }
+      if ((e as KeyboardEvent).key === 'ArrowLeft') {
+        goToSlide(index - 1);
+        startAutoplay();
+      }
+    });
+
+    // Pause when backgrounded, resume when active
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
+
+    // Start with slide 0 (ARIES Nainital) and launch automatic slideshow
+    goToSlide(0);
+    startAutoplay();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupCarousel);
+  } else {
+    setupCarousel();
+  }
+  document.addEventListener('astro:page-load', setupCarousel);
+</script>

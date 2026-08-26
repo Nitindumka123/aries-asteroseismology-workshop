@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Icon from '../components/Icon.astro';
+import { event, convenor } from '../data/site';
+
+const steps = [
+  { n: 1, title: 'Invitation Issued', text: 'Due to DST financial support parameters, participation is by invitation only. About 75 experts from ~20 countries are invited by the organising committee.' },
+  { n: 2, title: 'Confirmation of Participation', text: 'Invited delegates confirm their participation, presentation topics, and local accommodation requirements with the organisers.' },
+  { n: 3, title: 'Programme Integration', text: 'The Scientific Organizing Committee finalises session allocations across the six core workshop themes.' },
+  { n: 4, title: 'Workshop Week', text: 'Participants convene at Delhi University, South Campus from 15–18 March 2027 for four days of intensive scientific exchange.' },
+];
+const included = [
+  { icon: 'bed', text: 'Accommodation provided for 50 participants for the four-day duration of the workshop' },
+  { icon: 'compass', text: 'Travel support available for students and retired faculties' },
+  { icon: 'users', text: 'A focused international cohort of ~75 leading researchers from about 20 countries' },
+  { icon: 'book', text: 'Comprehensive hospitality including lunches, conference dinners, and session refreshments' },
+];
+---
+<BaseLayout title="Registration">
+  <PageHeader
+    eyebrow="Participation"
+    title="Registration"
+    intro="Participation in the International Workshop is by invitation only, sponsored by the Department of Science and Technology (DST), Govt. of India."
+  />
+
+  <section class="section">
+    <div class="container reg-grid">
+      <div>
+        <span class="eyebrow">Participation Process</span>
+        <h2>How participation works</h2>
+        <ol class="steps">
+          {steps.map((s) => (
+            <li class="step">
+              <span class="step-n">{s.n}</span>
+              <div><h3>{s.title}</h3><p>{s.text}</p></div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <aside class="reg-aside">
+        <div class="card accent">
+          <h3>Participation Criteria</h3>
+          <ul class="check-list">
+            <li><Icon name="check-circle" size={20} /> By invitation only (~75 international &amp; national delegates)</li>
+            <li><Icon name="check-circle" size={20} /> Active researchers in asteroseismology &amp; cluster astrophysics</li>
+            <li><Icon name="check-circle" size={20} /> Sponsored under DST Project SAPTARISI</li>
+          </ul>
+        </div>
+        <div class="reg-status">
+          <span class="chip chip-orange">By Invitation Only</span>
+          <p>Due to limited financial support from DST, Govt. of India, participation is strictly by invitation for about 75 participants across ~20 countries.</p>
+          <a href="/dates" class="btn btn-secondary" style="width:100%;">View Workshop Dates</a>
+          <a href="/contact" class="btn btn-ghost" style="width:100%;margin-top:0.6rem;">Contact Convenor</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section soft">
+    <div class="container">
+      <div class="section-head center"><span class="eyebrow">Provisions</span><h2>Support for Invited Participants</h2></div>
+      <div class="grid grid-4">
+        {included.map((i) => (
+          <div class="card">
+            <span class="card-icon"><Icon name={i.icon} size={22} /></span>
+            <p>{i.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .reg-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 3rem; align-items: start; }
+    .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.25rem; counter-reset: s; }
+    .step { display: flex; gap: 1.1rem; align-items: flex-start; }
+    .step-n { flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--orange-500); color: #fff;
+      display: grid; place-items: center; font-family: var(--font-head); font-weight: 800; }
+    .step h3 { margin: 0.3rem 0 0.25rem; }
+    .step p { color: var(--ink-500); margin: 0; }
+    .reg-aside { display: grid; gap: 1.25rem; position: sticky; top: calc(var(--header-h) + 1rem); }
+    .check-list { list-style: none; padding: 0; margin: 0.5rem 0 0; display: grid; gap: 0.7rem; }
+    .check-list li { display: flex; gap: 0.6rem; align-items: flex-start; color: var(--ink-600); }
+    .check-list :global(svg) { color: var(--orange-500); flex: none; margin-top: 2px; }
+    .reg-status { background: var(--navy-900); color: #cdd6ee; border-radius: var(--r-lg); padding: 1.5rem; }
+    .reg-status p { font-size: 0.95rem; margin: 0.8rem 0 1rem; }
+    @media (max-width: 900px) {
+      .reg-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .reg-aside { position: static; }
+    }
+  </style>
+</BaseLayout>

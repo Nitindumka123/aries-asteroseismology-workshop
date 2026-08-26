@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Icon from '../components/Icon.astro';
+import { topics, event } from '../data/site';
+
+const format = [
+  { icon: 'clock', k: 'Four days', v: '15–18 March 2027' },
+  { icon: 'star', k: '6 Themes', v: 'Core Focus Areas' },
+  { icon: 'users', k: '~75 Delegates', v: 'From ~20 Countries' },
+  { icon: 'spark', k: 'Synergy', v: 'Roadmaps & Datasets' },
+];
+---
+<BaseLayout title="Programme">
+  <PageHeader
+    eyebrow="Academic content"
+    title="Programme"
+    intro="Over four days, the workshop combines technical presentations, invited keynote reviews, and collaborative roadmap sessions across six interdisciplinary themes."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Structure</span><h2>How the workshop is organised</h2></div>
+      <ul class="format-row">
+        {format.map((f) => (
+          <li>
+            <span class="fr-ic"><Icon name={f.icon} size={22} /></span>
+            <span class="fr-k">{f.k}</span>
+            <span class="fr-v">{f.v}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section soft">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Scientific Themes</span><h2>The Scientific Programme</h2><p>The workshop is focused around the following six core themes defining the future directions of asteroseismic and star-cluster astrophysics:</p></div>
+      <ol class="prog-themes">
+        {topics.map((t, i) => (
+          <li class="prog-theme">
+            <span class="pt-num">{String(i + 1).padStart(2, '0')}</span>
+            <div class="pt-body"><span class="pt-ic"><Icon name="star" size={18} /></span><p>{t}</p></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <div class="note">
+        <p class="note-title">Session Schedule &amp; Keynotes</p>
+        <p>The day-wise session schedule, invited speaker line-ups, and working-group allocations are coordinated by the Scientific Organizing Committee (SOC) and communicated directly with invited participants ahead of the workshop in March 2027.</p>
+      </div>
+      <div class="cluster center" style="margin-top:1.75rem;">
+        <a href="/overview" class="btn btn-secondary">Scientific Overview</a>
+        <a href="/committees" class="btn btn-ghost">Organising Committees</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .format-row { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
+    .format-row li { background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--orange-500);
+      border-radius: var(--r-lg); padding: 1.3rem; display: grid; gap: 0.2rem; box-shadow: var(--shadow-sm); }
+    .fr-ic { width: 42px; height: 42px; border-radius: var(--r-md); background: var(--blue-50); color: var(--blue-700); display: grid; place-items: center; margin-bottom: 0.5rem; }
+    .fr-k { font-family: var(--font-head); font-weight: 700; color: var(--navy-900); font-size: 1.1rem; }
+    .fr-v { color: var(--ink-500); font-size: 0.92rem; }
+    .prog-themes { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .prog-theme { display: flex; gap: 1rem; align-items: stretch; background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+    .pt-num { flex: none; width: 56px; background: var(--navy-900); color: var(--orange-400); display: grid; place-items: center; font-family: var(--font-head); font-weight: 800; font-size: 1.15rem; }
+    .pt-body { display: flex; gap: 0.6rem; align-items: center; padding: 1.1rem 1.2rem; }
+    .pt-ic { color: var(--orange-500); flex: none; }
+    .pt-body p { margin: 0; font-weight: 600; color: var(--navy-900); }
+    @media (max-width: 780px) { .format-row { grid-template-columns: 1fr 1fr; } .prog-themes { grid-template-columns: 1fr; } }
+  </style>
+</BaseLayout>

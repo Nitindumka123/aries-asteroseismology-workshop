@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Icon from '../components/Icon.astro';
+import { institute, host, convenor, soc, loc, partners, event } from '../data/site';
+
+const leadership = [
+  { role: 'Convenor & SOC co-Chair', name: convenor.name, affil: convenor.affil },
+  { role: 'SOC co-Chair', name: 'Peter De Cat', affil: 'ROB, Belgium' },
+  { role: 'LOC Chair', name: 'Dr. M. K. Das', affil: 'Delhi University, South Campus' },
+  { role: 'Joint Organiser', name: 'Dr. Satish K. Dubey', affil: 'IIT Delhi' },
+];
+---
+<BaseLayout title="Organizers">
+  <PageHeader
+    eyebrow="Who's behind it"
+    title="Organizers"
+    intro="The International Workshop is jointly organised by ARIES Nainital, IIT Delhi and Delhi University, bringing together research expertise and an accessible capital host campus."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3 org-inst">
+        {partners.map((p, i) => (
+          <article class="inst-card">
+            <div class="inst-top">
+              <span class="card-icon"><Icon name="building" size={26} /></span>
+              <span class={`chip ${i === 0 ? 'chip-blue' : i === 1 ? 'chip-orange' : 'chip-blue'}`}>
+                {i === 0 ? 'Lead Institute' : i === 1 ? 'Joint Organiser' : 'Host Campus'}
+              </span>
+            </div>
+            <h2>{p.acronym}</h2>
+            <p class="inst-full">{p.name}</p>
+            <p>{p.note}</p>
+            <ul class="meta-mini">
+              <li><Icon name="award" size={16} /> {p.role}</li>
+              <li><Icon name="globe" size={16} /> <a href={p.website} target="_blank" rel="noopener">Official Website</a></li>
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DST Sponsorship Banner -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="note blue dst-card">
+        <div>
+          <span class="eyebrow" style="color:var(--blue-700);">Sponsoring Body</span>
+          <h3 style="margin:0.25rem 0 0.5rem;color:var(--navy-900);">Department of Science and Technology (DST), Govt. of India</h3>
+          <p style="margin:0;color:var(--ink-700);">Supported under the international project: <strong>DST/ICD/Call-5/BRICS/SAPTARISI/2023/G</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Leadership</span><h2>Guiding the Workshop</h2><p>The workshop is steered by senior researchers from ARIES Nainital, IIT Delhi, Delhi University, and international partner institutions.</p></div>
+      <div class="grid grid-4">
+        {leadership.map((m) => (
+          <div class="card accent lead-card">
+            <p class="lc-role">{m.role}</p>
+            <p class="lc-name">{m.name}</p>
+            <p class="lc-affil"><Icon name="building" size={14} /> {m.affil}</p>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:2rem;">
+        <a href="/committees" class="btn btn-secondary">View full committees <Icon name="arrow-right" size={18} /></a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .org-inst { gap: 1.5rem; }
+    .inst-card { border: 1px solid var(--line); border-top: 4px solid var(--orange-500); border-radius: var(--r-lg); padding: 2rem; background: #fff; box-shadow: var(--shadow-sm); }
+    .inst-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .inst-top .card-icon { margin: 0; }
+    .inst-full { font-family: var(--font-head); font-weight: 600; color: var(--blue-700); margin: 0.2rem 0 0.8rem; }
+    .meta-mini { list-style: none; padding: 0; margin: 1.2rem 0 0; display: grid; gap: 0.5rem; }
+    .meta-mini li { display: flex; gap: 0.5rem; align-items: center; color: var(--ink-500); font-size: 0.92rem; }
+    .meta-mini :global(svg) { color: var(--orange-500); flex: none; }
+    .lead-card { text-align: left; }
+    .lc-role { color: var(--orange-600); font-family: var(--font-head); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 0; }
+    .lc-name { font-family: var(--font-head); font-weight: 700; color: var(--navy-900); font-size: 1.1rem; margin: 0.35rem 0; }
+    .lc-affil { color: var(--ink-500); font-size: 0.88rem; margin: 0; display: inline-flex; align-items: center; gap: 0.35rem; }
+    .lc-affil :global(svg) { color: var(--ink-400); }
+    .dst-card { padding: 1.8rem; border-radius: var(--r-lg); }
+    @media (max-width: 900px) { .org-inst { grid-template-columns: 1fr; } }
+  </style>
+</BaseLayout>

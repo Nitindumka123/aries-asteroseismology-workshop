@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Icon from '../components/Icon.astro';
+import { participants, event } from '../data/site';
+
+const profile = [
+  { icon: 'users', title: '~75 Invited Participants', text: 'Curated international delegation of experts in asteroseismology and star clusters.' },
+  { icon: 'globe', title: 'Over 20 Countries', text: 'Global representation across India, Russia, China, Iran, Europe, Africa, Americas & Asia.' },
+  { icon: 'star', title: 'Interdisciplinary Focus', text: 'Theorists, observational astronomers, and data science specialists.' },
+  { icon: 'award', title: 'DST Supported', text: 'Organized under the DST SAPTARISI project (DST/ICD/Call-5/BRICS/SAPTARISI/2023/G).' },
+];
+
+const indianParticipants = participants.filter((p) => p.country === 'India');
+const intlParticipants = participants.filter((p) => p.country !== 'India');
+---
+<BaseLayout title="Participants">
+  <PageHeader
+    eyebrow="Delegates"
+    title="Participants"
+    intro="The International Workshop brings together about 75 invited participants and delegates from about 20 countries across the globe."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Participant Profile</span><h2>An International Cohort</h2></div>
+      <div class="grid grid-4">
+        {profile.map((p) => (
+          <div class="card accent">
+            <span class="card-icon"><Icon name={p.icon} size={22} /></span>
+            <h4>{p.title}</h4>
+            <p>{p.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Participant List -->
+  <section class="section soft">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Directory</span>
+        <h2>Tentative List of Participants (~75)</h2>
+        <p>Participation in the event is by invitation only. Below is the tentative list of invited researchers and delegates.</p>
+      </div>
+
+      <!-- Tab filter / stats -->
+      <div class="stats-row">
+        <div class="stat-pill"><span class="sp-num">{participants.length}</span> Total Nominated Delegates</div>
+        <div class="stat-pill"><span class="sp-num">{indianParticipants.length}</span> Indian Institutions</div>
+        <div class="stat-pill"><span class="sp-num">{intlParticipants.length}</span> International Institutions</div>
+        <div class="stat-pill"><span class="sp-num">~20</span> Countries</div>
+      </div>
+
+      <div class="participant-grid">
+        {participants.map((p) => (
+          <div class="part-card card">
+            <div class="part-top">
+              <span class="part-num">#{p.no}</span>
+              <span class={`chip ${p.country === 'India' ? 'chip-blue' : 'chip-orange'}`}>{p.country}</span>
+            </div>
+            <h3 class="part-name">{p.name}</h3>
+            <p class="part-affil"><Icon name="building" size={14} /> {p.affil}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="note" style="margin-top:2rem;">
+        <p class="note-title">Participation Notice</p>
+        <p>Due to limited financial support received from the Department of Science and Technology (DST), Govt. of India, participation in this event is possible by invitation only. About 75 participants from about 20 countries are invited for this international conference.</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .stats-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .stat-pill { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.5rem 1.2rem;
+      font-size: 0.9rem; font-weight: 600; color: var(--ink-700); display: inline-flex; align-items: center; gap: 0.5rem; }
+    .sp-num { font-family: var(--font-head); font-weight: 800; color: var(--orange-600); }
+    .participant-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .part-card { padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; border-radius: var(--r-md); }
+    .part-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+    .part-num { font-family: var(--font-head); font-weight: 700; font-size: 0.8rem; color: var(--ink-400); }
+    .part-name { font-family: var(--font-head); font-weight: 700; font-size: 1.02rem; color: var(--navy-900); margin: 0 0 0.4rem; }
+    .part-affil { font-size: 0.88rem; color: var(--ink-500); margin: 0; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .part-affil :global(svg) { color: var(--orange-500); flex: none; }
+    @media (max-width: 960px) { .participant-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .participant-grid { grid-template-columns: 1fr; } }
+  </style>
+</BaseLayout>

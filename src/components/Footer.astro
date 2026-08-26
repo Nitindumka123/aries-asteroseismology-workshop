@@ -1,0 +1,103 @@
+---
+import { nav, event, institute, contacts, imageCredits } from '../data/site';
+import Icon from './Icon.astro';
+
+const year = 2027;
+// Flatten nav for the footer quick-links (drop the "More" wrapper, keep children)
+const quickLinks = nav.flatMap((i) => (i.children ? i.children : [{ label: i.label, href: i.href! }]));
+const colA = quickLinks.slice(0, 8);
+const colB = quickLinks.slice(8);
+---
+
+<footer class="site-footer">
+  <div class="footer-accent" aria-hidden="true"></div>
+  <div class="container footer-grid">
+    <div class="f-brand">
+      <img src="/images/aries-logo.png" alt="ARIES logo" class="f-logo" width="8000" height="735" />
+      <p class="f-inst">{institute.name}</p>
+      <p class="f-auth">{institute.authority}</p>
+      <div class="f-event">
+        <span class="chip chip-orange">{event.datesShort}</span>
+        <p>{event.name}<br />Jointly organised by {event.organisers}</p>
+      </div>
+    </div>
+
+    <nav class="f-links" aria-label="Footer">
+      <h3 class="f-h">Explore</h3>
+      <div class="f-links-cols">
+        <ul>{colA.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+        <ul>{colB.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+      </div>
+    </nav>
+
+    <div class="f-contact">
+      <h3 class="f-h">Contact</h3>
+      <ul class="f-contact-list">
+        <li><span class="f-ic"><Icon name="map-pin" size={18} /></span><span>{institute.address}</span></li>
+        <li><span class="f-ic"><Icon name="phone" size={18} /></span><a href={`tel:${institute.phone.replace(/[^+\d]/g, '')}`}>{institute.phone}</a></li>
+        <li><span class="f-ic"><Icon name="mail" size={18} /></span><a href={`mailto:${contacts.convenor[0].email}`}>{contacts.convenor[0].email}</a></li>
+        <li><span class="f-ic"><Icon name="globe" size={18} /></span><a href={institute.website} target="_blank" rel="noopener">aries.res.in</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container credits">
+    <p class="credit-line">
+      <strong>Image credits:</strong>
+      {imageCredits.map((c, i) => (
+        <span>{i > 0 ? ' · ' : ' '}{c.label} — {c.by}, {c.lic} ({c.via})</span>
+      ))}
+    </p>
+  </div>
+
+  <div class="footer-bar">
+    <div class="container footer-bar-inner">
+      <p>© {year} {institute.acronym}, Nainital, IIT Delhi &amp; Delhi University. All rights reserved.</p>
+      <p class="fb-note">This site presents information about the {event.name}.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: var(--navy-950); color: #aeb9d6; margin-top: auto; }
+  .footer-accent { height: 4px; background: linear-gradient(90deg, var(--orange-500) 0%, var(--orange-400) 40%, var(--blue-600) 100%); }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1.3fr 1.1fr; gap: 2.5rem; padding-block: 3.25rem 2.25rem; }
+
+  .f-logo { height: 42px; width: auto; background: #fff; padding: 8px 12px; border-radius: var(--r-md); }
+  .f-inst { color: #fff; font-family: var(--font-head); font-weight: 700; font-size: 1.02rem; margin-top: 1rem; margin-bottom: 0.25rem; }
+  .f-auth { font-size: 0.86rem; color: #8493ba; margin-bottom: 1rem; }
+  .f-event { display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.92rem; }
+
+  .f-h { color: #fff; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 1.1rem; position: relative; padding-bottom: 0.6rem; }
+  .f-h::after { content: ''; position: absolute; left: 0; bottom: 0; width: 30px; height: 3px; background: var(--orange-500); border-radius: 2px; }
+
+  .f-links-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; }
+  .f-links ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
+  .f-links a { color: #aeb9d6; font-size: 0.92rem; }
+  .f-links a:hover { color: var(--orange-400); }
+
+  .f-contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.85rem; }
+  .f-contact-list li { display: flex; gap: 0.7rem; align-items: flex-start; font-size: 0.92rem; }
+  .f-ic { flex: none; color: var(--orange-400); margin-top: 1px; }
+  .f-contact-list a { color: #aeb9d6; word-break: break-word; }
+  .f-contact-list a:hover { color: var(--orange-400); }
+
+  .credits { padding-bottom: 1.25rem; }
+  .credit-line { font-size: 0.78rem; color: #6f7ea8; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.25rem; }
+  .credit-line strong { color: #97a4c9; }
+
+  .footer-bar { background: rgba(0,0,0,0.25); border-top: 1px solid rgba(255,255,255,0.06); }
+  .footer-bar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.1rem; flex-wrap: wrap; }
+  .footer-bar p { font-size: 0.82rem; color: #7c8ab0; margin: 0; }
+  .fb-note { color: #61708f; }
+
+  @media (max-width: 860px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .f-brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 560px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .f-links-cols { grid-template-columns: 1fr 1fr; }
+    .footer-bar-inner { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+  }
+</style>

@@ -1,0 +1,264 @@
+---
+import { nav, event, institute } from '../data/site';
+import Icon from './Icon.astro';
+
+// Active-link detection (routes are emitted as /overview/ etc.)
+const path = (Astro.url.pathname.replace(/\/+$/, '') || '/');
+const isActive = (href?: string) => !!href && (href === '/' ? path === '/' : path === href || path.startsWith(href + '/'));
+const groupActive = (children?: { href: string }[]) => !!children?.some((c) => isActive(c.href));
+---
+
+<header class="site-header" data-header>
+  <!-- Brand bar -->
+  <div class="brand-bar">
+    <div class="container brand-inner">
+      <a href="/" class="brand" aria-label={`${institute.acronym} — ${event.name}, home`}>
+        <img src="/images/aries-logo.png" alt="Aryabhatta Research Institute of Observational Sciences (ARIES)" class="brand-full" width="8000" height="735" />
+        <span class="brand-mark" role="img" aria-label="ARIES"></span>
+      </a>
+
+      <div class="brand-aside">
+        <div class="brand-event">
+          <span class="be-kicker">International Workshop</span>
+          <span class="be-title">Asteroseismology · March 2027</span>
+        </div>
+        <a href="/registration" class="btn btn-primary brand-cta">Registration</a>
+        <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <Icon name="menu" size={26} />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary navigation (desktop) -->
+  <nav class="nav-bar" aria-label="Primary" data-navbar>
+    <div class="container nav-inner">
+      <ul class="nav-list">
+        {nav.map((item) =>
+          item.children ? (
+            <li class="nav-item has-children">
+              <button class="nav-link nav-more" aria-expanded="false" aria-haspopup="true" class:list={[{ active: groupActive(item.children) }]}>
+                {item.label}
+                <Icon name="chevron-down" size={16} class="more-caret" />
+              </button>
+              <ul class="dropdown">
+                {item.children.map((c) => (
+                  <li>
+                    <a href={c.href} class="dropdown-link" aria-current={isActive(c.href) ? 'page' : undefined} class:list={[{ active: isActive(c.href) }]}>
+                      {c.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ) : (
+            <li class="nav-item">
+              <a href={item.href} class="nav-link" aria-current={isActive(item.href) ? 'page' : undefined} class:list={[{ active: isActive(item.href) }]}>
+                {item.label}
+              </a>
+            </li>
+          )
+        )}
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile drawer -->
+<div class="drawer-overlay" data-overlay hidden></div>
+<aside id="mobile-drawer" class="mobile-drawer" data-drawer aria-hidden="true" aria-label="Site menu">
+  <div class="drawer-head">
+    <span class="drawer-title">Menu</span>
+    <button class="drawer-close" data-nav-close aria-label="Close menu"><Icon name="close" size={24} /></button>
+  </div>
+  <nav aria-label="Mobile">
+    <ul class="drawer-list">
+      {nav.map((item) =>
+        item.children ? (
+          <li class="drawer-group">
+            <button class="drawer-acc" data-acc aria-expanded="false" class:list={[{ active: groupActive(item.children) }]}>
+              {item.label}
+              <Icon name="chevron-down" size={18} class="acc-caret" />
+            </button>
+            <ul class="drawer-sub" data-acc-panel>
+              {item.children.map((c) => (
+                <li>
+                  <a href={c.href} aria-current={isActive(c.href) ? 'page' : undefined} class:list={[{ active: isActive(c.href) }]}>{c.label}</a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ) : (
+          <li>
+            <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined} class:list={[{ active: isActive(item.href) }]}>{item.label}</a>
+          </li>
+        )
+      )}
+    </ul>
+    <a href="/registration" class="btn btn-primary btn-lg drawer-cta">Registration</a>
+  </nav>
+</aside>
+
+<style>
+  .site-header { position: relative; z-index: 100; background: #fff; }
+
+  /* Brand bar */
+  .brand-bar { border-bottom: 1px solid var(--line); }
+  .brand-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 78px; }
+  .brand { display: inline-flex; align-items: center; }
+  .brand-full { height: 44px; width: auto; }
+  .brand-mark { display: none; width: 74px; height: 32px;
+    background: url('/images/aries-logo.png') left center / auto 32px no-repeat; }
+  .brand-aside { display: flex; align-items: center; gap: 1.1rem; }
+  .brand-event { display: flex; flex-direction: column; line-height: 1.1; text-align: right; padding-right: 0.2rem; border-right: 2px solid var(--orange-500); padding-right: 1.1rem; }
+  .be-kicker { font-family: var(--font-head); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--orange-600); }
+  .be-title { font-family: var(--font-head); font-weight: 700; color: var(--navy-900); font-size: 1.02rem; }
+  .brand-cta { padding: 0.55rem 1.2rem; }
+
+  /* Hamburger (mobile only) */
+  .nav-toggle { display: none; background: var(--navy-900); color: #fff; border: 0; border-radius: var(--r-md);
+    width: 46px; height: 46px; place-items: center; }
+  .nav-toggle:hover { background: var(--orange-500); }
+
+  /* Nav bar */
+  .nav-bar { position: sticky; top: 0; z-index: 90; background: #fff; border-bottom: 1px solid var(--line);
+    transition: box-shadow 0.2s ease; }
+  .site-header.is-stuck .nav-bar { box-shadow: 0 4px 16px rgba(16,29,71,0.10); }
+  .nav-list { display: flex; align-items: stretch; justify-content: space-between; gap: 0.05rem; list-style: none; margin: 0; padding: 0; flex-wrap: nowrap; }
+  .nav-item { display: flex; position: relative; }
+  .nav-link {
+    display: inline-flex; align-items: center; gap: 0.2rem;
+    font-family: var(--font-head); font-weight: 600; font-size: 0.855rem;
+    color: var(--ink-600); background: none; border: 0;
+    padding: 0.95rem 0.5rem; border-bottom: 3px solid transparent; white-space: nowrap;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .nav-link:hover { color: var(--blue-700); background: var(--bg-soft); }
+  .nav-link.active { color: var(--navy-900); border-bottom-color: var(--orange-500); }
+  .nav-more { cursor: pointer; }
+  .more-caret { transition: transform 0.2s ease; }
+
+  /* Desktop dropdown */
+  .dropdown {
+    position: absolute; top: 100%; right: 0; min-width: 250px;
+    background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--orange-500);
+    border-radius: 0 0 var(--r-md) var(--r-md); box-shadow: var(--shadow-md);
+    list-style: none; margin: 0; padding: 0.4rem; z-index: 95;
+    opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s;
+  }
+  .has-children:hover .dropdown,
+  .has-children:focus-within .dropdown,
+  .dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
+  .has-children:hover .more-caret, .has-children:focus-within .more-caret { transform: rotate(180deg); }
+  .dropdown-link { display: block; padding: 0.6rem 0.8rem; border-radius: var(--r-sm);
+    font-family: var(--font-head); font-weight: 600; font-size: 0.9rem; color: var(--ink-600); }
+  .dropdown-link:hover { background: var(--orange-50); color: var(--orange-600); }
+  .dropdown-link.active { background: var(--blue-50); color: var(--blue-700); }
+
+  /* Mobile drawer */
+  .drawer-overlay { position: fixed; inset: 0; background: rgba(11,21,51,0.5); z-index: 200; }
+  .mobile-drawer {
+    position: fixed; top: 0; right: 0; height: 100dvh; width: min(360px, 86vw);
+    background: #fff; z-index: 201; transform: translateX(100%);
+    transition: transform 0.28s ease; display: flex; flex-direction: column;
+    box-shadow: -8px 0 30px rgba(11,21,51,0.18); overflow-y: auto;
+  }
+  .mobile-drawer.open { transform: translateX(0); }
+  .drawer-head { display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.25rem; background: var(--navy-900); color: #fff; position: sticky; top: 0; }
+  .drawer-title { font-family: var(--font-head); font-weight: 700; letter-spacing: 0.05em; }
+  .drawer-close { background: rgba(255,255,255,0.12); border: 0; color: #fff; border-radius: var(--r-sm);
+    width: 38px; height: 38px; display: grid; place-items: center; }
+  .drawer-close:hover { background: var(--orange-500); }
+  .drawer-list { list-style: none; margin: 0; padding: 0.5rem 0.75rem 0; }
+  .drawer-list > li > a, .drawer-acc {
+    display: flex; align-items: center; justify-content: space-between; width: 100%;
+    font-family: var(--font-head); font-weight: 600; font-size: 1rem; color: var(--ink-700);
+    padding: 0.85rem 0.75rem; border: 0; background: none; border-radius: var(--r-md); text-align: left;
+    border-left: 3px solid transparent;
+  }
+  .drawer-list > li > a:hover, .drawer-acc:hover { background: var(--bg-soft); }
+  .drawer-list > li > a.active, .drawer-acc.active { color: var(--navy-900); background: var(--orange-50); border-left-color: var(--orange-500); }
+  .acc-caret { transition: transform 0.2s ease; }
+  .drawer-acc[aria-expanded='true'] .acc-caret { transform: rotate(180deg); }
+  .drawer-sub { list-style: none; margin: 0 0 0.25rem; padding: 0 0 0 0.5rem; max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+  .drawer-sub.open { max-height: 220px; }
+  .drawer-sub a { display: block; padding: 0.7rem 0.75rem 0.7rem 1.1rem; font-family: var(--font-head);
+    font-weight: 500; font-size: 0.95rem; color: var(--ink-500); border-left: 3px solid var(--line); margin-left: 0.4rem; }
+  .drawer-sub a:hover { color: var(--blue-700); }
+  .drawer-sub a.active { color: var(--orange-600); border-left-color: var(--orange-500); }
+  .drawer-cta { margin: 1rem 1.25rem 2rem; }
+
+  /* ---- Breakpoints: horizontal nav on wide screens, drawer below 1200px ---- */
+  @media (max-width: 1199px) {
+    .nav-bar { display: none; }
+    .nav-toggle { display: grid; }
+    .brand-event { display: none; }
+    .brand-cta { display: none; }
+  }
+  @media (min-width: 1200px) {
+    .mobile-drawer, .drawer-overlay { display: none !important; }
+  }
+  @media (max-width: 720px) {
+    .brand-full { display: none; }
+    .brand-mark { display: block; }
+    .brand-inner { min-height: 62px; }
+  }
+  @media (max-width: 380px) {
+    .brand-mark { width: 66px; height: 28px; background-size: auto 28px; }
+  }
+</style>
+
+<script>
+  const header = document.querySelector('[data-header]');
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const closeBtn = document.querySelector('[data-nav-close]');
+  const drawer = document.querySelector('[data-drawer]');
+  const overlay = document.querySelector('[data-overlay]');
+
+  function openDrawer() {
+    drawer?.classList.add('open');
+    overlay?.removeAttribute('hidden');
+    drawer?.setAttribute('aria-hidden', 'false');
+    toggle?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    drawer?.classList.remove('open');
+    overlay?.setAttribute('hidden', '');
+    drawer?.setAttribute('aria-hidden', 'true');
+    toggle?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  toggle?.addEventListener('click', openDrawer);
+  closeBtn?.addEventListener('click', closeDrawer);
+  overlay?.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+
+  // Mobile accordion (More)
+  document.querySelectorAll('[data-acc]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      (btn.nextElementSibling as HTMLElement)?.classList.toggle('open', !expanded);
+    });
+  });
+
+  // Desktop More dropdown — click toggle (hover/focus handled by CSS)
+  document.querySelectorAll('.nav-more').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const dd = btn.parentElement?.querySelector('.dropdown');
+      const open = dd?.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(!!open));
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.dropdown.open').forEach((d) => d.classList.remove('open'));
+  });
+
+  // Sticky-nav shadow
+  const onScroll = () => header?.classList.toggle('is-stuck', window.scrollY > 90);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>

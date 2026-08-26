@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Icon from '../components/Icon.astro';
+import { contacts, institute, host } from '../data/site';
+---
+<BaseLayout title="Contact">
+  <PageHeader
+    eyebrow="Get in touch"
+    title="Contact"
+    intro="For scientific inquiries, participation details, or logistical questions regarding the International Workshop, please contact the convenor and organising committee."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2 contact-blocks">
+        <div>
+          <span class="eyebrow">Workshop Convenor</span>
+          <h2>Scientific &amp; Workshop Coordination</h2>
+          {contacts.convenor.map((c) => (
+            <div class="contact-card card">
+              <span class="cc-avatar"><Icon name="award" size={24} /></span>
+              <div>
+                <p class="cc-name">{c.name}</p>
+                <p class="cc-role">{c.role} · {c.affil}</p>
+                <a href={`mailto:${c.email}`} class="cc-mail"><Icon name="mail" size={16} /> {c.email}</a>
+              </div>
+            </div>
+          ))}
+
+          <div style="margin-top:2rem;">
+            <span class="eyebrow">Scientific Committee co-Chairs</span>
+            <div class="sub-contacts" style="margin-top:1rem;display:grid;gap:1rem;">
+              {contacts.scientific.map((c) => (
+                <div class="contact-card card">
+                  <span class="cc-avatar"><Icon name="user" size={22} /></span>
+                  <div>
+                    <p class="cc-name">{c.name}</p>
+                    <p class="cc-role">{c.role} ({c.affil})</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <span class="eyebrow">Local Organising Committee</span>
+          <h2>Venue &amp; Logistics</h2>
+          {contacts.locLeadership.map((c) => (
+            <div class="contact-card card">
+              <span class="cc-avatar"><Icon name="building" size={24} /></span>
+              <div>
+                <p class="cc-name">{c.name}</p>
+                <p class="cc-role">{c.role} ({c.affil})</p>
+              </div>
+            </div>
+          ))}
+          <div class="note blue" style="margin-top:1.5rem;">
+            <p class="note-title">Host Campus</p>
+            <p>{host.name}, {host.location}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Organising institute</span><h2>Aryabhatta Research Institute of Observational Sciences (ARIES)</h2></div>
+      <div class="grid grid-4">
+        <div class="card info-card">
+          <span class="card-icon"><Icon name="map-pin" size={22} /></span>
+          <h4>Address</h4>
+          <p>{institute.address}</p>
+        </div>
+        <div class="card info-card">
+          <span class="card-icon"><Icon name="phone" size={22} /></span>
+          <h4>Phone</h4>
+          <p><a href={`tel:${institute.phone.replace(/[^+\d]/g, '')}`}>{institute.phone}</a><br /><span class="muted">Reception</span></p>
+        </div>
+        <div class="card info-card">
+          <span class="card-icon"><Icon name="doc" size={22} /></span>
+          <h4>Fax</h4>
+          <p>{institute.fax}</p>
+        </div>
+        <div class="card info-card">
+          <span class="card-icon"><Icon name="globe" size={22} /></span>
+          <h4>Web &amp; Mail</h4>
+          <p><a href={institute.website} target="_blank" rel="noopener">aries.res.in <Icon name="external" size={13} /></a><br /><a href={`mailto:${contacts.general}`}>{contacts.general}</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .contact-blocks { gap: 2.5rem; }
+    .contact-card { display: flex; gap: 1rem; align-items: flex-start; margin-top: 1rem; }
+    .cc-avatar { flex: none; width: 52px; height: 52px; border-radius: 50%; background: var(--blue-50); color: var(--blue-700); display: grid; place-items: center; }
+    .cc-name { font-family: var(--font-head); font-weight: 700; color: var(--navy-900); font-size: 1.1rem; margin: 0; }
+    .cc-role { color: var(--ink-500); font-size: 0.92rem; margin: 0.15rem 0 0.6rem; }
+    .cc-mail { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; word-break: break-word; color: var(--blue-700); }
+    .cc-mail:hover { color: var(--orange-600); }
+    .info-card h4 { color: var(--navy-900); margin-bottom: 0.35rem; }
+    .info-card p { color: var(--ink-600); font-size: 0.95rem; margin: 0; }
+    .muted { color: var(--ink-400); font-size: 0.85rem; }
+  </style>
+</BaseLayout>

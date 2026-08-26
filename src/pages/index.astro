@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Carousel from '../components/Carousel.astro';
+import Timeline from '../components/Timeline.astro';
+import Icon from '../components/Icon.astro';
+import { event, institute, host, topics, dates, partners } from '../data/site';
+
+const glance = [
+  { icon: 'calendar', k: 'Dates', v: event.datesShort },
+  { icon: 'map-pin', k: 'Venue', v: 'DU South Campus' },
+  { icon: 'clock', k: 'Duration', v: 'Four days' },
+  { icon: 'users', k: 'Participation', v: '~75 Invited' },
+];
+const homeTopics = topics;
+const quicklinks = [
+  { icon: 'target', label: 'Overview', href: '/overview', text: 'Scientific rationale, aim and scope.' },
+  { icon: 'list', label: 'Programme', href: '/programme', text: 'The six core scientific themes covered.' },
+  { icon: 'calendar', label: 'Important Dates', href: '/dates', text: 'Workshop schedule for 15–18 March 2027.' },
+  { icon: 'doc', label: 'Registration', href: '/registration', text: 'Participation details and invitation criteria.' },
+  { icon: 'map', label: 'Venue & Travel', href: '/venue-and-travel', text: 'Reaching DU South Campus by air, rail, metro and road.' },
+  { icon: 'mail', label: 'Contact', href: '/contact', text: 'Reach the Convenor and organising team.' },
+];
+---
+<BaseLayout title="Home">
+  <Carousel />
+
+  <!-- Intro + at-a-glance -->
+  <section class="section tight intro">
+    <div class="container intro-grid">
+      <div class="intro-lead">
+        <span class="eyebrow">ARIES · Nainital, IIT Delhi &amp; Delhi University</span>
+        <h1>{event.name}</h1>
+        <p class="lead">{event.tagline} Jointly organised by {event.organisers}, the workshop will take place from <strong>{event.dates}</strong> at {event.venue}.</p>
+        <div class="cluster intro-actions">
+          <a href="/registration" class="btn btn-primary btn-lg">Participation Details <Icon name="arrow-right" size={18} /></a>
+          <a href="/overview" class="btn btn-ghost btn-lg">Scientific Overview</a>
+        </div>
+      </div>
+      <ul class="glance">
+        {glance.map((g) => (
+          <li>
+            <span class="g-ic"><Icon name={g.icon} size={22} /></span>
+            <span class="g-k">{g.k}</span>
+            <span class="g-v">{g.v}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- About / aim -->
+  <section class="section soft">
+    <div class="container about-grid">
+      <div class="about-media">
+        <img src="/images/delhi-university.jpg" alt="Delhi University South Campus, New Delhi" width="1200" height="900" />
+        <span class="about-badge"><Icon name="star" size={18} /> Asteroseismology</span>
+      </div>
+      <div class="about-text">
+        <span class="eyebrow">Scientific Rationale</span>
+        <h2>Bridging Asteroseismology &amp; Star Clusters</h2>
+        <p>Understanding how stars form, evolve and die is one of the main goals of modern astrophysics. <strong>Asteroseismology</strong>, the study of stellar internal oscillation, offers a unique window into the deep interiors of stars. Space missions such as Kepler, GAIA, TESS and high-resolution spectroscopic observations have revolutionized our understanding by detecting pressure and gravity modes.</p>
+        <p>Chemically peculiar (CP) stars are vital testbeds to understand interactions between pulsation, rotation, binarity, and chemical peculiarities. Meanwhile, star clusters provide ideal laboratories for testing stellar evolution theory with common ages, distances, and compositions.</p>
+        <ul class="tick-list">
+          <li><Icon name="check-circle" size={20} /> Fostering synergistic research between asteroseismology and stellar cluster studies</li>
+          <li><Icon name="check-circle" size={20} /> Defining strategies for future ground and space-based missions and datasets</li>
+          <li><Icon name="check-circle" size={20} /> Sponsored by DST, Govt. of India (Project <code>{event.projectCode}</code>)</li>
+        </ul>
+        <a href="/overview" class="link-arrow">Explore the full scientific rationale <Icon name="arrow-right" size={16} /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Themes -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Scientific Focus</span>
+        <h2>Workshop Themes</h2>
+        <p>The four-day workshop addresses six key interdisciplinary themes across stellar oscillations, observational techniques, and computational astrophysics.</p>
+      </div>
+      <ul class="topic-grid">
+        {homeTopics.map((t, i) => (
+          <li class="topic">
+            <span class="topic-num">{String(i + 1).padStart(2, '0')}</span>
+            <p>{t}</p>
+          </li>
+        ))}
+      </ul>
+      <div class="center" style="margin-top:2rem;">
+        <a href="/programme" class="btn btn-secondary">See programme details <Icon name="arrow-right" size={18} /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dates snapshot -->
+  <section class="section soft">
+    <div class="container dates-grid">
+      <div class="section-head">
+        <span class="eyebrow">Upcoming Schedule</span>
+        <h2>Important Dates</h2>
+        <p>Key milestones for the workshop to be held <strong>15–18 March 2027</strong> at Delhi University, South Campus, New Delhi.</p>
+        <a href="/dates" class="btn btn-ghost" style="margin-top:1rem;">All important dates</a>
+      </div>
+      <div class="dates-card card">
+        <Timeline items={dates} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Organisers -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Jointly organised by</span>
+        <h2>ARIES Nainital, IIT Delhi &amp; Delhi University</h2>
+      </div>
+      <div class="org-grid">
+        {partners.map((p) => (
+          <article class="card accent org">
+            <span class="card-icon"><Icon name="building" size={24} /></span>
+            <h3>{p.acronym}</h3>
+            <p class="org-full">{p.name}</p>
+            <p>{p.note}</p>
+          </article>
+        ))}
+      </div>
+      <div class="center" style="margin-top:2rem;">
+        <a href="/committees" class="link-arrow">Meet the organising committees <Icon name="arrow-right" size={16} /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick links -->
+  <section class="section soft">
+    <div class="container">
+      <div class="section-head center"><span class="eyebrow">Find your way</span><h2>Quick links</h2></div>
+      <div class="grid grid-3">
+        {quicklinks.map((q) => (
+          <a href={q.href} class="card hover ql">
+            <span class="card-icon"><Icon name={q.icon} size={24} /></span>
+            <h3>{q.label}</h3>
+            <p>{q.text}</p>
+            <span class="ql-go"><Icon name="arrow-right" size={18} /></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container cta-inner">
+      <div>
+        <h2>International Workshop · March 2027</h2>
+        <p>Participation is by invitation for about 75 leading researchers and delegates from ~20 countries under DST Project SAPTARISI.</p>
+      </div>
+      <div class="cluster">
+        <a href="/registration" class="btn btn-primary btn-lg">Participation Details</a>
+        <a href="/contact" class="btn btn-on-dark btn-lg">Contact Convenor</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Intro */
+  .intro-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 2.5rem; align-items: center; }
+  .intro-lead h1 { margin: 0.3rem 0 0.9rem; font-size: clamp(1.8rem, 3.2vw, 2.5rem); }
+  .intro-actions { margin-top: 1.6rem; }
+  .glance { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .glance li { background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--orange-500);
+    border-radius: var(--r-lg); padding: 1.2rem; display: grid; gap: 0.15rem; box-shadow: var(--shadow-sm); }
+  .g-ic { width: 42px; height: 42px; border-radius: var(--r-md); background: var(--blue-50); color: var(--blue-700); display: grid; place-items: center; margin-bottom: 0.5rem; }
+  .g-k { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-400); font-weight: 700; font-family: var(--font-head); }
+  .g-v { font-family: var(--font-head); font-weight: 700; color: var(--navy-900); font-size: 1.15rem; }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 2.8rem; align-items: center; }
+  .about-media { position: relative; }
+  .about-media img { width: 100%; height: 100%; max-height: 460px; object-fit: cover; border-radius: var(--r-lg); box-shadow: var(--shadow-md); }
+  .about-badge { position: absolute; left: 1rem; bottom: 1rem; display: inline-flex; align-items: center; gap: 0.45rem;
+    background: #fff; color: var(--orange-600); font-family: var(--font-head); font-weight: 700; font-size: 0.85rem;
+    padding: 0.5rem 0.9rem; border-radius: 999px; box-shadow: var(--shadow-md); }
+  .tick-list { list-style: none; padding: 0; margin: 1.3rem 0; display: grid; gap: 0.7rem; }
+  .tick-list li { display: flex; gap: 0.6rem; align-items: flex-start; color: var(--ink-700); }
+  .tick-list :global(svg) { color: var(--orange-500); flex: none; margin-top: 2px; }
+  .link-arrow { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-head); font-weight: 700; color: var(--blue-700); }
+  .link-arrow:hover { color: var(--orange-600); gap: 0.65rem; }
+
+  /* Topics */
+  .topic-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+  .topic { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start; transition: transform 0.18s ease, border-color 0.18s ease; }
+  .topic:hover { transform: translateY(-3px); border-color: var(--blue-100); }
+  .topic-num { font-family: var(--font-head); font-weight: 800; font-size: 1.3rem; color: var(--orange-500); line-height: 1; }
+  .topic p { margin: 0; font-weight: 600; color: var(--navy-900); }
+
+  /* Dates */
+  .dates-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 2.5rem; align-items: start; }
+
+  /* Organisers */
+  .org-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .org-full { font-family: var(--font-head); font-weight: 600; color: var(--blue-700); margin-bottom: 0.6rem; }
+
+  /* Quick links */
+  .ql { position: relative; color: inherit; display: block; }
+  .ql h3 { color: var(--navy-900); }
+  .ql-go { position: absolute; top: 1.4rem; right: 1.4rem; color: var(--ink-400); transition: color 0.18s ease, transform 0.18s ease; }
+  .ql:hover .ql-go { color: var(--orange-500); transform: translateX(3px); }
+
+  /* CTA */
+  .cta { background: var(--navy-900); color: #cdd6ee; background-image: radial-gradient(600px 300px at 90% 0%, rgba(232,111,27,0.22), transparent 70%); }
+  .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding-block: 3.25rem; flex-wrap: wrap; }
+  .cta h2 { color: #fff; margin-bottom: 0.5rem; }
+  .cta p { max-width: 560px; margin: 0; }
+
+  @media (max-width: 900px) {
+    .intro-grid, .about-grid, .dates-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .topic-grid, .org-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-media { order: -1; }
+  }
+  @media (max-width: 620px) {
+    .glance { grid-template-columns: 1fr 1fr; }
+    .topic-grid, .org-grid { grid-template-columns: 1fr; }
+    .cta-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>

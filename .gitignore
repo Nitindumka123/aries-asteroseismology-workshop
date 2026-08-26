@@ -1,0 +1,11 @@
+# build output
+dist/
+# dependencies
+node_modules/
+# generated types
+.astro/
+# scratch assets & research
+tmp/
+# os / editor
+.DS_Store
+Thumbs.db

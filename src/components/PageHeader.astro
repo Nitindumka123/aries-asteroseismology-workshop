@@ -1,0 +1,41 @@
+---
+import Icon from './Icon.astro';
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+}
+const { eyebrow, title, intro } = Astro.props;
+---
+<section class="page-header">
+  <div class="ph-glow" aria-hidden="true"></div>
+  <div class="container ph-inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <Icon name="chevron-right" size={14} />
+      <span aria-current="page">{title}</span>
+    </nav>
+    {eyebrow && <span class="eyebrow ph-eyebrow">{eyebrow}</span>}
+    <h1>{title}</h1>
+    {intro && <p class="ph-intro">{intro}</p>}
+  </div>
+  <div class="ph-rule" aria-hidden="true"></div>
+</section>
+
+<style>
+  .page-header { position: relative; background: var(--navy-900); color: #cfd8ef; overflow: hidden; }
+  .ph-glow { position: absolute; inset: 0;
+    background:
+      radial-gradient(520px 260px at 88% -10%, rgba(232,111,27,0.28), transparent 70%),
+      radial-gradient(600px 300px at 0% 120%, rgba(39,75,176,0.35), transparent 70%);
+  }
+  .ph-inner { position: relative; padding-block: clamp(2.5rem, 5vw, 4rem); max-width: 900px; }
+  .breadcrumb { display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: #8fa0cb; margin-bottom: 1.1rem; }
+  .breadcrumb a { color: #a9b6d8; font-weight: 600; }
+  .breadcrumb a:hover { color: var(--orange-400); }
+  .breadcrumb span { color: #fff; }
+  .ph-eyebrow { color: var(--orange-400); }
+  .page-header h1 { color: #fff; }
+  .ph-intro { font-size: 1.18rem; color: #b9c4e0; margin-top: 1rem; max-width: 760px; }
+  .ph-rule { height: 4px; background: linear-gradient(90deg, var(--orange-500), var(--orange-400) 45%, transparent); }
+</style>

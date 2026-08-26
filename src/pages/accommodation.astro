@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Icon from '../components/Icon.astro';
+
+const points = [
+  { icon: 'bed', title: 'Accommodation Provided', text: 'Accommodation arranged for 50 participants for the four-day duration of the workshop.' },
+  { icon: 'book', title: 'Hospitality & Meals', text: 'Full hospitality including high tea, lunches, conference dinners, and session refreshments.' },
+  { icon: 'compass', title: 'Travel Support', text: 'Travel support allocated for attending students and retired faculties under project funds.' },
+];
+---
+<BaseLayout title="Accommodation">
+  <PageHeader
+    eyebrow="More · Your stay"
+    title="Accommodation"
+    intro="Accommodation and local hospitality arrangements for participants of the International Workshop in New Delhi."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        {points.map((p) => (
+          <div class="card accent">
+            <span class="card-icon"><Icon name={p.icon} size={24} /></span>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft">
+    <div class="container narrow">
+      <div class="acc-panel">
+        <h2>What to expect</h2>
+        <p>As planned in the workshop budget, accommodation for 50 participants is provided for the duration of the event (15–18 March 2027), alongside comprehensive hospitality covering lunches, high tea, dinners, and refreshments throughout all four days.</p>
+        <ul class="tick">
+          <li><Icon name="check-circle" size={20} /> Lodging arrangements are made in close proximity to Delhi University, South Campus.</li>
+          <li><Icon name="check-circle" size={20} /> Booking confirmations and check-in details are communicated directly to invited participants.</li>
+          <li><Icon name="check-circle" size={20} /> Outstation and international participants should communicate their travel dates in advance.</li>
+        </ul>
+        <div class="note" style="margin-top:1.5rem;">
+          <p class="note-title">Accommodation Queries</p>
+          <p>For any specific questions regarding your stay or travel support, please get in touch with the Local Organising Committee.</p>
+        </div>
+        <div class="cluster" style="margin-top:1.5rem;">
+          <a href="/contact" class="btn btn-primary">Contact Organising Team <Icon name="arrow-right" size={16} /></a>
+          <a href="/venue-and-travel" class="btn btn-ghost">Venue &amp; Travel</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .acc-panel { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 2.5rem; box-shadow: var(--shadow-sm); }
+    .acc-panel h2 { margin-bottom: 0.75rem; }
+    .tick { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: 0.8rem; }
+    .tick li { display: flex; gap: 0.65rem; align-items: flex-start; color: var(--ink-700); }
+    .tick :global(svg) { color: var(--orange-500); flex: none; margin-top: 2px; }
+    @media (max-width: 620px) { .acc-panel { padding: 1.6rem; } }
+  </style>
+</BaseLayout>

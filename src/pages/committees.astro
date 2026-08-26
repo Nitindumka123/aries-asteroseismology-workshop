@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import MemberGrid from '../components/MemberGrid.astro';
+import Icon from '../components/Icon.astro';
+import { soc, loc, convenor } from '../data/site';
+---
+<BaseLayout title="Committees">
+  <PageHeader
+    eyebrow="Organisation"
+    title="Committees"
+    intro="The International Workshop is guided by an international Scientific Organizing Committee and coordinated by a Local Organizing Committee representing ARIES Nainital, IIT Delhi and Delhi University."
+  />
+
+  <!-- Convenor Section -->
+  <section class="section">
+    <div class="container">
+      <div class="committee-head">
+        <span class="card-icon"><Icon name="user" size={24} /></span>
+        <div>
+          <span class="eyebrow">Leadership</span>
+          <h2>Convenor of the Workshop</h2>
+          <p class="muted">Leading scientific and organisational coordination for the international workshop.</p>
+        </div>
+      </div>
+      <div class="convenor-card card accent">
+        <div class="conv-avatar"><Icon name="award" size={26} /></div>
+        <div>
+          <p class="conv-role">{convenor.role}</p>
+          <h3 class="conv-name">{convenor.name}</h3>
+          <p class="conv-affil"><Icon name="building" size={15} /> {convenor.affil}</p>
+          <a href={`mailto:${convenor.email}`} class="conv-mail"><Icon name="mail" size={15} /> {convenor.email}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOC -->
+  <section class="section soft">
+    <div class="container">
+      <div class="committee-head">
+        <span class="card-icon"><Icon name="award" size={24} /></span>
+        <div>
+          <span class="eyebrow">Scientific Direction</span>
+          <h2>{soc.title}</h2>
+          <p class="muted">Responsible for the academic scope, session themes, international speaker invitations, and scientific roadmap.</p>
+        </div>
+      </div>
+      <MemberGrid members={soc.members} highlightRoles={['co-Chair (Asteroseismology)']} />
+    </div>
+  </section>
+
+  <!-- LOC -->
+  <section class="section">
+    <div class="container">
+      <div class="committee-head">
+        <span class="card-icon"><Icon name="users" size={24} /></span>
+        <div>
+          <span class="eyebrow">Local Arrangements</span>
+          <h2>{loc.title}</h2>
+          <p class="muted">Coordinated by Delhi University, IIT Delhi and ARIES Nainital for venue management, delegate hospitality, and local transport.</p>
+        </div>
+      </div>
+      <MemberGrid members={loc.members} highlightRoles={['Chair']} />
+    </div>
+  </section>
+
+  <style>
+    .committee-head { display: flex; gap: 1.1rem; align-items: flex-start; margin-bottom: 2rem; max-width: 760px; }
+    .committee-head .card-icon { flex: none; margin-bottom: 0; }
+    .committee-head h2 { margin: 0.1rem 0 0.3rem; }
+    .muted { color: var(--ink-500); margin: 0; }
+    .convenor-card { display: flex; gap: 1.5rem; align-items: center; max-width: 620px; padding: 1.6rem; border-left: 4px solid var(--orange-500); }
+    .conv-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--orange-50); color: var(--orange-600); display: grid; place-items: center; flex: none; }
+    .conv-role { font-family: var(--font-head); font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange-600); margin: 0; }
+    .conv-name { font-family: var(--font-head); font-weight: 800; color: var(--navy-900); font-size: 1.35rem; margin: 0.2rem 0 0.4rem; }
+    .conv-affil { color: var(--ink-600); font-size: 0.95rem; margin: 0 0 0.4rem; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .conv-mail { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; color: var(--blue-700); }
+    .conv-mail:hover { color: var(--orange-600); }
+  </style>
+</BaseLayout>

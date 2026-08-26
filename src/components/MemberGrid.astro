@@ -1,0 +1,41 @@
+---
+import Icon from './Icon.astro';
+export interface Props {
+  members: { name: string; role: string; affil: string }[];
+  highlightRoles?: string[]; // roles rendered with the orange accent
+}
+const { members, highlightRoles = ['Chairperson', 'Convener', 'Patron', 'Chairman'] } = Astro.props;
+const initials = (name: string) =>
+  name.replace(/^(Prof\.|Dr\.|Mr\.|Ms\.|Mrs\.)\s*/i, '').split(/\s+/).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
+---
+<ul class="member-grid">
+  {members.map((m) => {
+    const lead = highlightRoles.includes(m.role);
+    return (
+      <li class:list={['member', { lead }]}>
+        <span class="m-avatar" aria-hidden="true">{initials(m.name)}</span>
+        <div class="m-info">
+          <p class="m-name">{m.name}</p>
+          <p class="m-role">{m.role}</p>
+          <p class="m-affil"><Icon name="building" size={14} /> {m.affil}</p>
+        </div>
+      </li>
+    );
+  })}
+</ul>
+
+<style>
+  .member-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .member { display: flex; gap: 1rem; align-items: flex-start; background: #fff; border: 1px solid var(--line);
+    border-radius: var(--r-lg); padding: 1.15rem; box-shadow: var(--shadow-sm); transition: border-color 0.18s ease, transform 0.18s ease; }
+  .member:hover { transform: translateY(-2px); border-color: var(--blue-100); }
+  .member.lead { border-left: 4px solid var(--orange-500); }
+  .m-avatar { flex: none; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
+    font-family: var(--font-head); font-weight: 700; font-size: 1rem; background: var(--blue-50); color: var(--blue-700); }
+  .member.lead .m-avatar { background: var(--orange-50); color: var(--orange-600); }
+  .m-name { font-family: var(--font-head); font-weight: 700; color: var(--navy-900); font-size: 1.05rem; margin: 0; }
+  .m-role { color: var(--orange-600); font-weight: 600; font-size: 0.9rem; margin: 0.1rem 0 0.35rem; }
+  .m-affil { color: var(--ink-500); font-size: 0.88rem; margin: 0; display: inline-flex; align-items: center; gap: 0.35rem; }
+  .m-affil :global(svg) { color: var(--ink-400); }
+  @media (max-width: 620px) { .member-grid { grid-template-columns: 1fr; } }
+</style>
