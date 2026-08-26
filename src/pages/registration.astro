@@ -5,59 +5,244 @@ import Icon from '../components/Icon.astro';
 import { event, convenor } from '../data/site';
 
 const steps = [
-  { n: 1, title: 'Invitation Issued', text: 'Due to DST financial support parameters, participation is by invitation only. About 75 experts from ~20 countries are invited by the organising committee.' },
-  { n: 2, title: 'Confirmation of Participation', text: 'Invited delegates confirm their participation, presentation topics, and local accommodation requirements with the organisers.' },
-  { n: 3, title: 'Programme Integration', text: 'The Scientific Organizing Committee finalises session allocations across the six core workshop themes.' },
-  { n: 4, title: 'Workshop Week', text: 'Participants convene at Delhi University, South Campus from 15–18 March 2027 for four days of intensive scientific exchange.' },
+  { n: 1, title: 'Invitation Issued', text: 'Participation is by invitation only for about 75 experts from ~20 countries under DST SAPTARISI project parameters.' },
+  { n: 2, title: 'Confirmation & Form Submission', text: 'Invited delegates complete the online registration form below specifying paper titles, travel schedule, and hospitality choices.' },
+  { n: 3, title: 'Programme Integration', text: 'The Scientific Organizing Committee allocates accepted talks and posters across the six core workshop themes.' },
+  { n: 4, title: 'Workshop Convening', text: 'Delegates gather at Delhi University, South Campus from 15–18 March 2027 for four days of intensive scientific presentations.' },
 ];
+
 const included = [
-  { icon: 'bed', text: 'Accommodation provided for 50 participants for the four-day duration of the workshop' },
+  { icon: 'bed', text: 'Accommodation provided for 50 delegates for the four-day duration of the workshop' },
   { icon: 'compass', text: 'Travel support available for students and retired faculties' },
-  { icon: 'users', text: 'A focused international cohort of ~75 leading researchers from about 20 countries' },
-  { icon: 'book', text: 'Comprehensive hospitality including lunches, conference dinners, and session refreshments' },
+  { icon: 'users', text: 'Focused international delegation of ~75 leading researchers from about 20 countries' },
+  { icon: 'book', text: 'Comprehensive hospitality including session refreshments, lunches, and conference dinner' },
 ];
 ---
-<BaseLayout title="Registration">
+<BaseLayout title="Online Registration">
   <PageHeader
-    eyebrow="Participation"
-    title="Registration"
-    intro="Participation in the International Workshop is by invitation only, sponsored by the Department of Science and Technology (DST), Govt. of India."
+    eyebrow="DELEGATE REGISTRATION"
+    title="Online Registration"
+    intro="Please complete the form below to confirm your attendance, scientific contribution, travel itinerary, and local hospitality requirements."
   />
 
   <section class="section">
-    <div class="container reg-grid">
-      <div>
-        <span class="eyebrow">Participation Process</span>
-        <h2>How participation works</h2>
-        <ol class="steps">
-          {steps.map((s) => (
-            <li class="step">
-              <span class="step-n">{s.n}</span>
-              <div><h3>{s.title}</h3><p>{s.text}</p></div>
-            </li>
-          ))}
-        </ol>
+    <div class="container reg-layout">
+      <!-- Left Column: Custom Styled Form Card -->
+      <div class="reg-form-card">
+        <div class="form-header">
+          <span class="eyebrow">DELEGATE PORTAL</span>
+          <h2 class="form-title">Workshop Registration Form</h2>
+          <p class="form-subtitle">All fields marked with an asterisk (<span class="req">*</span>) are required.</p>
+        </div>
+
+        <form id="registration-form" class="custom-reg-form" novalidate>
+          <div id="form-alert" class="alert-box" hidden></div>
+
+          <!-- SECTION 1: Personal & Academic Information -->
+          <div class="form-sec">
+            <div class="form-sec-head">
+              <span class="sec-icon"><Icon name="users" size={20} /></span>
+              <div>
+                <h3 class="sec-heading">1. Personal &amp; Academic Information</h3>
+                <p class="sec-sub">Official delegate credentials for registration records.</p>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="fullName">Full Name <span class="req">*</span></label>
+                <input type="text" id="fullName" name="fullName" placeholder="e.g. Dr. Santosh Joshi" required />
+              </div>
+
+              <div class="form-field">
+                <label for="email">Email Address <span class="req">*</span></label>
+                <input type="email" id="email" name="email" placeholder="e.g. participant@institution.edu" required />
+                <span class="field-hint"><Icon name="shield-check" size={13} /> Private &mdash; never published on public directories.</span>
+              </div>
+
+              <div class="form-field">
+                <label for="affiliation">Affiliation / Institution <span class="req">*</span></label>
+                <input type="text" id="affiliation" name="affiliation" placeholder="e.g. ARIES, Nainital / IIT Delhi" required />
+              </div>
+
+              <div class="form-field">
+                <label for="designation">Designation <span class="req">*</span></label>
+                <div class="select-wrapper">
+                  <select id="designation" name="designation" required>
+                    <option value="">Select Designation...</option>
+                    <option value="Professor / Senior Scientist">Professor / Senior Scientist</option>
+                    <option value="Associate / Assistant Professor">Associate / Assistant Professor</option>
+                    <option value="Postdoctoral Fellow">Postdoctoral Fellow</option>
+                    <option value="PhD Research Scholar">PhD Research Scholar</option>
+                    <option value="Emeritus / Retired Faculty">Emeritus / Retired Faculty</option>
+                    <option value="Scientific Delegate">Scientific Delegate</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="country">Country <span class="req">*</span></label>
+                <input type="text" id="country" name="country" placeholder="e.g. India, Belgium, Russia, China" required />
+              </div>
+
+              <div class="form-field">
+                <label for="researchArea">Research Area / Specialization <span class="req">*</span></label>
+                <input type="text" id="researchArea" name="researchArea" placeholder="e.g. Asteroseismology, CP Stars, Open Clusters" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 2: Scientific Contribution -->
+          <div class="form-sec">
+            <div class="form-sec-head">
+              <span class="sec-icon"><Icon name="award" size={20} /></span>
+              <div>
+                <h3 class="sec-heading">2. Scientific Contribution</h3>
+                <p class="sec-sub">Specify your proposed presentation or workshop role.</p>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-field full-width">
+                <label for="participationType">Participation Type <span class="req">*</span></label>
+                <div class="select-wrapper">
+                  <select id="participationType" name="participationType" required>
+                    <option value="">Select Participation Type...</option>
+                    <option value="Talk">Oral Presentation (Talk)</option>
+                    <option value="Poster">Poster Presentation</option>
+                    <option value="Talk + Poster">Both (Talk &amp; Poster)</option>
+                    <option value="None">None (Invited Session Delegate)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field full-width">
+                <label for="presentationTitle">Talk / Poster Title <span class="opt">(Optional / If presenting)</span></label>
+                <input type="text" id="presentationTitle" name="presentationTitle" placeholder="Title of proposed talk or poster presentation..." />
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 3: Travel & Logistics (Clearly Marked PRIVATE) -->
+          <div class="form-sec private-sec">
+            <div class="form-sec-head">
+              <span class="sec-icon private-ic"><Icon name="compass" size={20} /></span>
+              <div>
+                <div class="head-with-badge">
+                  <h3 class="sec-heading">3. Travel &amp; Logistics</h3>
+                  <span class="priv-badge"><Icon name="shield-check" size={14} /> PRIVATE &amp; CONFIDENTIAL</span>
+                </div>
+                <p class="sec-sub">Travel and hospitality details are kept strictly confidential for local arrangements.</p>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-field full-width">
+                <label for="foodPreference">Food Preference <span class="req">*</span></label>
+                <div class="select-wrapper">
+                  <select id="foodPreference" name="foodPreference" required>
+                    <option value="">Select Food Preference...</option>
+                    <option value="Vegetarian">Vegetarian (Standard)</option>
+                    <option value="Non-Vegetarian">Non-Vegetarian</option>
+                    <option value="Jain Vegetarian">Jain Vegetarian</option>
+                    <option value="Vegan">Vegan</option>
+                    <option value="Other">Other Special Dietary Needs</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="arrivalDate">Expected Arrival Date</label>
+                <input type="date" id="arrivalDate" name="arrivalDate" min="2027-03-12" max="2027-03-20" />
+              </div>
+
+              <div class="form-field">
+                <label for="arrivalTime">Arrival Time</label>
+                <input type="time" id="arrivalTime" name="arrivalTime" />
+              </div>
+
+              <div class="form-field full-width">
+                <label for="arrivalDetails">Arrival Flight / Train Number</label>
+                <input type="text" id="arrivalDetails" name="arrivalDetails" placeholder="e.g. AI-401 / Rajdhani Express (New Delhi Railway Station)" />
+              </div>
+
+              <div class="form-field">
+                <label for="departureDate">Expected Departure Date</label>
+                <input type="date" id="departureDate" name="departureDate" min="2027-03-15" max="2027-03-22" />
+              </div>
+
+              <div class="form-field">
+                <label for="departureTime">Departure Time</label>
+                <input type="time" id="departureTime" name="departureTime" />
+              </div>
+
+              <div class="form-field full-width">
+                <label for="departureDetails">Departure Flight / Train Number</label>
+                <input type="text" id="departureDetails" name="departureDetails" placeholder="e.g. 6E-204 (IGI Airport T3)" />
+              </div>
+            </div>
+
+            <!-- Mandatory Privacy Callout Box -->
+            <div class="privacy-callout">
+              <Icon name="shield-check" size={20} />
+              <p><strong>Privacy Guarantee:</strong> Travel, food and contact information is strictly private and will only be used for internal workshop arrangements. It will never appear on the public participants directory.</p>
+            </div>
+          </div>
+
+          <!-- Submit Area -->
+          <div class="form-submit-area">
+            <button type="submit" id="submit-btn" class="btn btn-primary btn-lg submit-btn">
+              Submit Registration
+            </button>
+            <p class="submit-note">
+              <Icon name="check-circle" size={16} /> Submitting records your registration instantly. You can review your entry on the public directory.
+            </p>
+          </div>
+        </form>
       </div>
 
-      <aside class="reg-aside">
-        <div class="card accent">
-          <h3>Participation Criteria</h3>
-          <ul class="check-list">
-            <li><Icon name="check-circle" size={20} /> By invitation only (~75 international &amp; national delegates)</li>
-            <li><Icon name="check-circle" size={20} /> Active researchers in asteroseismology &amp; cluster astrophysics</li>
-            <li><Icon name="check-circle" size={20} /> Sponsored under DST Project SAPTARISI</li>
+      <!-- Right Sidebar Cards -->
+      <aside class="reg-sidebar">
+        <!-- Card 1: Registration Information -->
+        <div class="side-card">
+          <div class="side-card-head">
+            <span class="side-ic"><Icon name="book" size={18} /></span>
+            <h3 class="side-title">Registration Information</h3>
+          </div>
+          <ul class="info-list">
+            <li><strong>Invitation:</strong> By invitation only (~75 delegates from ~20 countries)</li>
+            <li><strong>Dates:</strong> 15–18 March 2027</li>
+            <li><strong>Venue:</strong> Delhi University, South Campus, New Delhi</li>
+            <li><strong>Accommodation:</strong> Provided for 50 delegates for 4 days</li>
+            <li><strong>Sponsor:</strong> DST Project SAPTARISI (Govt. of India)</li>
           </ul>
         </div>
-        <div class="reg-status">
-          <span class="chip chip-orange">By Invitation Only</span>
-          <p>Due to limited financial support from DST, Govt. of India, participation is strictly by invitation for about 75 participants across ~20 countries.</p>
-          <a href="/dates" class="btn btn-secondary" style="width:100%;">View Workshop Dates</a>
-          <a href="/contact" class="btn btn-ghost" style="width:100%;margin-top:0.6rem;">Contact Convenor</a>
+
+        <!-- Card 2: Privacy -->
+        <div class="side-card privacy-card">
+          <div class="side-card-head">
+            <span class="side-ic priv-ic"><Icon name="shield-check" size={18} /></span>
+            <h3 class="side-title">Privacy &amp; Data Security</h3>
+          </div>
+          <p class="side-text">
+            Private details such as your email address, food preferences, flight/train numbers, and arrival/departure times are strictly protected and will <strong>never</strong> appear on public pages.
+          </p>
+        </div>
+
+        <!-- Card 3: Registered Participants Directory Button -->
+        <div class="side-card cta-card">
+          <span class="chip chip-orange" style="margin-bottom:0.6rem;">Public Directory</span>
+          <h3 class="side-title" style="margin-bottom:0.5rem;">Registered Participants</h3>
+          <p class="side-text" style="margin-bottom:1rem;">View the confirmed list of invited and registered workshop delegates.</p>
+          <a href="/participants" class="btn btn-secondary" style="width:100%;text-align:center;justify-content:center;">
+            View Registered Participants &rarr;
+          </a>
         </div>
       </aside>
     </div>
   </section>
 
+  <!-- Provisions Section -->
   <section class="section soft">
     <div class="container">
       <div class="section-head center"><span class="eyebrow">Provisions</span><h2>Support for Invited Participants</h2></div>
@@ -73,22 +258,260 @@ const included = [
   </section>
 
   <style>
-    .reg-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 3rem; align-items: start; }
-    .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.25rem; counter-reset: s; }
-    .step { display: flex; gap: 1.1rem; align-items: flex-start; }
-    .step-n { flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--orange-500); color: #fff;
-      display: grid; place-items: center; font-family: var(--font-head); font-weight: 800; }
-    .step h3 { margin: 0.3rem 0 0.25rem; }
-    .step p { color: var(--ink-500); margin: 0; }
-    .reg-aside { display: grid; gap: 1.25rem; position: sticky; top: calc(var(--header-h) + 1rem); }
-    .check-list { list-style: none; padding: 0; margin: 0.5rem 0 0; display: grid; gap: 0.7rem; }
-    .check-list li { display: flex; gap: 0.6rem; align-items: flex-start; color: var(--ink-600); }
-    .check-list :global(svg) { color: var(--orange-500); flex: none; margin-top: 2px; }
-    .reg-status { background: var(--navy-900); color: #cdd6ee; border-radius: var(--r-lg); padding: 1.5rem; }
-    .reg-status p { font-size: 0.95rem; margin: 0.8rem 0 1rem; }
+    .reg-layout { display: grid; grid-template-columns: 1.85fr 1fr; gap: 2.5rem; align-items: start; }
+    
+    /* Left Form Card Styling */
+    .reg-form-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 2.25rem;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .form-header { margin-bottom: 2rem; padding-bottom: 1.25rem; border-bottom: 2px solid var(--bg-tint); }
+    .form-title { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--navy-900); margin: 0.3rem 0 0.4rem; }
+    .form-subtitle { color: var(--ink-500); font-size: 0.98rem; }
+    
+    /* Form Sections */
+    .form-sec { margin-bottom: 2.25rem; padding-bottom: 2rem; border-bottom: 1px dashed var(--line-strong); }
+    .form-sec:last-of-type { border-bottom: 0; margin-bottom: 1rem; padding-bottom: 0; }
+    
+    .form-sec-head { display: flex; gap: 0.9rem; align-items: flex-start; margin-bottom: 1.35rem; }
+    .sec-icon { width: 42px; height: 42px; border-radius: var(--r-md); background: var(--blue-50); color: var(--blue-700); display: grid; place-items: center; flex: none; }
+    .sec-heading { font-family: var(--font-head); font-weight: 700; font-size: 1.2rem; color: var(--navy-900); margin: 0 0 0.2rem; }
+    .sec-sub { font-size: 0.9rem; color: var(--ink-500); margin: 0; }
+
+    .head-with-badge { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+    .private-ic { background: #fef3c7; color: #b45309; }
+    .priv-badge { display: inline-flex; align-items: center; gap: 0.3rem; background: #fffbe6; color: #b45309; border: 1px solid #fde68a; font-family: var(--font-head); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.05em; padding: 0.2rem 0.65rem; border-radius: 999px; }
+
+    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .form-field { display: flex; flex-direction: column; }
+    .form-field.full-width { grid-column: span 2; }
+    
+    .form-field label {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--navy-900);
+      margin-bottom: 0.45rem;
+    }
+    .req { color: var(--orange-600); font-weight: 800; margin-left: 2px; }
+    .opt { color: var(--ink-400); font-weight: 400; font-size: 0.82rem; margin-left: 4px; }
+    .field-hint { font-size: 0.8rem; color: var(--ink-500); margin-top: 0.35rem; display: inline-flex; align-items: center; gap: 0.3rem; }
+    .field-hint :global(svg) { color: var(--blue-600); flex: none; }
+
+    /* CUSTOM STYLED INPUTS & SELECTS — NO DEFAULT BROWSER STYLING */
+    .form-field input[type="text"],
+    .form-field input[type="email"],
+    .form-field input[type="date"],
+    .form-field input[type="time"],
+    .form-field select {
+      width: 100%;
+      height: 48px;
+      padding: 0 1rem;
+      font-family: var(--font-body);
+      font-size: 0.96rem;
+      color: var(--navy-900);
+      background-color: #ffffff;
+      border: 1.5px solid var(--line-strong);
+      border-radius: var(--r-md);
+      box-shadow: 0 1px 3px rgba(16, 29, 71, 0.04);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .select-wrapper { position: relative; width: 100%; }
+    .select-wrapper select { padding-right: 2.5rem; cursor: pointer; }
+    .select-wrapper::after {
+      content: '';
+      position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      width: 10px; height: 6px; pointer-events: none;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%20232b42' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+
+    .form-field input:hover, .form-field select:hover {
+      border-color: var(--blue-500);
+    }
+    .form-field input:focus, .form-field select:focus {
+      outline: none;
+      border-color: var(--blue-600);
+      box-shadow: 0 0 0 4px rgba(39, 75, 176, 0.15);
+      background-color: #ffffff;
+    }
+
+    /* Privacy callout box */
+    .privacy-callout {
+      margin-top: 1.25rem;
+      background: #fffbe6;
+      border: 1px solid #ffe58f;
+      border-radius: var(--r-md);
+      padding: 0.95rem 1.15rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .privacy-callout :global(svg) { color: #b45309; flex: none; margin-top: 2px; }
+    .privacy-callout p { font-size: 0.88rem; color: #78350f; margin: 0; line-height: 1.45; }
+    .privacy-callout strong { color: #92400e; }
+
+    /* Submit Area */
+    .form-submit-area { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
+    .submit-btn {
+      width: 100%;
+      height: 52px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(232, 111, 27, 0.35);
+    }
+    .submit-note { font-size: 0.86rem; color: var(--ink-500); display: flex; align-items: center; gap: 0.4rem; justify-content: center; text-align: center; }
+    .submit-note :global(svg) { color: var(--orange-500); flex: none; }
+
+    /* Feedback Alert Box */
+    .alert-box { padding: 1.15rem 1.35rem; border-radius: var(--r-md); margin-bottom: 1.75rem; font-size: 0.96rem; line-height: 1.5; }
+    .alert-box.success { background: #eefbf3; border: 1.5px solid #bcead0; color: #14532d; }
+    .alert-box.error { background: #fef2f2; border: 1.5px solid #fecaca; color: #991b1b; }
+    .alert-box.warning { background: #fffbe6; border: 1.5px solid #ffe58f; color: #855900; }
+
+    /* Sidebar Cards */
+    .reg-sidebar { display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: calc(var(--header-h) + 1rem); }
+    .side-card { background: #ffffff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.5rem; box-shadow: var(--shadow-sm); }
+    .side-card-head { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1rem; }
+    .side-ic { width: 36px; height: 36px; border-radius: var(--r-md); background: var(--blue-50); color: var(--blue-700); display: grid; place-items: center; flex: none; }
+    .priv-ic { background: #fef3c7; color: #b45309; }
+    .side-title { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; color: var(--navy-900); margin: 0; }
+    .side-text { font-size: 0.92rem; color: var(--ink-600); line-height: 1.5; margin: 0; }
+    
+    .info-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; font-size: 0.9rem; color: var(--ink-700); }
+    .info-list li { padding-bottom: 0.65rem; border-bottom: 1px solid var(--line); }
+    .info-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .info-list strong { color: var(--navy-900); }
+
+    .privacy-card { border-left: 4px solid #f59e0b; background: #fffdf5; }
+    .cta-card { border-top: 4px solid var(--orange-500); background: #ffffff; }
+
+    /* Responsive adjustments */
     @media (max-width: 900px) {
-      .reg-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .reg-aside { position: static; }
+      .reg-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-field.full-width { grid-column: span 1; }
+      .reg-sidebar { position: static; }
+      .reg-form-card { padding: 1.5rem; }
     }
   </style>
+
+  <script>
+    const GOOGLE_SCRIPT_WEBAPP_URL = ''; // Paste deployed Apps Script Web App URL if connected
+
+    const form = document.getElementById('registration-form') as HTMLFormElement;
+    const alertBox = document.getElementById('form-alert') as HTMLElement;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+    function showAlert(msg: string, type: 'success' | 'error' | 'warning') {
+      if (!alertBox) return;
+      alertBox.className = `alert-box ${type}`;
+      alertBox.innerHTML = msg;
+      alertBox.removeAttribute('hidden');
+      alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function getRegisteredEmails(): string[] {
+      try {
+        return JSON.parse(localStorage.getItem('aries_registered_emails') || '[]');
+      } catch {
+        return [];
+      }
+    }
+
+    function savePublicParticipant(data: Record<string, string>) {
+      try {
+        const existing = JSON.parse(localStorage.getItem('aries_public_participants') || '[]');
+        existing.unshift({
+          id: 'REG-' + Date.now().toString().slice(-4),
+          name: data.fullName,
+          affil: data.affiliation,
+          country: data.country,
+          researchArea: data.researchArea,
+          participationType: data.participationType,
+          date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+        });
+        localStorage.setItem('aries_public_participants', JSON.stringify(existing));
+      } catch (e) {
+        console.error('LocalStorage save error:', e);
+      }
+    }
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        alertBox.setAttribute('hidden', '');
+
+        const formData = new FormData(form);
+        const data: Record<string, string> = {};
+        formData.forEach((value, key) => {
+          data[key] = value.toString().trim();
+        });
+
+        // Essential field validation (* fields)
+        if (!data.fullName || !data.email || !data.affiliation || !data.designation || !data.country || !data.researchArea || !data.participationType || !data.foodPreference) {
+          showAlert('<strong>Validation Error:</strong> Please fill in all required fields marked with an asterisk (*).', 'error');
+          return;
+        }
+
+        // Email validation
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+          showAlert('<strong>Invalid Email:</strong> Please enter a valid email address.', 'error');
+          return;
+        }
+
+        // Prevent accidental duplicate submission
+        const registered = getRegisteredEmails();
+        if (registered.includes(data.email.toLowerCase())) {
+          showAlert('<strong>Duplicate Submission:</strong> A registration with this email address (' + data.email + ') has already been submitted. If you need to update your travel or paper details, please contact Convenor Dr. Santosh Joshi at <code>santosh@aries.res.in</code>.', 'warning');
+          return;
+        }
+
+        // Loading state
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Submitting Registration...';
+        }
+
+        try {
+          if (GOOGLE_SCRIPT_WEBAPP_URL) {
+            await fetch(GOOGLE_SCRIPT_WEBAPP_URL, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+            });
+          }
+
+          registered.push(data.email.toLowerCase());
+          localStorage.setItem('aries_registered_emails', JSON.stringify(registered));
+
+          savePublicParticipant(data);
+
+          form.reset();
+          showAlert(
+            '<strong>Registration Confirmed!</strong><br />' +
+            'Thank you <strong>' + data.fullName + '</strong>. Your registration details for the International Workshop on Interdisciplinary Asteroseismology have been recorded.<br /><br />' +
+            '<a href="/participants" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 1.2rem;font-size:0.9rem;">View Registered Participants Directory &rarr;</a>',
+            'success'
+          );
+        } catch (err) {
+          showAlert('<strong>Submission Error:</strong> Unable to process submission at this moment. Please try again or contact santosh@aries.res.in directly.', 'error');
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Registration';
+          }
+        }
+      });
+    }
+  </script>
 </BaseLayout>

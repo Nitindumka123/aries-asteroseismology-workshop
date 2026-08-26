@@ -49,15 +49,15 @@ import { carousel } from '../data/site';
     z-index: 1;
   }
 
-  /* Dark gradient overlay placed inside each slide directly behind text */
+  /* Light, localized gradient overlay behind text so photographs remain bright & recognizable */
   .slide-scrim {
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 2;
     background:
-      linear-gradient(90deg, rgba(5, 18, 40, 0.85) 0%, rgba(5, 18, 40, 0.62) 50%, rgba(5, 18, 40, 0.15) 100%),
-      linear-gradient(0deg, rgba(5, 18, 40, 0.70) 0%, rgba(5, 18, 40, 0.20) 60%, transparent 100%);
+      linear-gradient(90deg, rgba(11, 21, 51, 0.58) 0%, rgba(11, 21, 51, 0.32) 38%, transparent 68%),
+      linear-gradient(0deg, rgba(11, 21, 51, 0.35) 0%, transparent 35%);
   }
 
   /* Hero Content & Text Contrast Fixes (z-index: 3, rendered ABOVE slide-scrim overlay) */
@@ -76,7 +76,7 @@ import { carousel } from '../data/site';
     color: var(--orange-400) !important;
     opacity: 1 !important;
     margin-bottom: 0.8rem;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.85);
   }
   .slide-kicker::before {
     content: '';
@@ -94,7 +94,7 @@ import { carousel } from '../data/site';
     font-size: clamp(1.8rem, 4vw, 2.9rem);
     line-height: 1.15;
     margin-bottom: 0.75rem;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 0.95);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 0.95);
   }
 
   .slide-text {
@@ -104,7 +104,7 @@ import { carousel } from '../data/site';
     font-size: clamp(1rem, 1.6vw, 1.2rem);
     max-width: 540px;
     line-height: 1.5;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.9);
   }
 
   /* Entrance animation for active slide caption */
@@ -131,8 +131,8 @@ import { carousel } from '../data/site';
   @media (max-width: 720px) {
     .slide-scrim {
       background:
-        linear-gradient(180deg, rgba(5, 18, 40, 0.40) 0%, rgba(5, 18, 40, 0.82) 50%, rgba(5, 18, 40, 0.95) 100%),
-        linear-gradient(90deg, rgba(5, 18, 40, 0.85) 0%, rgba(5, 18, 40, 0.5) 100%);
+        linear-gradient(180deg, rgba(11, 21, 51, 0.20) 0%, rgba(11, 21, 51, 0.48) 55%, rgba(11, 21, 51, 0.60) 100%),
+        linear-gradient(90deg, rgba(11, 21, 51, 0.45) 0%, transparent 75%);
     }
     .car-btn { width: 42px; height: 42px; }
     .carousel-controls { bottom: 0.75rem; }
