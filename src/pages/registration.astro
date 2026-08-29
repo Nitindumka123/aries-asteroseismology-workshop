@@ -6,7 +6,7 @@ import { event, convenor } from '../data/site';
 
 const steps = [
   { n: 1, title: 'Invitation Issued', text: 'Participation is by invitation only for about 75 experts from ~20 countries under DST SAPTARISI project parameters.' },
-  { n: 2, title: 'Confirmation & Form Submission', text: 'Invited delegates complete the online registration form below specifying paper titles, travel schedule, and hospitality choices.' },
+  { n: 2, title: 'Confirmation & Form Submission', text: 'Invited delegates complete the online registration form below specifying paper titles, travel schedule, passport data (for foreign nationals), and excursion opt-in.' },
   { n: 3, title: 'Programme Integration', text: 'The Scientific Organizing Committee allocates accepted talks and posters across the six core workshop themes.' },
   { n: 4, title: 'Workshop Convening', text: 'Delegates gather at Delhi University, South Campus from 15–18 March 2027 for four days of intensive scientific presentations.' },
 ];
@@ -22,7 +22,7 @@ const included = [
   <PageHeader
     eyebrow="DELEGATE REGISTRATION"
     title="Online Registration"
-    intro="Please complete the form below to confirm your attendance, scientific contribution, travel itinerary, and local hospitality requirements."
+    intro="Please complete the form below to confirm your attendance, scientific contribution, passport/travel details (if foreign national), excursion opt-in, and local hospitality requirements."
   />
 
   <section class="section">
@@ -49,6 +49,16 @@ const included = [
             </div>
 
             <div class="form-grid">
+              <div class="form-field full-width">
+                <label for="applicantType">Applicant Type / Nationality <span class="req">*</span></label>
+                <div class="select-wrapper">
+                  <select id="applicantType" name="applicantType" required>
+                    <option value="INDIAN">Indian National</option>
+                    <option value="FOREIGN NATIONAL">Foreign National</option>
+                  </select>
+                </div>
+              </div>
+
               <div class="form-field">
                 <label for="fullName">Full Name <span class="req">*</span></label>
                 <input type="text" id="fullName" name="fullName" placeholder="e.g. Dr. Santosh Joshi" required />
@@ -61,12 +71,18 @@ const included = [
               </div>
 
               <div class="form-field">
+                <label for="phone">Phone Number <span class="req">*</span></label>
+                <input type="text" id="phone" name="phone" placeholder="e.g. +91 98765 43210" required />
+                <span class="field-hint"><Icon name="shield-check" size={13} /> Private &mdash; travel &amp; local contact only.</span>
+              </div>
+
+              <div class="form-field">
                 <label for="affiliation">Affiliation / Institution <span class="req">*</span></label>
                 <input type="text" id="affiliation" name="affiliation" placeholder="e.g. ARIES, Nainital / IIT Delhi" required />
               </div>
 
               <div class="form-field">
-                <label for="designation">Designation <span class="req">*</span></label>
+                <label for="designation">Designation / Role <span class="req">*</span></label>
                 <div class="select-wrapper">
                   <select id="designation" name="designation" required>
                     <option value="">Select Designation...</option>
@@ -81,13 +97,63 @@ const included = [
               </div>
 
               <div class="form-field">
+                <label for="city">City <span class="req">*</span></label>
+                <input type="text" id="city" name="city" placeholder="e.g. Nainital / Moscow / Brussels" required />
+              </div>
+
+              <div class="form-field">
+                <label for="state">State / Province <span class="req">*</span></label>
+                <input type="text" id="state" name="state" placeholder="e.g. Uttarakhand / Moscow Region / Flanders" required />
+              </div>
+
+              <div class="form-field">
                 <label for="country">Country <span class="req">*</span></label>
                 <input type="text" id="country" name="country" placeholder="e.g. India, Belgium, Russia, China" required />
               </div>
 
-              <div class="form-field">
+              <div class="form-field full-width">
                 <label for="researchArea">Research Area / Specialization <span class="req">*</span></label>
                 <input type="text" id="researchArea" name="researchArea" placeholder="e.g. Asteroseismology, CP Stars, Open Clusters" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- CONDITIONAL SECTION: Passport & Travel Info (For Foreign Nationals Only) -->
+          <div id="passport-section" class="form-sec" style="display:none; background: var(--bg-soft); border: 1.5px solid var(--line-strong); padding: 1.75rem; border-radius: var(--r-md); margin-top: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="form-sec-head">
+              <span class="sec-icon private-ic"><Icon name="shield-check" size={20} /></span>
+              <div>
+                <div class="head-with-badge">
+                  <h3 class="sec-heading">Passport &amp; Travel Information</h3>
+                  <span class="priv-badge"><Icon name="shield-check" size={14} /> REQUIRED FOR FOREIGN NATIONALS</span>
+                </div>
+                <p class="sec-sub">Required under Indian security parameters for visa endorsement and local permissions. Keep strictly confidential.</p>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="passportNumber">Passport Number <span class="req">*</span></label>
+                <input type="text" id="passportNumber" name="passportNumber" placeholder="e.g. A1234567" />
+              </div>
+              <div class="form-field">
+                <label for="dob">Date of Birth <span class="req">*</span></label>
+                <input type="date" id="dob" name="dob" />
+              </div>
+              <div class="form-field full-width">
+                <label for="address">Full Permanent Address <span class="req">*</span></label>
+                <input type="text" id="address" name="address" placeholder="Street, City, State/Province, ZIP, Country" />
+              </div>
+              <div class="form-field">
+                <label for="passportIssueDate">Passport Issue Date <span class="req">*</span></label>
+                <input type="date" id="passportIssueDate" name="passportIssueDate" />
+              </div>
+              <div class="form-field">
+                <label for="passportIssuePlace">Passport Issue Place <span class="req">*</span></label>
+                <input type="text" id="passportIssuePlace" name="passportIssuePlace" placeholder="e.g. Brussels / Beijing / Moscow" />
+              </div>
+              <div class="form-field full-width">
+                <label for="passportExpiryDate">Passport Expiry Date <span class="req">*</span></label>
+                <input type="date" id="passportExpiryDate" name="passportExpiryDate" />
               </div>
             </div>
           </div>
@@ -151,6 +217,19 @@ const included = [
                 </div>
               </div>
 
+              <!-- Taj Mahal Excursion Opt-in -->
+              <div class="form-field full-width">
+                <label for="excursionOpt">Would you like to participate in the excursion to Taj Mahal, Agra? <span class="req">*</span></label>
+                <div class="select-wrapper">
+                  <select id="excursionOpt" name="excursionOpt" required>
+                    <option value="">Select Option...</option>
+                    <option value="YES">Yes, I would like to participate (Expenses borne by participant)</option>
+                    <option value="NO">No, I will not participate</option>
+                  </select>
+                </div>
+                <span class="field-hint"><Icon name="info" size={13} /> Excursion expenses will be borne by the participants. See the Social Events page.</span>
+              </div>
+
               <div class="form-field">
                 <label for="arrivalDate">Expected Arrival Date</label>
                 <input type="date" id="arrivalDate" name="arrivalDate" min="2027-03-12" max="2027-03-20" />
@@ -185,7 +264,15 @@ const included = [
             <!-- Mandatory Privacy Callout Box -->
             <div class="privacy-callout">
               <Icon name="shield-check" size={20} />
-              <p><strong>Privacy Guarantee:</strong> Travel, food and contact information is strictly private and will only be used for internal workshop arrangements. It will never appear on the public participants directory.</p>
+              <p><strong>Privacy Guarantee:</strong> Travel, passport details, diet, and contact information are strictly private and will only be used for internal workshop arrangements. They will never appear on the public directory or stored in public frontend code.</p>
+            </div>
+
+            <!-- Consent Checkbox -->
+            <div class="form-field full-width consent-field" style="display: flex; flex-direction: row; gap: 0.75rem; align-items: flex-start; margin-top: 1.5rem;">
+              <input type="checkbox" id="consent" name="consent" value="YES" required style="width: 20px; height: 20px; margin-top: 3px; cursor: pointer;" />
+              <label for="consent" style="font-size: 0.9rem; line-height: 1.4; color: var(--ink-700); font-weight: normal; cursor: pointer;">
+                I consent to the collection and safe storage of these details for ARIES workshop arrangements. I confirm that all information provided is accurate. <span class="req">*</span>
+              </label>
             </div>
           </div>
 
@@ -225,7 +312,7 @@ const included = [
             <h3 class="side-title">Privacy &amp; Data Security</h3>
           </div>
           <p class="side-text">
-            Private details such as your email address, food preferences, flight/train numbers, and arrival/departure times are strictly protected and will <strong>never</strong> appear on public pages.
+            Private details such as your passport details, email address, food preferences, flight/train numbers, and arrival/departure times are strictly protected and will <strong>never</strong> appear on public pages.
           </p>
         </div>
 
@@ -376,6 +463,7 @@ const included = [
     .alert-box.success { background: #eefbf3; border: 1.5px solid #bcead0; color: #14532d; }
     .alert-box.error { background: #fef2f2; border: 1.5px solid #fecaca; color: #991b1b; }
     .alert-box.warning { background: #fffbe6; border: 1.5px solid #ffe58f; color: #855900; }
+    .alert-box :global(.btn) { white-space: normal; text-align: center; }
 
     /* Sidebar Cards */
     .reg-sidebar { display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: calc(var(--header-h) + 1rem); }
@@ -402,14 +490,53 @@ const included = [
       .reg-sidebar { position: static; }
       .reg-form-card { padding: 1.5rem; }
     }
+    @media (max-width: 620px) {
+      .reg-form-card { padding: 1.15rem; }
+      .form-header { margin-bottom: 1.5rem; padding-bottom: 1rem; }
+      .form-title { font-size: 1.55rem; }
+      .form-sec { margin-bottom: 1.75rem; padding-bottom: 1.5rem; }
+      .form-sec-head { gap: 0.7rem; margin-bottom: 1.1rem; }
+      .sec-icon { width: 36px; height: 36px; }
+      .sec-heading { font-size: 1.08rem; }
+      .privacy-callout { padding: 0.85rem; }
+      .submit-note { align-items: flex-start; }
+      .side-card { padding: 1.15rem; }
+    }
   </style>
 
   <script>
-    const GOOGLE_SCRIPT_WEBAPP_URL = ''; // Paste deployed Apps Script Web App URL if connected
+    const DEFAULT_GOOGLE_SCRIPT_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxCAA244KlQF6Wu6PnGkMzekk-YmYIkBkhCQNIndsppLTmNO42PzlwwPR-ezlyOErw-Sw/exec';
+    const GOOGLE_SCRIPT_WEBAPP_URL = (import.meta.env.PUBLIC_GOOGLE_SCRIPT_WEBAPP_URL || DEFAULT_GOOGLE_SCRIPT_WEBAPP_URL).trim();
 
     const form = document.getElementById('registration-form') as HTMLFormElement;
     const alertBox = document.getElementById('form-alert') as HTMLElement;
     const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const applicantType = document.getElementById('applicantType') as HTMLSelectElement;
+    const passportSection = document.getElementById('passport-section') as HTMLElement;
+
+    // Toggle Passport Fields conditionally based on nationality selection
+    function togglePassportSection() {
+      if (!applicantType || !passportSection) return;
+      
+      const isForeign = applicantType.value === 'FOREIGN NATIONAL';
+      passportSection.style.display = isForeign ? 'block' : 'none';
+      
+      // Make passport inputs required if foreign, otherwise clear and remove required attribute
+      const passportInputs = passportSection.querySelectorAll('input');
+      passportInputs.forEach((input) => {
+        if (isForeign) {
+          input.setAttribute('required', 'true');
+        } else {
+          input.removeAttribute('required');
+          input.value = '';
+        }
+      });
+    }
+
+    if (applicantType) {
+      applicantType.addEventListener('change', togglePassportSection);
+      togglePassportSection(); // Run initially
+    }
 
     function showAlert(msg: string, type: 'success' | 'error' | 'warning') {
       if (!alertBox) return;
@@ -430,12 +557,14 @@ const included = [
     function savePublicParticipant(data: Record<string, string>) {
       try {
         const existing = JSON.parse(localStorage.getItem('aries_public_participants') || '[]');
+        
+        // NEVER save email, phone, passport, diet, or travel details in localStorage!
         existing.unshift({
           id: 'REG-' + Date.now().toString().slice(-4),
           name: data.fullName,
-          affil: data.affiliation,
+          affil: data.institution,
           country: data.country,
-          researchArea: data.researchArea,
+          researchArea: data.researchInterest,
           participationType: data.participationType,
           date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
         });
@@ -443,6 +572,21 @@ const included = [
       } catch (e) {
         console.error('LocalStorage save error:', e);
       }
+    }
+
+    function buildCustomResponses(data: Record<string, string>) {
+      return JSON.stringify({
+        participationType: data.participationType || '',
+        presentationTitle: data.presentationTitle || '',
+        foodPreference: data.foodPreference || '',
+        excursionOpt: data.excursionOpt || '',
+        arrivalDate: data.arrivalDate || '',
+        arrivalTime: data.arrivalTime || '',
+        arrivalDetails: data.arrivalDetails || '',
+        departureDate: data.departureDate || '',
+        departureTime: data.departureTime || '',
+        departureDetails: data.departureDetails || '',
+      });
     }
 
     if (form) {
@@ -456,8 +600,18 @@ const included = [
           data[key] = value.toString().trim();
         });
 
+        // Event information
+        data['eventId'] = 'ASTER-2027';
+        data['eventName'] = 'Asteroseismology of CP Stars and Star Clusters';
+
+        // Match the storage contract before sending; form labels remain user-friendly.
+        data.institution = data.affiliation || '';
+        data.researchInterest = data.researchArea || '';
+        delete data.affiliation;
+        delete data.researchArea;
+
         // Essential field validation (* fields)
-        if (!data.fullName || !data.email || !data.affiliation || !data.designation || !data.country || !data.researchArea || !data.participationType || !data.foodPreference) {
+        if (!data.applicantType || !data.fullName || !data.email || !data.phone || !data.institution || !data.designation || !data.city || !data.state || !data.country || !data.researchInterest || !data.participationType || !data.foodPreference || !data.excursionOpt || !data.consent) {
           showAlert('<strong>Validation Error:</strong> Please fill in all required fields marked with an asterisk (*).', 'error');
           return;
         }
@@ -467,6 +621,51 @@ const included = [
           showAlert('<strong>Invalid Email:</strong> Please enter a valid email address.', 'error');
           return;
         }
+
+        // Passport & Foreign National validation
+        if (data.applicantType === 'FOREIGN NATIONAL') {
+          if (!data.passportNumber || !data.dob || !data.address || !data.passportIssueDate || !data.passportIssuePlace || !data.passportExpiryDate) {
+            showAlert('<strong>Validation Error:</strong> Passport details are required for Foreign Nationals.', 'error');
+            return;
+          }
+
+          // Date validation
+          const dobDate = new Date(data.dob);
+          const issueDate = new Date(data.passportIssueDate);
+          const expiryDate = new Date(data.passportExpiryDate);
+          const now = new Date();
+
+          if (dobDate >= now) {
+            showAlert('<strong>Validation Error:</strong> Date of birth cannot be in the future.', 'error');
+            return;
+          }
+          if (issueDate >= now) {
+            showAlert('<strong>Validation Error:</strong> Passport issue date cannot be in the future.', 'error');
+            return;
+          }
+          if (expiryDate <= now) {
+            showAlert('<strong>Validation Error:</strong> Your passport has expired. A valid passport is required to register.', 'error');
+            return;
+          }
+          if (expiryDate <= issueDate) {
+            showAlert('<strong>Validation Error:</strong> Expiry date must be after the issue date.', 'error');
+            return;
+          }
+          if (issueDate <= dobDate) {
+            showAlert('<strong>Validation Error:</strong> Passport issue date must be after your date of birth.', 'error');
+            return;
+          }
+        } else {
+          // Clean passport values just in case if applicant is Indian National
+          data.passportNumber = '';
+          data.dob = '';
+          data.address = '';
+          data.passportIssueDate = '';
+          data.passportIssuePlace = '';
+          data.passportExpiryDate = '';
+        }
+
+        data.customResponses = buildCustomResponses(data);
 
         // Prevent accidental duplicate submission
         const registered = getRegisteredEmails();
@@ -482,13 +681,25 @@ const included = [
         }
 
         try {
-          if (GOOGLE_SCRIPT_WEBAPP_URL) {
-            await fetch(GOOGLE_SCRIPT_WEBAPP_URL, {
-              method: 'POST',
-              mode: 'no-cors',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(data)
-            });
+          if (!GOOGLE_SCRIPT_WEBAPP_URL) {
+            showAlert('<strong>Configuration Error:</strong> The production registration endpoint is not configured. Please contact the workshop organizer.', 'error');
+            return;
+          }
+
+          const response = await fetch(GOOGLE_SCRIPT_WEBAPP_URL, {
+            method: 'POST',
+            mode: 'cors',
+            headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+            body: JSON.stringify(data)
+          });
+
+          if (!response.ok) {
+            throw new Error(`Registration endpoint returned HTTP ${response.status}`);
+          }
+
+          const result = await response.json() as { status?: string; message?: string; regId?: string };
+          if (result.status !== 'success' || !result.regId) {
+            throw new Error(result.message || 'Registration endpoint did not confirm success');
           }
 
           registered.push(data.email.toLowerCase());
@@ -497,6 +708,7 @@ const included = [
           savePublicParticipant(data);
 
           form.reset();
+          togglePassportSection(); // reset passport fields visibility
           showAlert(
             '<strong>Registration Confirmed!</strong><br />' +
             'Thank you <strong>' + data.fullName + '</strong>. Your registration details for the International Workshop on Interdisciplinary Asteroseismology have been recorded.<br /><br />' +

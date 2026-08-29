@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Icon from '../components/Icon.astro';
+import { event, host, host as Host } from '../data/site';
+
+const items = [
+  {
+    title: 'Visa Support & Invitation Request Guide',
+    desc: 'Official guidelines and visa requisition procedures for international delegates under BRICS SAPTARISI.',
+    filename: 'Visa_Guidelines_Asteroseismology_2027.pdf',
+    size: '420 KB',
+  },
+  {
+    title: 'Delhi University South Campus Travel Map & Local Guide',
+    desc: 'Comprehensive directions, metro route map, and local coordinates for reaching the host campus Benito Juarez Marg.',
+    filename: 'DU_South_Campus_Travel_Guide.pdf',
+    size: '850 KB',
+  },
+  {
+    title: 'DST SAPTARISI Project Summary',
+    desc: 'Department of Science and Technology (DST) project profile (Grant Code: DST/ICD/Call-5/BRICS/SAPTARISI/2023/G).',
+    filename: 'DST_SAPTARISI_Project_Brief.pdf',
+    size: '1.2 MB',
+  },
+];
+---
+<BaseLayout title="Downloads & Circulars">
+  <PageHeader
+    eyebrow="Resources"
+    title="Downloads & Circulars"
+    intro="Access official brochures, templates, maps, and visa support guidelines for the workshop delegates."
+  />
+
+  <section class="section">
+    <div class="container content-layout">
+      <div class="section-head">
+        <span class="eyebrow">Documents</span>
+        <h2>Official PDF Resources</h2>
+        <p>Click on any document below to download the latest circular or brochure.</p>
+      </div>
+
+      <div class="downloads-list">
+        {items.map((item) => (
+          <div class="download-card card">
+            <div class="dl-icon-box">
+              <Icon name="book" size={24} />
+            </div>
+            <div class="dl-content">
+              <h3 class="dl-title">{item.title}</h3>
+              <p class="dl-desc">{item.desc}</p>
+              <div class="dl-meta">
+                <span class="dl-file"><Icon name="shield-check" size={13} /> {item.filename}</span>
+                <span class="dl-size">{item.size}</span>
+              </div>
+            </div>
+            <div class="dl-action">
+              <a href="#" class="btn btn-ghost" onclick="alert('This document is currently being prepared by the LOC and will be shared closer to the workshop date.'); return false;">
+                Download PDF
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .content-layout { max-width: 860px; margin-inline: auto; }
+    .downloads-list { display: grid; gap: 1.25rem; }
+    .download-card { display: flex; gap: 1.5rem; align-items: center; padding: 1.5rem; border-radius: var(--r-md); }
+    .dl-icon-box { width: 52px; height: 52px; border-radius: var(--r-md); background: var(--orange-50); color: var(--orange-600); display: grid; place-items: center; flex: none; }
+    .dl-content { flex-grow: 1; }
+    .dl-title { font-size: 1.15rem; color: var(--navy-900); margin: 0 0 0.35rem; }
+    .dl-desc { font-size: 0.94rem; color: var(--ink-500); margin: 0 0 0.6rem; line-height: 1.45; }
+    .dl-meta { display: flex; gap: 1.2rem; font-size: 0.82rem; color: var(--ink-400); }
+    .dl-file { display: inline-flex; align-items: center; gap: 0.3rem; }
+    .dl-size { font-weight: 700; color: var(--ink-600); }
+    .dl-action { flex: none; }
+
+    @media (max-width: 768px) {
+      .download-card { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .dl-action { width: 100%; }
+      .dl-action .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</BaseLayout>

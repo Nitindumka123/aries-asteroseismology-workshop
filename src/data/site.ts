@@ -68,25 +68,43 @@ export const partners = [
   },
 ];
 
-// ---- Navigation (order & labels are fixed — matches required IA) -----------
+// ---- Navigation (order & labels are organized into clean dropdowns) ---------
 export const nav = [
   { label: 'Home', href: '/' },
   { label: 'Overview', href: '/overview' },
-  { label: 'Committees', href: '/committees' },
-  { label: 'Dates', href: '/dates' },
-  { label: 'Venue', href: '/venue' },
-  { label: 'Contact', href: '/contact' },
-  { label: 'Registration', href: '/registration' },
-  { label: 'Organizers', href: '/organizers' },
-  { label: 'Participants', href: '/participants' },
-  { label: 'Guidelines', href: '/guidelines' },
-  { label: 'Visa Information', href: '/visa-information' },
   { label: 'Programme', href: '/programme' },
   {
-    label: 'More',
+    label: 'People',
     children: [
-      { label: 'Venue and Travel information', href: '/venue-and-travel' },
+      { label: 'Committees', href: '/committees' },
+      { label: 'Organizers & Speakers', href: '/organizers' },
+      { label: 'Participants Directory', href: '/participants' },
+    ],
+  },
+  { label: 'Registration', href: '/registration' },
+  { label: 'Dates', href: '/dates' },
+  {
+    label: 'Venue & Travel',
+    children: [
+      { label: 'Venue & Local Info', href: '/venue' },
+      { label: 'Travel Details', href: '/venue-and-travel' },
       { label: 'Accommodation', href: '/accommodation' },
+      { label: 'Visa Information', href: '/visa-information' },
+    ],
+  },
+  {
+    label: 'Excursion & Social',
+    children: [
+      { label: 'Agra Taj Mahal Excursion', href: '/excursion' },
+    ],
+  },
+  {
+    label: 'Resources',
+    children: [
+      { label: 'Downloads & Circulars', href: '/downloads' },
+      { label: 'Photo Gallery', href: '/gallery' },
+      { label: 'Guidelines', href: '/guidelines' },
+      { label: 'Contact Us', href: '/contact' },
     ],
   },
 ];

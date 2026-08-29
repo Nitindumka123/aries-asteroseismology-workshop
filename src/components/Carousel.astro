@@ -129,6 +129,8 @@ import { carousel } from '../data/site';
   .dot[aria-selected='true'] { background: var(--orange-500); }
 
   @media (max-width: 720px) {
+    .carousel-viewport { height: min(540px, 125vw); min-height: 420px; }
+    .caption-inner { padding-bottom: 2.5rem; }
     .slide-scrim {
       background:
         linear-gradient(180deg, rgba(11, 21, 51, 0.20) 0%, rgba(11, 21, 51, 0.48) 55%, rgba(11, 21, 51, 0.60) 100%),
@@ -138,6 +140,13 @@ import { carousel } from '../data/site';
     .carousel-controls { bottom: 0.75rem; }
     .slide-title { text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95); }
     .slide-text { text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95); font-weight: 600; }
+  }
+  @media (max-width: 420px) {
+    .carousel-viewport { height: 500px; }
+    .slide-title { font-size: 1.7rem; }
+    .slide-text { font-size: 1rem; }
+    .car-prev { left: 0.5rem; }
+    .car-next { right: 0.5rem; }
   }
 </style>
 

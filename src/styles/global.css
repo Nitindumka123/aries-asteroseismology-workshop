@@ -141,7 +141,9 @@ strong { color: var(--ink-900); font-weight: 700; }
   .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 620px) {
+  .container { padding-inline: 1rem; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .btn { white-space: normal; text-align: center; }
 }
 
 /* --------------------------------------------------------------- Buttons -- */
