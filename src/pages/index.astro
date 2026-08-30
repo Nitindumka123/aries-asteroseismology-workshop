@@ -61,9 +61,9 @@ const quicklinks = [
         <p>Understanding how stars form, evolve and die is one of the main goals of modern astrophysics. <strong>Asteroseismology</strong>, the study of stellar internal oscillation, offers a unique window into the deep interiors of stars. Space missions such as Kepler, GAIA, TESS and high-resolution spectroscopic observations have revolutionized our understanding by detecting pressure and gravity modes.</p>
         <p>Chemically peculiar (CP) stars are vital testbeds to understand interactions between pulsation, rotation, binarity, and chemical peculiarities. Meanwhile, star clusters provide ideal laboratories for testing stellar evolution theory with common ages, distances, and compositions.</p>
         <ul class="tick-list">
-          <li><Icon name="check-circle" size={20} /> Fostering synergistic research between asteroseismology and stellar cluster studies</li>
-          <li><Icon name="check-circle" size={20} /> Defining strategies for future ground and space-based missions and datasets</li>
-          <li><Icon name="check-circle" size={20} /> Sponsored by DST, Govt. of India (Project <code>{event.projectCode}</code>)</li>
+          <li><Icon name="check-circle" size={20} /> <span class="tick-copy">Fostering synergistic research between asteroseismology and stellar cluster studies</span></li>
+          <li><Icon name="check-circle" size={20} /> <span class="tick-copy">Defining strategies for future ground and space-based missions and datasets</span></li>
+          <li><Icon name="check-circle" size={20} /> <span class="tick-copy">Sponsored by DST, Govt. of India (Project <code>{event.projectCode}</code>)</span></li>
         </ul>
         <a href="/overview" class="link-arrow">Explore the full scientific rationale <Icon name="arrow-right" size={16} /></a>
       </div>
@@ -178,12 +178,15 @@ const quicklinks = [
   .about-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 2.8rem; align-items: center; }
   .about-media { position: relative; }
   .about-media img { width: 100%; height: 100%; max-height: 460px; object-fit: cover; border-radius: var(--r-lg); box-shadow: var(--shadow-md); }
+  .about-text, .tick-list li { min-width: 0; }
   .about-badge { position: absolute; left: 1rem; bottom: 1rem; display: inline-flex; align-items: center; gap: 0.45rem;
     background: #fff; color: var(--orange-600); font-family: var(--font-head); font-weight: 700; font-size: 0.85rem;
     padding: 0.5rem 0.9rem; border-radius: 999px; box-shadow: var(--shadow-md); }
   .tick-list { list-style: none; padding: 0; margin: 1.3rem 0; display: grid; gap: 0.7rem; }
   .tick-list li { display: flex; gap: 0.6rem; align-items: flex-start; color: var(--ink-700); }
-  .tick-list :global(svg) { color: var(--orange-500); flex: none; margin-top: 2px; }
+  .tick-list li > :global(svg) { color: var(--orange-500); flex: none; margin-top: 2px; }
+  .tick-copy { min-width: 0; flex: 1 1 auto; overflow-wrap: anywhere; }
+  .tick-copy code { white-space: normal; overflow-wrap: anywhere; word-break: break-word; }
   .link-arrow { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-head); font-weight: 700; color: var(--blue-700); }
   .link-arrow:hover { color: var(--orange-600); gap: 0.65rem; }
 
@@ -222,5 +225,19 @@ const quicklinks = [
     .glance { grid-template-columns: 1fr 1fr; }
     .topic-grid, .org-grid { grid-template-columns: 1fr; }
     .cta-inner { flex-direction: column; align-items: flex-start; }
+    .about-media {
+      width: calc(100% + 2rem);
+      margin-inline: -1rem;
+    }
+    .about-media img {
+      max-height: none;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      object-position: center center;
+    }
+    .about-text p,
+    .tick-list li {
+      overflow-wrap: anywhere;
+    }
   }
 </style>
