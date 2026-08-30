@@ -200,14 +200,16 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     .mobile-drawer, .drawer-overlay { display: none !important; }
   }
   @media (max-width: 720px) {
-    .brand-full { height: 38px; width: auto; max-width: 220px; object-fit: contain; }
-    .brand-mark { display: none; }
+    .brand-full { display: none; }
+    .brand-mark {
+      display: block;
+      width: clamp(132px, 40vw, 156px);
+      height: 40px;
+      background: url('/images/aries-logo.png') left center / auto 100% no-repeat;
+    }
     .brand-inner { min-height: 60px; padding-block: 0.35rem; }
     .nav-toggle { width: 42px; height: 42px; }
     .mobile-drawer { width: min(360px, 92vw); }
-  }
-  @media (max-width: 380px) {
-    .brand-full { height: 32px; max-width: 180px; }
   }
 </style>
 

@@ -1,5 +1,4 @@
 ---
-import Icon from './Icon.astro';
 import { carousel } from '../data/site';
 ---
 <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="ARIES International Workshop highlights">
@@ -18,9 +17,6 @@ import { carousel } from '../data/site';
       </figure>
     ))}
   </div>
-
-  <button class="car-btn car-prev" data-prev aria-label="Previous slide"><Icon name="chevron-right" size={26} /></button>
-  <button class="car-btn car-next" data-next aria-label="Next slide"><Icon name="chevron-right" size={26} /></button>
 
   <div class="carousel-controls container">
     <div class="dots" role="tablist" aria-label="Choose slide">
@@ -113,16 +109,15 @@ import { carousel } from '../data/site';
   .slide[aria-hidden='false'] .slide-text { animation-delay: 0.16s; }
   @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
-  .car-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
-    width: 50px; height: 50px; border-radius: 50%; border: 0; display: grid; place-items: center;
-    background: rgba(255,255,255,0.14); color: #fff; backdrop-filter: blur(4px); transition: background 0.18s ease; cursor: pointer; }
-  .car-btn:hover { background: var(--orange-500); }
-  .car-prev { left: clamp(0.75rem, 3vw, 2rem); }
-  .car-prev :global(svg) { transform: rotate(180deg); }
-  .car-next { right: clamp(0.75rem, 3vw, 2rem); }
-
-  .carousel-controls { position: absolute; left: 50%; transform: translateX(-50%); bottom: 1.1rem; z-index: 5;
-    display: flex; align-items: center; justify-content: center; width: 100%; }
+  .carousel-controls {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 1.1rem;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .dots { display: flex; gap: 0.5rem; }
   .dot { width: 34px; height: 5px; border-radius: 3px; border: 0; background: rgba(255,255,255,0.4); cursor: pointer; transition: background 0.18s ease; padding: 0; }
   .dot:hover { background: rgba(255,255,255,0.7); }
@@ -136,7 +131,6 @@ import { carousel } from '../data/site';
         linear-gradient(180deg, rgba(11, 21, 51, 0.20) 0%, rgba(11, 21, 51, 0.48) 55%, rgba(11, 21, 51, 0.60) 100%),
         linear-gradient(90deg, rgba(11, 21, 51, 0.45) 0%, transparent 75%);
     }
-    .car-btn { width: 42px; height: 42px; }
     .carousel-controls { bottom: 0.75rem; }
     .slide-title { text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95); }
     .slide-text { text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95); font-weight: 600; }
@@ -145,8 +139,6 @@ import { carousel } from '../data/site';
     .carousel-viewport { height: 500px; }
     .slide-title { font-size: 1.7rem; }
     .slide-text { font-size: 1rem; }
-    .car-prev { left: 0.5rem; }
-    .car-next { right: 0.5rem; }
   }
 </style>
 
@@ -160,8 +152,6 @@ import { carousel } from '../data/site';
 
     const slides = Array.from(root.querySelectorAll('[data-slide]'));
     const dots = Array.from(root.querySelectorAll('[data-dot]'));
-    const prev = root.querySelector('[data-prev]');
-    const next = root.querySelector('[data-next]');
 
     if (!slides.length) return;
 
@@ -192,17 +182,6 @@ import { carousel } from '../data/site';
         timer = null;
       }
     }
-
-    // Manual navigation shifts slide and resets the automatic cycle
-    next?.addEventListener('click', () => {
-      goToSlide(index + 1);
-      startAutoplay();
-    });
-
-    prev?.addEventListener('click', () => {
-      goToSlide(index - 1);
-      startAutoplay();
-    });
 
     dots.forEach((dot, i) => {
       dot.addEventListener('click', () => {
