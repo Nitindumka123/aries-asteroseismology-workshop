@@ -11,7 +11,7 @@ import { carousel } from '../data/site';
           <div class="container caption-inner">
             <span class="slide-kicker">{s.kicker}</span>
             <h2 class="slide-title">{s.title}</h2>
-            <p class="slide-text">{s.text}</p>
+            {s.text && <p class="slide-text">{s.text}</p>}
           </div>
         </figcaption>
       </figure>

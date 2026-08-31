@@ -2,42 +2,26 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import Icon from '../components/Icon.astro';
-import { event, host, host as Host } from '../data/site';
-
 const items = [
   {
-    title: 'Visa Support & Invitation Request Guide',
-    desc: 'Official guidelines and visa requisition procedures for international delegates under BRICS SAPTARISI.',
-    filename: 'Visa_Guidelines_Asteroseismology_2027.pdf',
-    size: '420 KB',
-  },
-  {
-    title: 'Delhi University South Campus Travel Map & Local Guide',
-    desc: 'Comprehensive directions, metro route map, and local coordinates for reaching the host campus Benito Juarez Marg.',
-    filename: 'DU_South_Campus_Travel_Guide.pdf',
-    size: '850 KB',
-  },
-  {
-    title: 'DST SAPTARISI Project Summary',
-    desc: 'Department of Science and Technology (DST) project profile (Grant Code: DST/ICD/Call-5/BRICS/SAPTARISI/2023/G).',
-    filename: 'DST_SAPTARISI_Project_Brief.pdf',
-    size: '1.2 MB',
+    title: 'Workshop Handbook',
+    desc: 'The workshop handbook will be provided soon.',
   },
 ];
 ---
-<BaseLayout title="Downloads & Circulars">
+<BaseLayout title="Workshop Handbook">
   <PageHeader
     eyebrow="Resources"
-    title="Downloads & Circulars"
-    intro="Access official brochures, templates, maps, and visa support guidelines for the workshop delegates."
+    title="Workshop Handbook"
+    intro="The workshop handbook will be provided soon."
   />
 
   <section class="section">
     <div class="container content-layout">
       <div class="section-head">
         <span class="eyebrow">Documents</span>
-        <h2>Official PDF Resources</h2>
-        <p>Click on any document below to download the latest circular or brochure.</p>
+        <h2>Workshop Handbook</h2>
+        <p>The workshop handbook will be provided soon.</p>
       </div>
 
       <div class="downloads-list">
@@ -50,14 +34,11 @@ const items = [
               <h3 class="dl-title">{item.title}</h3>
               <p class="dl-desc">{item.desc}</p>
               <div class="dl-meta">
-                <span class="dl-file"><Icon name="shield-check" size={13} /> {item.filename}</span>
-                <span class="dl-size">{item.size}</span>
+                <span class="dl-file"><Icon name="shield-check" size={13} /> Coming soon</span>
               </div>
             </div>
             <div class="dl-action">
-              <a href="#" class="btn btn-ghost" onclick="alert('This document is currently being prepared by the LOC and will be shared closer to the workshop date.'); return false;">
-                Download PDF
-              </a>
+              <span class="coming-soon">Coming soon</span>
             </div>
           </div>
         ))}
@@ -77,6 +58,7 @@ const items = [
     .dl-file { display: inline-flex; align-items: center; gap: 0.3rem; }
     .dl-size { font-weight: 700; color: var(--ink-600); }
     .dl-action { flex: none; }
+    .coming-soon { color: var(--ink-500); font-family: var(--font-head); font-weight: 700; }
 
     @media (max-width: 768px) {
       .download-card { flex-direction: column; align-items: flex-start; gap: 1rem; }

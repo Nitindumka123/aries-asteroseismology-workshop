@@ -4,11 +4,6 @@ import PageHeader from '../components/PageHeader.astro';
 import Icon from '../components/Icon.astro';
 import { event, topics } from '../data/site';
 
-const provisions = [
-  { icon: 'bed', title: 'Accommodation', text: 'Accommodation arranged for 50 participants for the four-day duration of the workshop.' },
-  { icon: 'compass', title: 'Travel support', text: 'Travel support provided for students and retired faculties attending the workshop.' },
-  { icon: 'users', title: 'Global delegation', text: '~75 invited participants from about 20 countries for deep, focused collaboration.' },
-];
 const audience = [
   'Participation in this international workshop is by invitation only due to DST funding parameters.',
   'About 75 leading researchers and delegates from ~20 countries across BRICS and international institutions.',
@@ -43,7 +38,7 @@ const audience = [
         <p>Despite the transformative success of both cluster astronomy and asteroseismology of CP stars, the two fields have largely evolved in parallel. Their synergy represents a natural, imperative step in modern astrophysics. The main aim of this workshop is to foster synergistic research between asteroseismology and stellar cluster studies making full use of existing ground- and space-based observational facilities to define a joint strategy for future missions and datasets.</p>
 
         <h2>Core Themes Covered</h2>
-        <p>The workshop program is structured around six interdisciplinary themes:</p>
+        <p>The workshop program is structured around five themes:</p>
         <ul class="topic-list">
           {topics.map((t) => <li><Icon name="star" size={18} /> {t}</li>)}
         </ul>
@@ -62,29 +57,13 @@ const audience = [
           </ul>
         </div>
         <div class="card ov-cta-card">
-          <h3>Participation details</h3>
+          <h3>Participation criteria</h3>
           <p>Due to grant parameters from DST, participation is strictly by invitation.</p>
-          <a href="/registration" class="btn btn-primary" style="width:100%;">Participation Details <Icon name="arrow-right" size={16} /></a>
-          <a href="/programme" class="btn btn-ghost" style="width:100%;margin-top:0.6rem;">Scientific Themes</a>
         </div>
       </aside>
     </div>
   </section>
 
-  <section class="section soft">
-    <div class="container">
-      <div class="section-head center"><span class="eyebrow">Support &amp; Hospitality</span><h2>Workshop Provisions</h2></div>
-      <div class="grid grid-3">
-        {provisions.map((p) => (
-          <div class="card accent">
-            <span class="card-icon"><Icon name={p.icon} size={24} /></span>
-            <h3>{p.title}</h3>
-            <p>{p.text}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <style>
     .ov-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 3rem; align-items: start; }

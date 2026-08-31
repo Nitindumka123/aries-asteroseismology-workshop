@@ -3,26 +3,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import Icon from '../components/Icon.astro';
 import { event, convenor } from '../data/site';
+import { Country } from 'country-state-city';
+
+const countries = 'Afghanistan|Albania|Algeria|Andorra|Angola|Antigua and Barbuda|Argentina|Armenia|Australia|Austria|Azerbaijan|Bahamas|Bahrain|Bangladesh|Barbados|Belarus|Belgium|Belize|Benin|Bhutan|Bolivia|Bosnia and Herzegovina|Botswana|Brazil|Brunei|Bulgaria|Burkina Faso|Burundi|Cabo Verde|Cambodia|Cameroon|Canada|Central African Republic|Chad|Chile|China|Colombia|Comoros|Congo|Costa Rica|Cote d\'Ivoire|Croatia|Cuba|Cyprus|Czech Republic|Democratic Republic of the Congo|Denmark|Djibouti|Dominica|Dominican Republic|Ecuador|Egypt|El Salvador|Equatorial Guinea|Eritrea|Estonia|Eswatini|Ethiopia|Fiji|Finland|France|Gabon|Gambia|Georgia|Germany|Ghana|Greece|Grenada|Guatemala|Guinea|Guinea-Bissau|Guyana|Haiti|Honduras|Hungary|Iceland|India|Indonesia|Iran|Iraq|Ireland|Israel|Italy|Jamaica|Japan|Jordan|Kazakhstan|Kenya|Kiribati|Kuwait|Kyrgyzstan|Laos|Latvia|Lebanon|Lesotho|Liberia|Libya|Liechtenstein|Lithuania|Luxembourg|Madagascar|Malawi|Malaysia|Maldives|Mali|Malta|Marshall Islands|Mauritania|Mauritius|Mexico|Micronesia|Moldova|Monaco|Mongolia|Montenegro|Morocco|Mozambique|Myanmar|Namibia|Nauru|Nepal|Netherlands|New Zealand|Nicaragua|Niger|Nigeria|North Korea|North Macedonia|Norway|Oman|Pakistan|Palau|Palestine|Panama|Papua New Guinea|Paraguay|Peru|Philippines|Poland|Portugal|Qatar|Romania|Russia|Rwanda|Saint Kitts and Nevis|Saint Lucia|Saint Vincent and the Grenadines|Samoa|San Marino|Sao Tome and Principe|Saudi Arabia|Senegal|Serbia|Seychelles|Sierra Leone|Singapore|Slovakia|Slovenia|Solomon Islands|Somalia|South Africa|South Korea|South Sudan|Spain|Sri Lanka|Sudan|Suriname|Sweden|Switzerland|Syria|Taiwan|Tajikistan|Tanzania|Thailand|Timor-Leste|Togo|Tonga|Trinidad and Tobago|Tunisia|Turkey|Turkmenistan|Tuvalu|Uganda|Ukraine|United Arab Emirates|United Kingdom|United States|Uruguay|Uzbekistan|Vanuatu|Vatican City|Venezuela|Vietnam|Yemen|Zambia|Zimbabwe'.split('|');
 
 const steps = [
-  { n: 1, title: 'Invitation Issued', text: 'Participation is by invitation only for about 75 experts from ~20 countries under DST SAPTARISI project parameters.' },
-  { n: 2, title: 'Confirmation & Form Submission', text: 'Invited delegates complete the online registration form below specifying paper titles, travel schedule, passport data (for foreign nationals), and excursion opt-in.' },
-  { n: 3, title: 'Programme Integration', text: 'The Scientific Organizing Committee allocates accepted talks and posters across the six core workshop themes.' },
-  { n: 4, title: 'Workshop Convening', text: 'Delegates gather at Delhi University, South Campus from 15–18 March 2027 for four days of intensive scientific presentations.' },
+  { n: 1, title: 'Invitation Issued', text: 'Participation in the workshop is by invitation only under the DST SAPTARISI project.' },
+  { n: 2, title: 'Confirmation & Form Submission', text: 'Invited delegates complete the online registration form with their contact, affiliation, scientific and travel details.' },
+  { n: 3, title: 'Programme Integration', text: 'The Scientific Organizing Committee coordinates contributions across the five workshop themes.' },
+  { n: 4, title: 'Workshop Convening', text: 'Delegates gather at the Institute of Informatics and Communication, Delhi University, South Campus from 8–11 February 2027.' },
 ];
 
-const included = [
-  { icon: 'bed', text: 'Accommodation provided for 50 delegates for the four-day duration of the workshop' },
-  { icon: 'compass', text: 'Travel support available for students and retired faculties' },
-  { icon: 'users', text: 'Focused international delegation of ~75 leading researchers from about 20 countries' },
-  { icon: 'book', text: 'Comprehensive hospitality including session refreshments, lunches, and conference dinner' },
-];
 ---
 <BaseLayout title="Online Registration">
   <PageHeader
     eyebrow="DELEGATE REGISTRATION"
     title="Online Registration"
-    intro="Please complete the form below to confirm your attendance, scientific contribution, passport/travel details (if foreign national), excursion opt-in, and local hospitality requirements."
+    intro="Please complete the form below to confirm your attendance and provide scientific, passport, and travel details for the invited workshop."
   />
 
   <section class="section">
@@ -97,18 +94,34 @@ const included = [
               </div>
 
               <div class="form-field">
-                <label for="city">City <span class="req">*</span></label>
-                <input type="text" id="city" name="city" placeholder="e.g. Nainital / Moscow / Brussels" required />
-              </div>
-
-              <div class="form-field">
-                <label for="state">State / Province <span class="req">*</span></label>
-                <input type="text" id="state" name="state" placeholder="e.g. Uttarakhand / Moscow Region / Flanders" required />
-              </div>
-
-              <div class="form-field">
                 <label for="country">Country <span class="req">*</span></label>
-                <input type="text" id="country" name="country" placeholder="e.g. India, Belgium, Russia, China" required />
+                <div class="select-wrapper">
+                  <select id="country" name="country" required>
+                    <option value="">Select Country...</option>
+                    {countries.map((country) => {
+                      const countryRecord = Country.getAllCountries().find((item) => item.name === country);
+                      return <option value={country} data-code={countryRecord?.isoCode}>{country}</option>;
+                    })}
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="state">State / Province / Region <span class="req">*</span></label>
+                <div class="select-wrapper">
+                  <select id="state" name="state" required disabled>
+                    <option value="">Select a country first...</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="city">City <span class="req">*</span></label>
+                <div class="select-wrapper">
+                  <select id="city" name="city" required disabled>
+                    <option value="">Select a state or region first...</option>
+                  </select>
+                </div>
               </div>
 
               <div class="form-field full-width">
@@ -127,7 +140,7 @@ const included = [
                   <h3 class="sec-heading">Passport &amp; Travel Information</h3>
                   <span class="priv-badge"><Icon name="shield-check" size={14} /> REQUIRED FOR FOREIGN NATIONALS</span>
                 </div>
-                <p class="sec-sub">Required under Indian security parameters for visa endorsement and local permissions. Keep strictly confidential.</p>
+                <p class="sec-sub">Keep these details strictly confidential for workshop administration.</p>
               </div>
             </div>
             <div class="form-grid">
@@ -136,20 +149,44 @@ const included = [
                 <input type="text" id="passportNumber" name="passportNumber" placeholder="e.g. A1234567" />
               </div>
               <div class="form-field">
+                <label for="surname">Surname <span class="req">*</span></label>
+                <input type="text" id="surname" name="surname" />
+              </div>
+              <div class="form-field">
+                <label for="givenName">Given Name <span class="req">*</span></label>
+                <input type="text" id="givenName" name="givenName" />
+              </div>
+              <div class="form-field">
+                <label for="nationality">Nationality <span class="req">*</span></label>
+                <input type="text" id="nationality" name="nationality" />
+              </div>
+              <div class="form-field">
+                <label for="gender">Gender <span class="req">*</span></label>
+                <div class="select-wrapper">
+                  <select id="gender" name="gender">
+                    <option value="">Select Gender...</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Other">Other</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-field">
                 <label for="dob">Date of Birth <span class="req">*</span></label>
                 <input type="date" id="dob" name="dob" />
               </div>
-              <div class="form-field full-width">
-                <label for="address">Full Permanent Address <span class="req">*</span></label>
-                <input type="text" id="address" name="address" placeholder="Street, City, State/Province, ZIP, Country" />
+              <div class="form-field">
+                <label for="placeOfBirth">Place of Birth <span class="req">*</span></label>
+                <input type="text" id="placeOfBirth" name="placeOfBirth" />
               </div>
               <div class="form-field">
                 <label for="passportIssueDate">Passport Issue Date <span class="req">*</span></label>
                 <input type="date" id="passportIssueDate" name="passportIssueDate" />
               </div>
               <div class="form-field">
-                <label for="passportIssuePlace">Passport Issue Place <span class="req">*</span></label>
-                <input type="text" id="passportIssuePlace" name="passportIssuePlace" placeholder="e.g. Brussels / Beijing / Moscow" />
+                <label for="passportIssuePlace">Place of Passport Issue <span class="req">*</span></label>
+                <input type="text" id="passportIssuePlace" name="passportIssuePlace" />
               </div>
               <div class="form-field full-width">
                 <label for="passportExpiryDate">Passport Expiry Date <span class="req">*</span></label>
@@ -217,22 +254,21 @@ const included = [
                 </div>
               </div>
 
-              <!-- Taj Mahal Excursion Opt-in -->
               <div class="form-field full-width">
                 <label for="excursionOpt">Would you like to participate in the excursion to Taj Mahal, Agra? <span class="req">*</span></label>
                 <div class="select-wrapper">
                   <select id="excursionOpt" name="excursionOpt" required>
                     <option value="">Select Option...</option>
-                    <option value="YES">Yes, I would like to participate (Expenses borne by participant)</option>
+                    <option value="YES">Yes, I would like to participate</option>
                     <option value="NO">No, I will not participate</option>
                   </select>
                 </div>
-                <span class="field-hint"><Icon name="info" size={13} /> Excursion expenses will be borne by the participants. See the Social Events page.</span>
+                <span class="field-hint"><Icon name="info" size={13} /> Excursion expenses are borne by participants.</span>
               </div>
 
               <div class="form-field">
                 <label for="arrivalDate">Expected Arrival Date</label>
-                <input type="date" id="arrivalDate" name="arrivalDate" min="2027-03-12" max="2027-03-20" />
+                <input type="date" id="arrivalDate" name="arrivalDate" min="2027-02-05" max="2027-02-15" />
               </div>
 
               <div class="form-field">
@@ -247,7 +283,7 @@ const included = [
 
               <div class="form-field">
                 <label for="departureDate">Expected Departure Date</label>
-                <input type="date" id="departureDate" name="departureDate" min="2027-03-15" max="2027-03-22" />
+                <input type="date" id="departureDate" name="departureDate" min="2027-02-08" max="2027-02-18" />
               </div>
 
               <div class="form-field">
@@ -282,7 +318,7 @@ const included = [
               Submit Registration
             </button>
             <p class="submit-note">
-              <Icon name="check-circle" size={16} /> Submitting records your registration instantly. You can review your entry on the public directory.
+              <Icon name="check-circle" size={16} /> Submitting records your registration instantly.
             </p>
           </div>
         </form>
@@ -297,10 +333,9 @@ const included = [
             <h3 class="side-title">Registration Information</h3>
           </div>
           <ul class="info-list">
-            <li><strong>Invitation:</strong> By invitation only (~75 delegates from ~20 countries)</li>
-            <li><strong>Dates:</strong> 15–18 March 2027</li>
-            <li><strong>Venue:</strong> Delhi University, South Campus, New Delhi</li>
-            <li><strong>Accommodation:</strong> Provided for 50 delegates for 4 days</li>
+            <li><strong>Invitation:</strong> Participation is by invitation only</li>
+            <li><strong>Dates:</strong> 8–11 February 2027</li>
+            <li><strong>Venue:</strong> Institute of Informatics and Communication, Delhi University, South Campus, New Delhi</li>
             <li><strong>Sponsor:</strong> DST Project SAPTARISI (Govt. of India)</li>
           </ul>
         </div>
@@ -308,39 +343,14 @@ const included = [
         <!-- Card 2: Privacy -->
         <div class="side-card privacy-card">
           <div class="side-card-head">
-            <span class="side-ic priv-ic"><Icon name="shield-check" size={18} /></span>
-            <h3 class="side-title">Privacy &amp; Data Security</h3>
+            <h3 class="side-title"><span class="privacy-pulse" aria-hidden="true"></span>Privacy &amp; Data Security</h3>
           </div>
           <p class="side-text">
             Private details such as your passport details, email address, food preferences, flight/train numbers, and arrival/departure times are strictly protected and will <strong>never</strong> appear on public pages.
           </p>
         </div>
 
-        <!-- Card 3: Registered Participants Directory Button -->
-        <div class="side-card cta-card">
-          <span class="chip chip-orange" style="margin-bottom:0.6rem;">Public Directory</span>
-          <h3 class="side-title" style="margin-bottom:0.5rem;">Registered Participants</h3>
-          <p class="side-text" style="margin-bottom:1rem;">View the confirmed list of invited and registered workshop delegates.</p>
-          <a href="/participants" class="btn btn-secondary" style="width:100%;text-align:center;justify-content:center;">
-            View Registered Participants &rarr;
-          </a>
-        </div>
       </aside>
-    </div>
-  </section>
-
-  <!-- Provisions Section -->
-  <section class="section soft">
-    <div class="container">
-      <div class="section-head center"><span class="eyebrow">Provisions</span><h2>Support for Invited Participants</h2></div>
-      <div class="grid grid-4">
-        {included.map((i) => (
-          <div class="card">
-            <span class="card-icon"><Icon name={i.icon} size={22} /></span>
-            <p>{i.text}</p>
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -470,8 +480,10 @@ const included = [
     .side-card { background: #ffffff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.5rem; box-shadow: var(--shadow-sm); }
     .side-card-head { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1rem; }
     .side-ic { width: 36px; height: 36px; border-radius: var(--r-md); background: var(--blue-50); color: var(--blue-700); display: grid; place-items: center; flex: none; }
-    .priv-ic { background: #fef3c7; color: #b45309; }
     .side-title { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; color: var(--navy-900); margin: 0; }
+    .privacy-pulse { display: inline-block; width: 0.55rem; height: 0.55rem; margin: 0 0.45rem 0.1rem 0; border-radius: 50%; background: var(--orange-500); box-shadow: 0 0 0 0 rgba(232, 111, 27, 0.45); animation: privacy-pulse 2.4s ease-out infinite; vertical-align: middle; }
+    @keyframes privacy-pulse { 0% { box-shadow: 0 0 0 0 rgba(232, 111, 27, 0.45); } 70% { box-shadow: 0 0 0 7px rgba(232, 111, 27, 0); } 100% { box-shadow: 0 0 0 0 rgba(232, 111, 27, 0); } }
+    @media (prefers-reduced-motion: reduce) { .privacy-pulse { animation: none; } }
     .side-text { font-size: 0.92rem; color: var(--ink-600); line-height: 1.5; margin: 0; }
     
     .info-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; font-size: 0.9rem; color: var(--ink-700); }
@@ -479,7 +491,7 @@ const included = [
     .info-list li:last-child { border-bottom: 0; padding-bottom: 0; }
     .info-list strong { color: var(--navy-900); }
 
-    .privacy-card { border-left: 4px solid #f59e0b; background: #fffdf5; }
+    .privacy-card { background: #ffffff; }
     .cta-card { border-top: 4px solid var(--orange-500); background: #ffffff; }
 
     /* Responsive adjustments */
@@ -513,6 +525,53 @@ const included = [
     const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
     const applicantType = document.getElementById('applicantType') as HTMLSelectElement;
     const passportSection = document.getElementById('passport-section') as HTMLElement;
+    const countrySelect = document.getElementById('country') as HTMLSelectElement;
+    const stateSelect = document.getElementById('state') as HTMLSelectElement;
+    const citySelect = document.getElementById('city') as HTMLSelectElement;
+    let selectedStates: { name: string; isoCode: string }[] = [];
+
+    function setLocationOptions(select: HTMLSelectElement, placeholder: string, options: { name: string; code?: string }[]) {
+      select.replaceChildren(new Option(placeholder, ''));
+      options
+        .filter((option, index, list) => option.name && list.findIndex((item) => item.name === option.name) === index)
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .forEach((option) => {
+          const element = new Option(option.name, option.name);
+          if (option.code) element.dataset.code = option.code;
+          select.add(element);
+        });
+      select.disabled = options.length === 0;
+    }
+
+    function resetStateAndCity() {
+      selectedStates = [];
+      setLocationOptions(stateSelect, 'Select state / province / region', []);
+      setLocationOptions(citySelect, 'Select city', []);
+    }
+
+    async function loadStates(country: string) {
+      resetStateAndCity();
+      if (!country) return;
+      const countryCode = countrySelect.selectedOptions[0]?.dataset.code;
+      const { State } = await import('country-state-city/lib/state');
+      selectedStates = countryCode ? State.getStatesOfCountry(countryCode) : [];
+      setLocationOptions(stateSelect, selectedStates.length ? 'Select state / province / region' : 'No subdivisions available', selectedStates.map((state) => ({ name: state.name, code: state.isoCode })));
+    }
+
+    async function loadCities(country: string, state: string) {
+      setLocationOptions(citySelect, 'Select city', []);
+      if (!country || !state) return;
+      const countryCode = countrySelect.selectedOptions[0]?.dataset.code;
+      const stateCode = selectedStates.find((item) => item.name === state)?.isoCode;
+      const { City } = await import('country-state-city/lib/city');
+      const cities = countryCode && stateCode ? City.getCitiesOfState(countryCode, stateCode) : [];
+      setLocationOptions(citySelect, cities.length ? 'Select city' : 'No cities available', cities.map((city) => ({ name: city.name })));
+    }
+
+    if (countrySelect && stateSelect && citySelect) {
+      countrySelect.addEventListener('change', () => loadStates(countrySelect.value));
+      stateSelect.addEventListener('change', () => loadCities(countrySelect.value, stateSelect.value));
+    }
 
     // Toggle Passport Fields conditionally based on nationality selection
     function togglePassportSection() {
@@ -522,7 +581,7 @@ const included = [
       passportSection.style.display = isForeign ? 'block' : 'none';
       
       // Make passport inputs required if foreign, otherwise clear and remove required attribute
-      const passportInputs = passportSection.querySelectorAll('input');
+      const passportInputs = passportSection.querySelectorAll('input, select');
       passportInputs.forEach((input) => {
         if (isForeign) {
           input.setAttribute('required', 'true');
@@ -554,32 +613,22 @@ const included = [
       }
     }
 
-    function savePublicParticipant(data: Record<string, string>) {
-      try {
-        const existing = JSON.parse(localStorage.getItem('aries_public_participants') || '[]');
-        
-        // NEVER save email, phone, passport, diet, or travel details in localStorage!
-        existing.unshift({
-          id: 'REG-' + Date.now().toString().slice(-4),
-          name: data.fullName,
-          affil: data.institution,
-          country: data.country,
-          researchArea: data.researchInterest,
-          participationType: data.participationType,
-          date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
-        });
-        localStorage.setItem('aries_public_participants', JSON.stringify(existing));
-      } catch (e) {
-        console.error('LocalStorage save error:', e);
-      }
-    }
-
     function buildCustomResponses(data: Record<string, string>) {
       return JSON.stringify({
         participationType: data.participationType || '',
         presentationTitle: data.presentationTitle || '',
         foodPreference: data.foodPreference || '',
         excursionOpt: data.excursionOpt || '',
+        passportNumber: data.passportNumber || '',
+        surname: data.surname || '',
+        givenName: data.givenName || '',
+        nationality: data.nationality || '',
+        gender: data.gender || '',
+        dob: data.dob || '',
+        placeOfBirth: data.placeOfBirth || '',
+        passportIssuePlace: data.passportIssuePlace || '',
+        passportIssueDate: data.passportIssueDate || '',
+        passportExpiryDate: data.passportExpiryDate || '',
         arrivalDate: data.arrivalDate || '',
         arrivalTime: data.arrivalTime || '',
         arrivalDetails: data.arrivalDetails || '',
@@ -602,7 +651,7 @@ const included = [
 
         // Event information
         data['eventId'] = 'ASTER-2027';
-        data['eventName'] = 'Asteroseismology of CP Stars and Star Clusters';
+        data['eventName'] = 'Synergistic Investigation of Stellar Clusters and Asteroseismology using High-resolution Spectroscopy and Space Photometry';
 
         // Match the storage contract before sending; form labels remain user-friendly.
         data.institution = data.affiliation || '';
@@ -624,7 +673,7 @@ const included = [
 
         // Passport & Foreign National validation
         if (data.applicantType === 'FOREIGN NATIONAL') {
-          if (!data.passportNumber || !data.dob || !data.address || !data.passportIssueDate || !data.passportIssuePlace || !data.passportExpiryDate) {
+          if (!data.passportNumber || !data.surname || !data.givenName || !data.nationality || !data.gender || !data.dob || !data.placeOfBirth || !data.passportIssuePlace || !data.passportIssueDate || !data.passportExpiryDate) {
             showAlert('<strong>Validation Error:</strong> Passport details are required for Foreign Nationals.', 'error');
             return;
           }
@@ -658,8 +707,12 @@ const included = [
         } else {
           // Clean passport values just in case if applicant is Indian National
           data.passportNumber = '';
+          data.surname = '';
+          data.givenName = '';
+          data.nationality = '';
+          data.gender = '';
           data.dob = '';
-          data.address = '';
+          data.placeOfBirth = '';
           data.passportIssueDate = '';
           data.passportIssuePlace = '';
           data.passportExpiryDate = '';
@@ -705,14 +758,11 @@ const included = [
           registered.push(data.email.toLowerCase());
           localStorage.setItem('aries_registered_emails', JSON.stringify(registered));
 
-          savePublicParticipant(data);
-
           form.reset();
           togglePassportSection(); // reset passport fields visibility
           showAlert(
             '<strong>Registration Confirmed!</strong><br />' +
-            'Thank you <strong>' + data.fullName + '</strong>. Your registration details for the International Workshop on Interdisciplinary Asteroseismology have been recorded.<br /><br />' +
-            '<a href="/participants" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 1.2rem;font-size:0.9rem;">View Registered Participants Directory &rarr;</a>',
+            'Thank you <strong>' + data.fullName + '</strong>. Your registration details for the workshop have been recorded.',
             'success'
           );
         } catch (err) {

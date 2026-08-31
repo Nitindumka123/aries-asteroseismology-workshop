@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
-  "description": "International Workshop on Interdisciplinary Asteroseismology of CP Stars and Star Clusters — ARIES, Nainital, IIT Delhi & Delhi University",
+  "description": "Synergistic Investigation of Stellar Clusters and Asteroseismology using High-resolution Spectroscopy and Space Photometry — ARIES, Delhi University & IIT Delhi",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.13.0"
+    "astro": "^5.13.0",
+    "country-state-city": "^3.2.1"
   }
 }

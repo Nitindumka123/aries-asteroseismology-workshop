@@ -77,7 +77,6 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;               /* guard against accidental horizontal scroll */
 }
 img, picture, svg, video { display: block; max-width: 100%; }
 img { height: auto; }
@@ -101,10 +100,12 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.45rem); }
 h4 { font-size: 1.1rem; }
 p  { margin: 0 0 1rem; }
 p:last-child { margin-bottom: 0; }
+p, li, td, th, a, code { overflow-wrap: anywhere; }
 strong { color: var(--ink-900); font-weight: 700; }
 
 /* --------------------------------------------------------------- Layout --- */
-.container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: 1.5rem; }
+.container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: 1.5rem; min-width: 0; }
+.card, .section-head, .prose { min-width: 0; }
 .container.narrow { max-width: var(--container-narrow); }
 .section { padding-block: clamp(3rem, 6vw, 5.5rem); }
 .section.tight { padding-block: clamp(2.25rem, 4vw, 3.5rem); }

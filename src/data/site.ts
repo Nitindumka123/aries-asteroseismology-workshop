@@ -1,30 +1,31 @@
 // =============================================================================
 // Central content for the ARIES International Workshop Portal.
 // Authoritative source: Proposal for Organizing an International Workshop on
-// Interdisciplinary Asteroseismology of CP Stars and Star Clusters (15–18 March 2027)
-// Jointly organized by ARIES, Nainital, IIT Delhi & Delhi University
+// Synergistic Investigation of Stellar Clusters and Asteroseismology using
+// High-resolution Spectroscopy and Space Photometry (8–11 February 2027)
+// Jointly organized by ARIES, Delhi University & IIT Delhi
 // Sponsored by Department of Science and Technology (DST), Govt. of India
 // (Under the project DST/ICD/Call-5/BRICS/SAPTARISI/2023/G)
 // =============================================================================
 
 export const event = {
-  name: 'International Workshop on Interdisciplinary Asteroseismology of CP Stars and Star Clusters',
-  shortName: 'Asteroseismology · CP Stars & Star Clusters',
-  organisers: 'ARIES, Nainital, IIT Delhi & Delhi University',
-  dates: '15–18 March 2027',
-  datesShort: '15–18 Mar 2027',
+  name: 'Synergistic Investigation of Stellar Clusters and Asteroseismology using High-resolution Spectroscopy and Space Photometry',
+  shortName: 'Stellar Clusters · Asteroseismology · Spectroscopy',
+  organisers: 'ARIES, Delhi University & IIT Delhi',
+  dates: '8–11 February 2027',
+  datesShort: '8–11 Feb 2027',
   year: '2027',
-  venue: 'Delhi University, South Campus, New Delhi',
-  seats: '~75 invited',
-  duration: 'Four days',
+  venue: 'Institute of Informatics and Communication, Delhi University, South Campus, New Delhi',
+  seats: 'Invitation only',
+  duration: '8–11 February 2027',
   tagline:
     'An international workshop fostering synergistic research between asteroseismology and stellar cluster studies to define strategies for future missions and datasets.',
   sponsorship:
     'Sponsored by Department of Science and Technology (DST), Govt. of India (Under the project DST/ICD/Call-5/BRICS/SAPTARISI/2023/G)',
   projectCode: 'DST/ICD/Call-5/BRICS/SAPTARISI/2023/G',
   grantSanctioned: 'Rs. 10,00,000/-',
-  totalBudget: 'Rs. 27,00,000/-',
-  participationMode: 'By Invitation Only (Due to DST financial support parameters, ~75 participants from ~20 countries)',
+  totalBudget: 'Rs. 23,00,000/-',
+  participationMode: 'By Invitation Only',
 };
 
 export const institute = {
@@ -40,8 +41,8 @@ export const institute = {
 export const host = {
   name: 'Delhi University, South Campus',
   acronym: 'Delhi University',
-  note: 'Host campus for the International Workshop — sessions and local logistics are based at Delhi University, South Campus, New Delhi.',
-  location: 'Benito Juarez Marg, Dhaula Kuan, New Delhi – 110021, India',
+  note: 'Host campus for the International Workshop at the Institute of Informatics and Communication, Delhi University, South Campus, New Delhi.',
+  location: 'Delhi University, South Campus, New Delhi',
 };
 
 export const partners = [
@@ -63,7 +64,7 @@ export const partners = [
     name: 'Delhi University, South Campus',
     acronym: 'Delhi University',
     role: 'Host Campus & Venue',
-    note: 'Conveniently situated in New Delhi, hosting the four-day international conference sessions, workshops, and local arrangements.',
+    note: 'Host institute and venue for the workshop at Delhi University, South Campus, New Delhi.',
     website: 'http://south.du.ac.in',
   },
 ];
@@ -77,34 +78,31 @@ export const nav = [
     label: 'People',
     children: [
       { label: 'Committees', href: '/committees' },
-      { label: 'Organizers & Speakers', href: '/organizers' },
-      { label: 'Participants Directory', href: '/participants' },
+      { label: 'Key Organisers', href: '/organizers' },
     ],
   },
   { label: 'Registration', href: '/registration' },
-  { label: 'Dates', href: '/dates' },
   {
     label: 'Venue & Travel',
     children: [
       { label: 'Venue & Local Info', href: '/venue' },
       { label: 'Travel Details', href: '/venue-and-travel' },
-      { label: 'Accommodation', href: '/accommodation' },
       { label: 'Visa Information', href: '/visa-information' },
+    ],
+  },
+  {
+    label: 'Resources',
+    children: [
+      { label: 'Workshop Handbook', href: '/downloads' },
+      { label: 'Photo Gallery', href: '/gallery' },
+      { label: 'Guidelines', href: '/guidelines' },
+      { label: 'Contact Us', href: '/contact' },
     ],
   },
   {
     label: 'Excursion & Social',
     children: [
       { label: 'Agra Taj Mahal Excursion', href: '/excursion' },
-    ],
-  },
-  {
-    label: 'Resources',
-    children: [
-      { label: 'Downloads & Circulars', href: '/downloads' },
-      { label: 'Photo Gallery', href: '/gallery' },
-      { label: 'Guidelines', href: '/guidelines' },
-      { label: 'Contact Us', href: '/contact' },
     ],
   },
 ];
@@ -115,40 +113,32 @@ export const carousel = [
     src: '/images/aries-nainital.jpg',
     alt: 'Aryabhatta Research Institute of Observational Sciences, Manora Peak, Nainital',
     kicker: 'ARIES, Nainital',
-    title: 'Aryabhatta Research Institute',
-    text: 'Autonomous national research institute under DST, Govt. of India, leading research in observational astronomy and astrophysics at Manora Peak, Nainital.',
+    title: 'ARIES Nainital',
+    text: '',
   },
   {
     src: '/images/iit-delhi.jpg',
     alt: 'IIT Delhi academic institution campus',
     kicker: 'Joint Organisation',
-    title: 'IIT Delhi & ARIES Nainital',
-    text: 'Collaborating to advance observational astrophysics, asteroseismic modelling, and machine learning.',
+    title: 'IIT Delhi',
+    text: '',
   },
   {
     src: '/images/delhi-university.jpg',
     alt: 'Delhi University South Campus in New Delhi',
     kicker: 'Workshop Venue',
-    title: 'Delhi University, South Campus',
-    text: 'Hosting the International Workshop on Interdisciplinary Asteroseismology in the national capital.',
-  },
-  {
-    src: '/images/delhi-university-campus.jpg',
-    alt: 'Green university campus grounds in New Delhi',
-    kicker: 'Global Astrophysics Synergy',
-    title: 'International Collaboration',
-    text: 'Bringing together ~75 leading experts from about 20 countries under the DST SAPTARISI project.',
+    title: 'Delhi University',
+    text: '',
   },
 ];
 
 // ---- Workshop themes (Authoritative, from proposal) ------------------------
 export const topics = [
-  'Application of Machine Learning (ML) and Artificial Intelligence (AI) for the classification of the different type of the pulsators',
-  'Pulsating mergers and binary evolution',
-  'Pulsating CP stars in the clusters',
-  'Asteroseismology of the CP stars',
-  'Importance of High-resolution spectroscopy for the Asteroseismology of the CP stars',
-  'Space missions: overview and outlook',
+  'Application of Machine Learning (ML) and Artificial Intelligence (AI) for the classification of the different types of stellar variables',
+  'Synergy between asteroseismology and stellar cluster studies',
+  'Asteroseismology from space missions',
+  'Asteroseismic modeling',
+  'Application of high-resolution spectroscopy for asteroseismology',
 ];
 
 // ---- Convenor --------------------------------------------------------------
@@ -163,14 +153,16 @@ export const convenor = {
 export const soc = {
   title: 'Scientific Organizing Committee (SOC)',
   members: [
-    { name: 'Dr. Oleg Malkov', role: 'Member (Big Data)', affil: 'INASAN, Russia' },
-    { name: 'Dr. Kefeng Tan', role: 'Member (Galactic Evolution)', affil: 'NAOC, China' },
-    { name: 'Dr. Hossein Safari', role: 'Member (AI & ML)', affil: 'ZNU, Iran' },
-    { name: 'Peter De Cat', role: 'co-Chair (Asteroseismology)', affil: 'ROB, Belgium' },
-    { name: 'Santosh Joshi', role: 'co-Chair (Asteroseismology)', affil: 'ARIES, India' },
-    { name: 'Bharat K. Yerra', role: 'Member (High-resolution Spectroscopy)', affil: 'IIA, India' },
-    { name: 'Sydney Barnes', role: 'Member (Gyrochronology)', affil: 'AIP, Potsdam, Germany' },
-    { name: 'Masao Takata', role: 'Member (Asteroseismic Modelling)', affil: 'University of Tokyo, Japan' },
+    { name: 'Dr. Santosh Joshi', role: 'Asteroseismology', affil: 'ARIES, India' },
+    { name: 'Dr. Oleg Malkov', role: 'Big Data', affil: 'INASAN, Russia' },
+    { name: 'Dr. Kefeng Tan', role: 'Galactic Archaeology', affil: 'NAOC, China' },
+    { name: 'Dr. Hossein Safari', role: 'AI & ML', affil: 'ZNU, Iran' },
+    { name: 'Dr. Medupe Thebe', role: 'Asteroseismology', affil: 'NWU, South Africa' },
+    { name: 'Dr. Bharat K. Yerra', role: 'High-resolution Spectroscopy', affil: 'IIA, India' },
+    { name: 'Dr. Peter De Cat', role: 'Asteroseismology', affil: 'ROB, Belgium' },
+    { name: 'Dr. Sydney Barnes', role: 'Gyrochronology', affil: 'AIP, Potsdam, Germany' },
+    { name: 'Dr. Benard Nsamba', role: 'Asteroseismic Modelling', affil: 'University of Kampala, Uganda' },
+    { name: 'Dr. Eugene Semenko', role: 'High-resolution Spectroscopy', affil: 'NARIT, Thailand' },
   ],
 };
 
@@ -187,14 +179,6 @@ export const loc = {
     { name: 'Dr. Govind Nandkumar', role: 'Member', affil: 'ARIES, Nainital' },
   ],
 };
-
-// ---- Key dates (Upcoming 2027 Workshop) ------------------------------------
-export const dates = [
-  { label: 'DST Project SAPTARISI Sanction', date: 'Project DST/ICD/Call-5/BRICS/SAPTARISI/2023/G', status: 'done' },
-  { label: 'Participant Invitations (~75 invited from ~20 countries)', date: 'Advance Notification', status: 'done' },
-  { label: 'Participant Confirmations & Programme Finalisation', date: 'Prior to Workshop', status: 'event' },
-  { label: 'International Workshop (Days 1–4)', date: '15–18 March 2027', note: 'Delhi University, South Campus, New Delhi', status: 'event' },
-];
 
 // ---- Travel (Delhi University South Campus) --------------------------------
 export const travel = {
@@ -231,7 +215,7 @@ export const imageCredits = [
   { label: 'ARIES Institutional Identity', by: 'ARIES, Nainital', lic: 'Official', via: 'aries.res.in' },
 ];
 
-// ---- Tentative Participants List (~75 to 107 from ~20 countries) -----------
+// ---- Tentative Participants List from the proposal -------------------------
 export const participants = [
   { no: 1, name: 'Dr. Santosh Joshi', affil: 'ARIES, Nainital', country: 'India' },
   { no: 2, name: 'Dr. Yogesh C. Joshi', affil: 'ARIES, Nainital', country: 'India' },

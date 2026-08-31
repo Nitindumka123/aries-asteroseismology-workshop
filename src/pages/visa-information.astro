@@ -5,24 +5,24 @@ import Icon from '../components/Icon.astro';
 import { event, convenor } from '../data/site';
 
 const steps = [
-  { icon: 'passport', title: 'Check Visa Requirements', text: 'Foreign nationals require a valid passport and an Indian Conference Visa (or e-Conference Visa) to enter India. Check details via official Government of India portals.' },
-  { icon: 'doc', title: 'Official Invitation Letter', text: 'Invited foreign participants will be provided with an official Letter of Invitation issued by ARIES, Nainital and the organizing committee for visa processing.' },
-  { icon: 'shield', title: 'Government Clearances', text: 'The workshop is held under the aegis of DST (Govt. of India), and necessary administrative clearances will be coordinated by the organising team.' },
-  { icon: 'mail', title: 'Early Application', text: 'Please submit your visa application through the nearest Indian Embassy, High Commission or e-Visa portal at least 6–8 weeks before March 2027.' },
+  { icon: 'passport', title: 'Passport Details', text: 'The registration form collects passport details from foreign nationals for workshop administration.' },
+  { icon: 'doc', title: 'Invitation Only', text: 'Participation in the workshop is by invitation only.' },
+  { icon: 'shield', title: 'DST Sponsorship', text: 'The workshop is sponsored by the Department of Science and Technology, Govt. of India.' },
+  { icon: 'mail', title: 'Further Information', text: 'The proposal does not specify visa procedures. Contact the Convenor for information when available.' },
 ];
 ---
 <BaseLayout title="Visa Information">
   <PageHeader
     eyebrow="International participants"
     title="Visa Information"
-    intro="Guidance for international delegates travelling to New Delhi, India for the International Workshop in March 2027."
+    intro="The proposal identifies international participants and requires passport information in registration, but does not specify visa procedures."
   />
 
   <section class="section">
     <div class="container narrow">
       <div class="note blue">
         <p class="note-title">International Delegation Notice</p>
-        <p>With ~75 participants from about 20 countries invited to attend the workshop in New Delhi, all international delegates are advised to ensure their passports are valid for at least 6 months beyond the travel date and to apply early for a Conference Visa.</p>
+        <p>Participation is by invitation only. The registration form includes passport fields for foreign nationals; detailed visa guidance is not included in the proposal.</p>
       </div>
 
       <ol class="visa-steps">

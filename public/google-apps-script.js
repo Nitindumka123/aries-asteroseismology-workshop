@@ -7,7 +7,7 @@
  */
 
 var DEFAULT_EVENT_ID = "ASTER-2027";
-var DEFAULT_EVENT_NAME = "Asteroseismology of CP Stars and Star Clusters";
+var DEFAULT_EVENT_NAME = "Synergistic Investigation of Stellar Clusters and Asteroseismology using High-resolution Spectroscopy and Space Photometry";
 
 // Test-only configuration. Copy the ID between /d/ and /edit in the test
 // spreadsheet URL into this constant before deploying the Apps Script.
@@ -65,8 +65,12 @@ function doPost(e) {
       }
     } else {
       normalised.passportNumber = "";
+      normalised.surname = "";
+      normalised.givenName = "";
+      normalised.nationality = "";
+      normalised.gender = "";
       normalised.dob = "";
-      normalised.address = "";
+      normalised.placeOfBirth = "";
       normalised.passportIssueDate = "";
       normalised.passportIssuePlace = "";
       normalised.passportExpiryDate = "";
@@ -166,8 +170,12 @@ function normaliseSubmission(data) {
     country: data.country || "",
     researchInterest: data.researchInterest || data.researchArea || "",
     passportNumber: data.passportNumber || "",
+    surname: data.surname || "",
+    givenName: data.givenName || "",
+    nationality: data.nationality || "",
+    gender: data.gender || "",
     dob: data.dob || "",
-    address: data.address || "",
+    placeOfBirth: data.placeOfBirth || "",
     passportIssueDate: data.passportIssueDate || "",
     passportIssuePlace: data.passportIssuePlace || "",
     passportExpiryDate: data.passportExpiryDate || "",
@@ -216,8 +224,12 @@ function validateRequiredFields(data) {
 function validateForeignFields(data) {
   var requiredFields = [
     "passportNumber",
+    "surname",
+    "givenName",
+    "nationality",
+    "gender",
     "dob",
-    "address",
+    "placeOfBirth",
     "passportIssueDate",
     "passportIssuePlace",
     "passportExpiryDate"
@@ -238,6 +250,11 @@ function buildCustomResponses(data) {
     presentationTitle: data.presentationTitle || "",
     foodPreference: data.foodPreference || "",
     excursionOpt: data.excursionOpt || "",
+    surname: data.surname || "",
+    givenName: data.givenName || "",
+    nationality: data.nationality || "",
+    gender: data.gender || "",
+    placeOfBirth: data.placeOfBirth || "",
     arrivalDate: data.arrivalDate || "",
     arrivalTime: data.arrivalTime || "",
     arrivalDetails: data.arrivalDetails || "",
