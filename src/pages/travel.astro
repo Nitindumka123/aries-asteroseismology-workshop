@@ -1,0 +1,576 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<BaseLayout title="Travel | Logistics">
+  <PageHeader
+    eyebrow="Logistics"
+    title="Travel"
+    intro="Transportation and transit guidance for participants attending the workshop in New Delhi."
+  />
+
+  <section class="section" style="padding-top: 0.5rem;">
+    <div class="container content-wrap">
+      <!-- Main Destination Reference Box -->
+      <div class="destination-card">
+        <div class="destination-header">
+          <div class="destination-icon" aria-hidden="true">
+            <Icon name="map-pin" size={22} />
+          </div>
+          <div>
+            <span class="destination-label">Workshop Destination</span>
+            <h2 class="destination-name">Institute of Informatics &amp; Communication (IIC)</h2>
+          </div>
+        </div>
+        <p class="destination-address">
+          University of Delhi, South Campus, Benito Juarez Marg, New Delhi, Delhi 110021, India
+        </p>
+      </div>
+
+      <!-- Reaching New Delhi -->
+      <article class="travel-block">
+        <div class="block-header">
+          <div class="block-icon" aria-hidden="true">
+            <Icon name="globe" size={20} />
+          </div>
+          <h2 class="block-title">Reaching New Delhi</h2>
+        </div>
+        <p class="block-text">
+          New Delhi, the capital of India, is well connected across national and international transit corridors:
+        </p>
+        <ul class="guide-list">
+          <li><strong>By Air:</strong> Connected to major domestic and international destinations through Indira Gandhi International Airport.</li>
+          <li><strong>By Train:</strong> Accessible from all parts of India through extensive rail networks serving multiple major central terminals.</li>
+          <li><strong>By Road:</strong> Linked via national highways and expressway networks connecting Delhi to neighboring states and regional hubs.</li>
+        </ul>
+      </article>
+
+      <!-- Grid of Transit Modes: Air & Rail -->
+      <div class="transit-grid">
+        <!-- Air Travel -->
+        <article class="travel-card">
+          <div class="card-header">
+            <div class="card-icon" aria-hidden="true">
+              <Icon name="plane" size={20} />
+            </div>
+            <h2 class="card-title">Air Travel</h2>
+          </div>
+          <p class="card-body">
+            <strong>Indira Gandhi International Airport (DEL)</strong> is the primary airport serving New Delhi and the surrounding National Capital Region.
+          </p>
+          <p class="card-body">
+            Participants arriving by air can continue to the University of Delhi South Campus using the Delhi Metro, app-based/private taxis, or other local road transport.
+          </p>
+        </article>
+
+        <!-- Railway Travel -->
+        <article class="travel-card">
+          <div class="card-header">
+            <div class="card-icon" aria-hidden="true">
+              <Icon name="award" size={20} />
+            </div>
+            <h2 class="card-title">Railway Travel</h2>
+          </div>
+          <p class="card-body">
+            Major railway stations relevant to participants travelling to South Campus include:
+          </p>
+          <ul class="sub-list">
+            <li><strong>New Delhi Railway Station (NDLS):</strong> Major central railway gateway for interstate and high-speed rail services.</li>
+            <li><strong>Hazrat Nizamuddin Railway Station (NZM):</strong> Major railway gateway connecting central, western, and southern routes.</li>
+            <li><strong>Old Delhi Railway Station (DLI):</strong> Historic central terminal serving comprehensive northern and regional lines.</li>
+          </ul>
+          <p class="card-body" style="margin-top: 0.75rem;">
+            Participants can continue from the railway stations to South Campus by Delhi Metro, taxi/cab, auto-rickshaw, or other local public transportation.
+          </p>
+        </article>
+      </div>
+
+      <!-- Delhi Metro -->
+      <article class="travel-block">
+        <div class="block-header">
+          <div class="block-icon" aria-hidden="true">
+            <Icon name="compass" size={20} />
+          </div>
+          <h2 class="block-title">Delhi Metro</h2>
+        </div>
+        <p class="block-text">
+          The Delhi Metro network provides efficient, rapid transit across the National Capital Region.
+        </p>
+        <div class="metro-stations-box">
+          <div class="station-item highlight">
+            <span class="station-tag">Nearest Station</span>
+            <h3 class="station-name">Durgabai Deshmukh South Campus Metro Station</h3>
+            <p class="station-desc">
+              <strong>Pink Line:</strong> This is the nearest metro station serving the University of Delhi South Campus area.
+            </p>
+          </div>
+          <div class="station-item">
+            <span class="station-tag">Airport Connectivity</span>
+            <h3 class="station-name">Dhaula Kuan Metro Station</h3>
+            <p class="station-desc">
+              <strong>Airport Line:</strong> Serves the Dhaula Kuan transit junction with pedestrian/interchange connectivity toward South Campus.
+            </p>
+          </div>
+        </div>
+        <p class="block-text" style="margin-top: 1rem;">
+          Participants can use the Delhi Metro network and then continue locally to the venue as appropriate.
+        </p>
+      </article>
+
+      <!-- Local Transportation & Public Transportation -->
+      <div class="transit-grid">
+        <!-- Local Transportation -->
+        <article class="travel-card">
+          <div class="card-header">
+            <div class="card-icon" aria-hidden="true">
+              <Icon name="calendar" size={20} />
+            </div>
+            <h2 class="card-title">Local Transportation</h2>
+          </div>
+          <p class="card-body">
+            Participants can navigate the city and access the venue using:
+          </p>
+          <ul class="sub-list">
+            <li>Delhi Metro</li>
+            <li>Delhi city buses</li>
+            <li>Auto-rickshaws</li>
+            <li>App-based cab/taxi services</li>
+            <li>Private vehicles</li>
+          </ul>
+          <div class="venue-ref-box">
+            <span class="ref-label">Venue Reference:</span>
+            <p class="ref-text">
+              Benito Juarez Marg<br />
+              University of Delhi South Campus<br />
+              New Delhi - 110021
+            </p>
+          </div>
+        </article>
+
+        <!-- Public Transportation -->
+        <article class="travel-card">
+          <div class="card-header">
+            <div class="card-icon" aria-hidden="true">
+              <Icon name="users" size={20} />
+            </div>
+            <h2 class="card-title">Public Transportation</h2>
+          </div>
+          <p class="card-body">
+            Major public transportation options available around the venue include:
+          </p>
+          <ul class="sub-list">
+            <li><strong>Delhi Metro:</strong> Extensive underground and elevated rail transit with stations near the campus.</li>
+            <li><strong>Delhi Transport Corporation (DTC) buses:</strong> Regular city bus routes serving Benito Juarez Marg and Dhaula Kuan arterial junctions.</li>
+            <li><strong>Auto-rickshaws:</strong> Widely accessible for short-distance neighborhood and last-mile connectivity.</li>
+            <li><strong>Local taxis/cabs:</strong> Readily available from transit nodes across the city.</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- Taxi / Cab -->
+      <article class="travel-block">
+        <div class="block-header">
+          <div class="block-icon" aria-hidden="true">
+            <Icon name="shield-check" size={20} />
+          </div>
+          <h2 class="block-title">Taxi / Cab</h2>
+        </div>
+        <p class="block-text">
+          Participants may use licensed taxis, app-based cab services, or private vehicles to reach the venue.
+        </p>
+        <div class="nav-target-box">
+          <span class="nav-target-label">Destination to enter in navigation apps:</span>
+          <div class="nav-target-value">
+            &ldquo;Institute of Informatics &amp; Communication, University of Delhi South Campus&rdquo;
+          </div>
+        </div>
+      </article>
+
+      <!-- Reaching the Workshop Venue -->
+      <article class="travel-block final-block">
+        <div class="block-header">
+          <div class="block-icon" aria-hidden="true">
+            <Icon name="check" size={20} />
+          </div>
+          <h2 class="block-title">Reaching the Workshop Venue</h2>
+        </div>
+        <div class="destination-detail">
+          <strong>Destination:</strong> Institute of Informatics &amp; Communication (IIC), University of Delhi, South Campus, Benito Juarez Marg, New Delhi, Delhi 110021, India
+        </div>
+        <div class="directions-list">
+          <div class="direction-step">
+            <span class="step-badge">From Metro</span>
+            <p class="step-text">From Durgabai Deshmukh South Campus Metro Station, continue toward University of Delhi South Campus / Benito Juarez Marg.</p>
+          </div>
+          <div class="direction-step">
+            <span class="step-badge">From Railway Stations</span>
+            <p class="step-text">From a railway station, use Delhi Metro, cab, auto-rickshaw, or local bus services to reach South Campus.</p>
+          </div>
+          <div class="direction-step">
+            <span class="step-badge">From IGI Airport</span>
+            <p class="step-text">From IGI Airport, use Delhi Metro or road transport to reach South Campus.</p>
+          </div>
+        </div>
+        <div class="venue-action-row">
+          <a href="/workshop-venue" class="btn btn-secondary">
+            View Workshop Venue &amp; Map <Icon name="arrow-right" size={16} />
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .content-wrap {
+    max-width: 860px;
+    margin-inline: auto;
+  }
+
+  /* Destination card */
+  .destination-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+  }
+
+  .destination-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .destination-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--r-md);
+    background: var(--blue-50);
+    color: var(--blue-700);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+
+  .destination-label {
+    font-family: var(--font-head);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-500);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .destination-name {
+    margin: 0;
+    font-family: var(--font-head);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--navy-950);
+    line-height: 1.3;
+  }
+
+  .destination-address {
+    margin: 0.5rem 0 0;
+    font-size: 0.98rem;
+    color: var(--navy-900);
+    line-height: 1.5;
+  }
+
+  /* Travel block */
+  .travel-block {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: clamp(1.5rem, 3vw, 2rem);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+  }
+
+  .travel-block.final-block {
+    margin-bottom: 0;
+  }
+
+  .block-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .block-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--r-md);
+    background: var(--blue-50);
+    color: var(--blue-700);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+
+  .block-title {
+    margin: 0;
+    font-family: var(--font-head);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy-950);
+  }
+
+  .block-text {
+    margin: 0 0 1rem;
+    color: var(--navy-900);
+    line-height: 1.6;
+    font-size: 0.98rem;
+  }
+
+  .guide-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--navy-900);
+    line-height: 1.6;
+  }
+
+  /* Transit Grid */
+  .transit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .travel-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .card-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--r-md);
+    background: var(--blue-50);
+    color: var(--blue-700);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+
+  .card-title {
+    margin: 0;
+    font-family: var(--font-head);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy-950);
+  }
+
+  .card-body {
+    margin: 0 0 0.75rem;
+    color: var(--navy-900);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .sub-list {
+    margin: 0;
+    padding-left: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    color: var(--navy-900);
+    font-size: 0.93rem;
+    line-height: 1.55;
+  }
+
+  .venue-ref-box {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--line);
+  }
+
+  .ref-label {
+    font-family: var(--font-head);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-500);
+  }
+
+  .ref-text {
+    margin: 0.35rem 0 0;
+    font-size: 0.92rem;
+    color: var(--navy-950);
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  /* Metro Stations Box */
+  .metro-stations-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .station-item {
+    background: #f8fafc;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 1.25rem;
+  }
+
+  .station-item.highlight {
+    background: #f0f7ff;
+    border-color: #bfdbfe;
+  }
+
+  .station-tag {
+    display: inline-block;
+    font-family: var(--font-head);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--blue-700);
+    background: #ffffff;
+    border: 1px solid #bfdbfe;
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--r-sm);
+    margin-bottom: 0.6rem;
+  }
+
+  .station-name {
+    margin: 0 0 0.45rem;
+    font-family: var(--font-head);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy-950);
+    line-height: 1.35;
+  }
+
+  .station-desc {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--navy-900);
+    line-height: 1.5;
+  }
+
+  /* Nav Target Box */
+  .nav-target-box {
+    background: #f8fafc;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 1.25rem 1.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .nav-target-label {
+    display: block;
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-500);
+    margin-bottom: 0.35rem;
+  }
+
+  .nav-target-value {
+    font-family: var(--font-head);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy-950);
+  }
+
+  /* Destination Detail & Directions */
+  .destination-detail {
+    background: #f8fafc;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+    color: var(--navy-900);
+    line-height: 1.5;
+  }
+
+  .directions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .direction-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 1rem 1.25rem;
+  }
+
+  .step-badge {
+    font-family: var(--font-head);
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--navy-900);
+    background: #f1f5f9;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--r-sm);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .step-text {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--navy-900);
+    line-height: 1.5;
+  }
+
+  .venue-action-row {
+    padding-top: 0.5rem;
+  }
+
+  @media (max-width: 720px) {
+    .transit-grid,
+    .metro-stations-box {
+      grid-template-columns: 1fr;
+    }
+
+    .direction-step {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>

@@ -99,9 +99,11 @@ export const nav = [
   },
   { label: 'Registration', href: '/registration' },
   {
-    label: 'Venue & Travel',
+    label: 'Logistics',
     children: [
+      { label: 'Workshop Venue', href: '/workshop-venue' },
       { label: 'Accommodation', href: '/accommodation' },
+      { label: 'Travel', href: '/travel' },
     ],
   },
   {
@@ -190,12 +192,12 @@ export const loc = {
 
 // ---- Travel (Delhi University South Campus) --------------------------------
 export const travel = {
-  mapUrl: 'https://maps.google.com/?q=Delhi+University+South+Campus+Benito+Juarez+Marg+New+Delhi',
+  mapUrl: 'https://maps.google.com/?q=Institute+of+Informatics+%26+Communication+(IIC)+University+of+Delhi+South+Campus+Benito+Juarez+Marg+New+Delhi+110021+India',
   points: [
-    { mode: 'By Air', place: 'Indira Gandhi International (IGI) Airport (approx. 8–10 km)', fare: '≈ ₹250–400 by taxi / metro' },
-    { mode: 'By Rail', place: 'New Delhi / Old Delhi / Hazrat Nizamuddin Stations', fare: '≈ ₹250–350 by taxi / metro' },
-    { mode: 'By Metro', place: 'Durgabai Deshmukh South Campus (Pink Line) / Dhaula Kuan (Airport Express)', fare: 'Direct connectivity' },
-    { mode: 'By Road / Bus', place: 'Dhaula Kuan Bus Junction & Benito Juarez Marg', fare: 'Direct connectivity' },
+    { mode: 'By Air', place: 'Indira Gandhi International (IGI) Airport (approx. 8–10 km)' },
+    { mode: 'By Rail', place: 'New Delhi / Old Delhi / Hazrat Nizamuddin Stations' },
+    { mode: 'By Metro', place: 'Durgabai Deshmukh South Campus (Pink Line) / Dhaula Kuan (Airport Express)' },
+    { mode: 'By Road', place: 'Benito Juarez Marg / Dhaula Kuan arterial road network' },
   ],
 };
 

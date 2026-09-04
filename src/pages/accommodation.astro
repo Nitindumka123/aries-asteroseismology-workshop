@@ -1,5 +1,71 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
+import Icon from '../components/Icon.astro';
 ---
-<BaseLayout title="Accommodation"><PageHeader eyebrow="Venue &amp; Travel" title="Accommodation" intro="Accommodation and meals are arranged independently by participants." /><section class="section"><div class="container narrow prose"><h2>Accommodation</h2><p>Participants are responsible for arranging their own accommodation.</p><p>Accommodation is not provided by the workshop.</p><h2>Meals</h2><p>Participants are responsible for arranging their own meals. The workshop will provide conference lunch and tea/coffee only.</p></div></section></BaseLayout>
+
+<BaseLayout title="Accommodation | Logistics">
+  <PageHeader
+    eyebrow="Logistics"
+    title="Accommodation"
+  />
+
+  <section class="section" style="padding-top: 0.5rem;">
+    <div class="container narrow">
+      <article class="empty-state-card">
+        <div class="icon-bubble" aria-hidden="true">
+          <Icon name="building" size={32} />
+        </div>
+        <h2 class="empty-title">Accommodation</h2>
+        <p class="status-badge-text">Will be updated soon.</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .empty-state-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: clamp(2.5rem, 5vw, 3.5rem) 2rem;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .icon-bubble {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--blue-50);
+    color: var(--blue-700);
+    display: grid;
+    place-items: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .empty-title {
+    margin: 0 0 1rem;
+    font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+    color: var(--navy-950);
+    font-weight: 700;
+  }
+
+  .status-badge-text {
+    display: inline-block;
+    font-family: var(--font-head);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink-700);
+    background: #f1f5f9;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    margin: 0;
+    border: 1px solid var(--line);
+  }
+</style>
