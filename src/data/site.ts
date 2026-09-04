@@ -112,7 +112,7 @@ export const nav = [
       { label: 'Guidelines', href: '/guidelines' },
     ],
   },
-  { label: 'Taj Mahal Agra Excursion', href: '/excursion' },
+  { label: 'Excursion', href: '/excursion' },
 ];
 
 // ---- Carousel (Real, licensed campus & conference images) ------------------

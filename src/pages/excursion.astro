@@ -3,21 +3,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import Icon from '../components/Icon.astro';
 ---
-<BaseLayout title="Taj Mahal Agra Excursion">
+<BaseLayout title="Excursion">
   <PageHeader
     eyebrow="Excursion"
-    title="Taj Mahal Agra Excursion"
+    title="Excursion"
     intro="An optional post-workshop excursion to the historic monument of the Taj Mahal in Agra, planned for 11 February 2027."
   />
 
   <section class="section">
     <div class="container content-layout">
       <div class="prose">
+        <!-- Prominent Main Content Heading for the Excursion -->
+        <div class="excursion-headline-wrap">
+          <span class="section-kicker">Destination</span>
+          <h2 class="excursion-main-title">Taj Mahal, Agra</h2>
+        </div>
+
         <!-- Prominent Cost Responsibility Notice -->
         <div class="excursion-cost-notice" role="note">
           <div class="notice-header">
             <Icon name="info" size={22} />
-            <h2 class="notice-heading">Excursion Cost Responsibility</h2>
+            <h3 class="notice-heading">Excursion Cost Responsibility</h3>
           </div>
           <p class="cost-primary-statement">
             <strong>Participants have to pay for their own excursion costs.</strong>
@@ -27,10 +33,6 @@ import Icon from '../components/Icon.astro';
           </p>
         </div>
 
-        <div class="excursion-section-head">
-          <span class="section-kicker">Destination</span>
-          <h2>Taj Mahal, Agra</h2>
-        </div>
         <p>
           The Taj Mahal is a UNESCO World Heritage Site and one of the world's most celebrated architectural wonders, situated on the south bank of the Yamuna river in Agra. Built by Mughal Emperor Shah Jahan, it stands as a pinnacle of Indo-Islamic Mughal architecture.
         </p>
@@ -80,6 +82,23 @@ import Icon from '../components/Icon.astro';
     margin-inline: auto;
   }
 
+  /* Main Excursion Heading */
+  .excursion-headline-wrap {
+    margin-bottom: 1.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--line);
+  }
+
+  .excursion-main-title {
+    margin: 0;
+    font-family: var(--font-head);
+    font-size: clamp(1.85rem, 3.2vw, 2.45rem);
+    font-weight: 800;
+    color: var(--navy-950);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
   /* Prominent Cost Notice */
   .excursion-cost-notice {
     background: #fff8f0;
@@ -87,7 +106,7 @@ import Icon from '../components/Icon.astro';
     border-left: 5px solid var(--orange-500);
     border-radius: var(--r-md);
     padding: 1.5rem 1.75rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     box-shadow: 0 2px 8px rgba(232, 111, 27, 0.06);
   }
 
@@ -143,15 +162,15 @@ import Icon from '../components/Icon.astro';
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--orange-600);
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.35rem;
   }
 
-  .excursion-section-head h2,
   .excursion-section-head h3 {
     margin: 0;
     font-family: var(--font-head);
     color: var(--navy-900);
     font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+    font-weight: 700;
   }
 
   .options-list {
