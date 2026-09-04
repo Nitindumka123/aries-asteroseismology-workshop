@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+---
+<BaseLayout title="Information to Participants">
+  <PageHeader eyebrow="Overview" title="Information to Participants" intro="Presentation and conduct guidance for workshop participants." />
+  <section class="section"><div class="container prose participant-info">
+    <h2>POSTER</h2><ul><li>A0 portrait physical poster.</li><li>Title/name should be prominent.</li><li>Include authors and email/contact information.</li><li>Content should be readable from approximately 2 metres.</li></ul>
+    <h2>ORAL PRESENTATION</h2><ul><li>LOC-provided laptops.</li><li>Speakers should test/copy their presentation beforehand.</li><li>Arrive approximately 15 minutes early.</li><li>Respect the allocated presentation duration.</li></ul>
+    <h2>CODE OF CONDUCT</h2><ul><li>Professional, considerate, respectful, and collaborative conduct is expected.</li><li>Maintain an inclusive environment.</li><li>No intimidation, hostility, or offensive environment.</li><li>No physical or verbal abuse.</li><li>No harassment, intimidation, or discrimination.</li><li>Participants should speak up/report concerns.</li><li>LOC can assist when needed.</li></ul>
+  </div></section>
+</BaseLayout>
+
+<style>.participant-info { max-width: 900px; margin-inline: auto; min-width: 0; }.participant-info h2:not(:first-child) { margin-top: 2.5rem; }</style>

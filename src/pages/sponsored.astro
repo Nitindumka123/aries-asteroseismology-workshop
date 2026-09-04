@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<BaseLayout title="Sponsored"><PageHeader eyebrow="People" title="Sponsored" intro="The workshop is supported by the Department of Science and Technology, Government of India." /><section class="section"><div class="container sponsor-card"><img src="/images/dst.png" alt="Department of Science and Technology, Government of India" /><div><span class="eyebrow">Sponsored by</span><h2>Department of Science and Technology (DST)</h2><p>Government of India</p><p class="reference"><span>DST Reference:</span><br />DST/ICD/Call-5/BRICS/SAPTARISI/2023/G</p></div></div></section></BaseLayout>
+
+<style>
+  .sponsor-card { max-width: 860px; display: flex; align-items: center; gap: 2rem; padding: 2.5rem; background: linear-gradient(135deg, var(--blue-50), #fff); border: 1px solid var(--blue-100); border-top: 4px solid var(--orange-500); border-radius: var(--r-lg); }
+  .sponsor-card img { width: 190px; height: 150px; object-fit: contain; flex: none; }
+  .sponsor-card h2 { margin: .25rem 0 .35rem; }
+  .sponsor-card p { color: var(--ink-600); }
+  .reference { margin-top: 1.5rem; font-size: .95rem; }
+  .reference span { font-family: var(--font-head); font-weight: 700; color: var(--navy-900); }
+  @media (max-width: 620px) { .sponsor-card { flex-direction: column; text-align: center; padding: 1.5rem; } .sponsor-card img { width: 150px; height: 120px; } }
+</style>

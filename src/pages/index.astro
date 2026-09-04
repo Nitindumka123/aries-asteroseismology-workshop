@@ -1,166 +1,43 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Carousel from '../components/Carousel.astro';
-import Icon from '../components/Icon.astro';
-import { event, topics, partners } from '../data/site';
-
-const glance = [
-  { icon: 'map-pin', k: 'Venue', v: 'DU South Campus' },
-  { icon: 'clock', k: 'Schedule', v: '8–11 February 2027' },
-  { icon: 'users', k: 'Participation', v: 'Invitation only' },
-];
-const homeTopics = topics;
-const quicklinks = [
-  { icon: 'target', label: 'Overview', href: '/overview', text: 'Scientific rationale, aim and scope.' },
-  { icon: 'list', label: 'Programme', href: '/programme', text: 'The five programme areas covered.' },
-  { icon: 'doc', label: 'Registration', href: '/registration', text: 'Invitation criteria and registration information.' },
-  { icon: 'map', label: 'Venue & Travel', href: '/venue-and-travel', text: 'Reaching DU South Campus by air, rail, metro and road.' },
-  { icon: 'mail', label: 'Contact', href: '/contact', text: 'Reach the Convenor and organising team.' },
-];
 ---
 <BaseLayout title="Home">
-  <Carousel />
-
-  <!-- Intro + at-a-glance -->
-  <section class="section tight intro">
-    <div class="container intro-grid">
-      <div class="intro-lead">
-        <span class="eyebrow">ARIES · Nainital, IIT Delhi &amp; Delhi University</span>
-        <h1>{event.name}</h1>
-        <p class="lead">{event.tagline} Jointly organised by {event.organisers}, the workshop will take place from <strong>{event.dates}</strong> at {event.venue}.</p>
-        <div class="cluster intro-actions">
-          <a href="/overview" class="btn btn-ghost btn-lg">Scientific Overview</a>
-        </div>
-        <p class="sponsor-note"><strong>Sponsored by DST.</strong></p>
+  <section class="section sponsor-section">
+    <div class="container sponsor-inner">
+      <div class="sponsor-copy">
+        <span class="eyebrow">Sponsored by</span>
+        <h1>Department of Science and Technology (DST), Government of India</h1>
+        <p><span>DST Reference:</span> DST/ICD/Call-5/BRICS/SAPTARISI/2023/G</p>
       </div>
-      <ul class="glance">
-        {glance.map((g) => (
-          <li>
-            <span class="g-ic"><Icon name={g.icon} size={22} /></span>
-            <span class="g-k">{g.k}</span>
-            <span class="g-v">{g.v}</span>
-          </li>
-        ))}
-      </ul>
+      <img class="dst-logo" src="/images/dst.png" alt="Department of Science and Technology, Government of India" width="240" height="180" />
     </div>
   </section>
 
-  <!-- Themes -->
-  <section class="section">
+  <section class="section organisers-section">
     <div class="container">
-      <div class="section-head center">
-        <span class="eyebrow">Scientific Focus</span>
-        <h2>Workshop Themes</h2>
-        <p>The workshop addresses five themes spanning stellar variables, clusters, space missions, modeling, and high-resolution spectroscopy.</p>
-      </div>
-      <ul class="topic-grid">
-        {homeTopics.map((t, i) => (
-          <li class="topic">
-            <span class="topic-num">{String(i + 1).padStart(2, '0')}</span>
-            <p>{t}</p>
-          </li>
-        ))}
-      </ul>
-      <div class="center" style="margin-top:2rem;">
-        <a href="/programme" class="btn btn-secondary">See programme details <Icon name="arrow-right" size={18} /></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Organisers -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head center">
-        <span class="eyebrow">Jointly organised by</span>
-        <h2>ARIES Nainital, IIT Delhi &amp; Delhi University</h2>
-      </div>
-      <div class="org-grid">
-        {partners.map((p) => (
-          <article class="card accent org">
-            <span class="card-icon"><Icon name="building" size={24} /></span>
-            <h3>{p.acronym}</h3>
-          </article>
-        ))}
-      </div>
-      <div class="center" style="margin-top:2rem;">
-        <a href="/committees" class="link-arrow">Meet the organising committees <Icon name="arrow-right" size={16} /></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quick links -->
-  <section class="section soft">
-    <div class="container">
-      <div class="section-head center"><span class="eyebrow">Find your way</span><h2>Quick links</h2></div>
-      <div class="grid grid-3">
-        {quicklinks.map((q) => (
-          <a href={q.href} class="card hover ql">
-            <span class="card-icon"><Icon name={q.icon} size={24} /></span>
-            <h3>{q.label}</h3>
-            <p>{q.text}</p>
-            <span class="ql-go"><Icon name="arrow-right" size={18} /></span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta">
-    <div class="container cta-inner">
-      <div>
-        <h2>International Workshop · February 2027</h2>
-        <p>Participation is by invitation under the DST SAPTARISI project.</p>
-      </div>
-      <div class="cluster">
-        <a href="/contact" class="btn btn-on-dark btn-lg">Contact Convenor</a>
+      <div class="section-head center"><span class="eyebrow">Jointly organised by</span></div>
+      <div class="organiser-grid">
+        <article class="organiser-box"><img src="/images/aries-logo.png" alt="ARIES official logo" /><h2>ARIES Nainital</h2></article>
+        <article class="organiser-box"><img src="/images/du-logo.jpg" alt="University of Delhi official logo" /><h2>University of Delhi</h2></article>
+        <article class="organiser-box"><img src="/images/iit-delhi-logo.png" alt="IIT Delhi official logo" /><h2>IIT Delhi</h2></article>
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  /* Intro */
-  .intro-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 2.5rem; align-items: center; }
-  .intro-lead h1 { margin: 0.3rem 0 0.9rem; font-size: clamp(1.8rem, 3.2vw, 2.5rem); }
-  .intro-actions { margin-top: 1.6rem; }
-  .glance { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .glance li { background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--orange-500);
-    border-radius: var(--r-lg); padding: 1.2rem; display: grid; gap: 0.15rem; box-shadow: var(--shadow-sm); }
-  .g-ic { width: 42px; height: 42px; border-radius: var(--r-md); background: var(--blue-50); color: var(--blue-700); display: grid; place-items: center; margin-bottom: 0.5rem; }
-  .g-k { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-400); font-weight: 700; font-family: var(--font-head); }
-  .g-v { font-family: var(--font-head); font-weight: 700; color: var(--navy-900); font-size: 1.15rem; }
-
-  /* Topics */
-  .topic-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
-  .topic { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start; transition: transform 0.18s ease, border-color 0.18s ease; }
-  .topic:hover { transform: translateY(-3px); border-color: var(--blue-100); }
-  .topic-num { font-family: var(--font-head); font-weight: 800; font-size: 1.3rem; color: var(--orange-500); line-height: 1; }
-  .topic p { margin: 0; font-weight: 600; color: var(--navy-900); }
-
-  /* Organisers */
-  .org-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  .org-full { font-family: var(--font-head); font-weight: 600; color: var(--blue-700); margin-bottom: 0.6rem; }
-
-  /* Quick links */
-  .ql { position: relative; color: inherit; display: block; }
-  .ql h3 { color: var(--navy-900); }
-  .ql-go { position: absolute; top: 1.4rem; right: 1.4rem; color: var(--ink-400); transition: color 0.18s ease, transform 0.18s ease; }
-  .ql:hover .ql-go { color: var(--orange-500); transform: translateX(3px); }
-
-  /* CTA */
-  .cta { background: var(--navy-900); color: #cdd6ee; background-image: radial-gradient(600px 300px at 90% 0%, rgba(232,111,27,0.22), transparent 70%); }
-  .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding-block: 3.25rem; flex-wrap: wrap; }
-  .cta h2 { color: #fff; margin-bottom: 0.5rem; }
-  .cta p { max-width: 560px; margin: 0; }
-
-  @media (max-width: 900px) {
-    .intro-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .topic-grid, .org-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 620px) {
-    .glance { grid-template-columns: 1fr 1fr; }
-    .topic-grid, .org-grid { grid-template-columns: 1fr; }
-    .cta-inner { flex-direction: column; align-items: flex-start; }
-  }
+  .sponsor-section { background: linear-gradient(135deg, var(--bg-soft), #fff); }
+  .sponsor-inner { display: flex; align-items: center; justify-content: center; gap: clamp(2rem, 6vw, 5rem); max-width: 940px; }
+  .sponsor-copy { min-width: 0; }
+  .sponsor-copy h1 { max-width: 650px; margin: .25rem 0 .75rem; font-size: clamp(1.7rem, 3.5vw, 2.8rem); }
+  .sponsor-copy p { color: var(--ink-600); font-size: 1rem; }
+  .sponsor-copy p span { font-family: var(--font-head); font-weight: 700; color: var(--navy-900); }
+  .dst-logo { width: min(180px, 28vw); height: auto; object-fit: contain; flex: none; }
+  .organisers-section { padding-top: 1rem; }
+  .section-head.center { margin-bottom: 1.5rem; }
+  .organiser-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .organiser-box { min-width: 0; min-height: 230px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.1rem; padding: 1.5rem; background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--orange-500); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); text-align: center; }
+  .organiser-box img { width: 100%; height: 125px; object-fit: contain; }
+  .organiser-box h2 { font-size: 1.25rem; margin: 0; }
+  @media (max-width: 700px) { .sponsor-inner { flex-direction: column-reverse; text-align: center; gap: 1rem; } .dst-logo { width: 145px; } .organiser-grid { grid-template-columns: 1fr; } .organiser-box { min-height: 200px; } }
 </style>

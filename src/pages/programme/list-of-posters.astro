@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+---
+<BaseLayout title="List of Posters"><PageHeader eyebrow="Programme" title="List of Posters" intro="The poster list will be added when available." /><section class="section"><div class="container narrow"><div class="poster-placeholder" aria-label="Poster list is currently empty"></div></div></section></BaseLayout>
+
+<style>.poster-placeholder { min-height: 180px; border: 1px dashed var(--line-strong); border-radius: var(--r-lg); background: var(--bg-soft); }</style>

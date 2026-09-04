@@ -1,69 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHeader from '../components/PageHeader.astro';
-import Icon from '../components/Icon.astro';
-const items = [
-  {
-    title: 'Workshop Handbook',
-    desc: 'The workshop handbook will be provided soon.',
-  },
-];
 ---
 <BaseLayout title="Workshop Handbook">
-  <PageHeader
-    eyebrow="Resources"
-    title="Workshop Handbook"
-    intro="The workshop handbook will be provided soon."
-  />
-
   <section class="section">
-    <div class="container content-layout">
-      <div class="section-head">
-        <span class="eyebrow">Documents</span>
-        <h2>Workshop Handbook</h2>
-        <p>The workshop handbook will be provided soon.</p>
-      </div>
-
-      <div class="downloads-list">
-        {items.map((item) => (
-          <div class="download-card card">
-            <div class="dl-icon-box">
-              <Icon name="book" size={24} />
-            </div>
-            <div class="dl-content">
-              <h3 class="dl-title">{item.title}</h3>
-              <p class="dl-desc">{item.desc}</p>
-              <div class="dl-meta">
-                <span class="dl-file"><Icon name="shield-check" size={13} /> Coming soon</span>
-              </div>
-            </div>
-            <div class="dl-action">
-              <span class="coming-soon">Coming soon</span>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div class="container narrow handbook">
+      <h2>Workshop Handbook</h2>
+      <p>Will be provided soon.</p>
     </div>
   </section>
-
-  <style>
-    .content-layout { max-width: 860px; margin-inline: auto; }
-    .downloads-list { display: grid; gap: 1.25rem; }
-    .download-card { display: flex; gap: 1.5rem; align-items: center; padding: 1.5rem; border-radius: var(--r-md); }
-    .dl-icon-box { width: 52px; height: 52px; border-radius: var(--r-md); background: var(--orange-50); color: var(--orange-600); display: grid; place-items: center; flex: none; }
-    .dl-content { flex-grow: 1; }
-    .dl-title { font-size: 1.15rem; color: var(--navy-900); margin: 0 0 0.35rem; }
-    .dl-desc { font-size: 0.94rem; color: var(--ink-500); margin: 0 0 0.6rem; line-height: 1.45; }
-    .dl-meta { display: flex; gap: 1.2rem; font-size: 0.82rem; color: var(--ink-400); }
-    .dl-file { display: inline-flex; align-items: center; gap: 0.3rem; }
-    .dl-size { font-weight: 700; color: var(--ink-600); }
-    .dl-action { flex: none; }
-    .coming-soon { color: var(--ink-500); font-family: var(--font-head); font-weight: 700; }
-
-    @media (max-width: 768px) {
-      .download-card { flex-direction: column; align-items: flex-start; gap: 1rem; }
-      .dl-action { width: 100%; }
-      .dl-action .btn { width: 100%; justify-content: center; }
-    }
-  </style>
 </BaseLayout>
+
+<style>
+  .handbook { min-width: 0; }
+</style>

@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<BaseLayout title="Conference Poster"><PageHeader eyebrow="Resources" title="Conference Poster" intro="The conference poster will be added when available." /><section class="section"><div class="container narrow"><div class="poster-placeholder" aria-label="Conference poster is not yet available"></div></div></section></BaseLayout>
+
+<style>.poster-placeholder { min-height: 260px; border: 1px dashed var(--line-strong); border-radius: var(--r-lg); background: var(--bg-soft); }</style>

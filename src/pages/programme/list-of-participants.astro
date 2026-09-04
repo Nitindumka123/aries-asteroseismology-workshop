@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { soc } from '../../data/site';
+---
+<BaseLayout title="List of Participants">
+  <PageHeader eyebrow="Programme" title="List of Participants" intro="Publicly identified members of the proposed Scientific Organizing Committee." />
+  <section class="section"><div class="container"><div class="participant-grid">{soc.members.map((member) => <article class="participant-card"><h2>{member.name}</h2><p>{member.role}</p><span>{member.affil}</span></article>)}</div></div></section>
+</BaseLayout>
+
+<style>
+  .participant-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; max-width: 980px; margin: 0 auto; }
+  .participant-card { min-width: 0; padding: 1.25rem; border: 1px solid var(--line); border-top: 3px solid var(--orange-500); border-radius: var(--r-md); background: #fff; box-shadow: var(--shadow-sm); }
+  .participant-card h2 { font-size: 1.12rem; margin-bottom: .3rem; }
+  .participant-card p { margin: 0 0 .2rem; color: var(--orange-600); font-weight: 600; }
+  .participant-card span { color: var(--ink-500); }
+  @media (max-width: 620px) { .participant-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,82 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import Icon from '../components/Icon.astro';
-import { event, topics } from '../data/site';
-
-const audience = [
-  'Participation in this international workshop is by invitation only due to DST funding parameters.',
-  'About 75 leading researchers and delegates from ~20 countries across BRICS and international institutions.',
-  'Specialists in stellar oscillations, high-resolution spectroscopy, star clusters, gyrochronology, and machine learning.',
-];
 ---
 <BaseLayout title="Overview">
-  <PageHeader
-    eyebrow="Scientific Scope"
-    title="Overview"
-    intro={`${event.name} is an international workshop fostering synergistic research between asteroseismology and stellar cluster studies.`}
-  />
-
+  <PageHeader eyebrow="Scientific Scope" title="Overview" intro="Explore the scientific rationale, workshop themes, and information for participants." />
   <section class="section">
-    <div class="container ov-grid">
-      <div class="prose">
-        <span class="eyebrow">Scientific Rationale</span>
-        <h2>Why an international workshop on asteroseismology &amp; star clusters?</h2>
-        <p>Understanding how stars form, evolve and die is one of the main goals of modern astrophysics. <strong>Asteroseismology</strong>, the study of stellar internal oscillation, offers a unique window into the deep interiors of stars. Space missions such as <em>Kepler</em>, <em>GAIA</em>, <em>TESS</em> and high-resolution spectroscopic observations have revolutionized our understanding of stellar physics by detecting pressure and gravity modes.</p>
-        <p>Interpreting these observations using modelling allows us to probe internal stellar processes from core to the surface and infer basic parameters such as effective temperature, surface gravity, differential rotation, chemical composition, and mixing.</p>
-
-        <div class="note blue">
-          <p class="note-title">Workshop at a glance</p>
-          <p>{event.duration} of scientific sessions and collaborative roundtables · Jointly organised by {event.organisers} · Venue: {event.venue} · {event.dates}.</p>
-        </div>
-
-        <h2>Chemically Peculiar (CP) Stars &amp; Star Clusters</h2>
-        <p>The chemically peculiar (CP) stars are a group of main-sequence B, A, and F-type stars having peculiar surface elemental abundances and abnormal spectral line strengths. CP stars serve as crucial testbeds for understanding the interactions between pulsation, rotation, binarity, and chemical peculiarities in intermediate-mass stars.</p>
-        <p>Concurrently, star clusters provide ideal laboratories for testing stellar evolution theory. Because members of a star cluster share a common age, distance, and chemical composition, their positions on the Hertzsprung–Russell (H-R) diagram place unique constraints on stellar models. Star clusters provide masses, luminosities, and ages that reduce degeneracies in stellar modelling; however, asteroseismology reveals the internal physics that governs the evolutionary path of cluster members.</p>
-
-        <h2>Fostering Synergistic Research</h2>
-        <p>Despite the transformative success of both cluster astronomy and asteroseismology of CP stars, the two fields have largely evolved in parallel. Their synergy represents a natural, imperative step in modern astrophysics. The main aim of this workshop is to foster synergistic research between asteroseismology and stellar cluster studies making full use of existing ground- and space-based observational facilities to define a joint strategy for future missions and datasets.</p>
-
-        <h2>Core Themes Covered</h2>
-        <p>The workshop program is structured around five themes:</p>
-        <ul class="topic-list">
-          {topics.map((t) => <li><Icon name="star" size={18} /> {t}</li>)}
-        </ul>
-
-        <div class="note" style="margin-top:2rem;">
-          <p class="note-title">Institutional Sponsorship</p>
-          <p>{event.sponsorship}.</p>
-        </div>
-      </div>
-
-      <aside class="ov-aside">
-        <div class="card accent">
-          <h3>Participation criteria</h3>
-          <ul class="check-list">
-            {audience.map((a) => <li><Icon name="check-circle" size={20} /> {a}</li>)}
-          </ul>
-        </div>
-        <div class="card ov-cta-card">
-          <h3>Participation criteria</h3>
-          <p>Due to grant parameters from DST, participation is strictly by invitation.</p>
-        </div>
-      </aside>
+    <div class="container overview-links">
+      <a class="card accent" href="/overview/scientific-rationale"><h2>Scientific Rationale</h2><p>The scientific motivation for bringing asteroseismology and stellar cluster studies together.</p></a>
+      <a class="card accent" href="/overview/workshop-theme"><h2>Workshop Theme</h2><p>The five scientific themes of the workshop.</p></a>
+      <a class="card accent" href="/overview/information-to-participants"><h2>Information to Participants</h2><p>Poster, oral presentation, and code of conduct guidance.</p></a>
     </div>
   </section>
-
-
-  <style>
-    .ov-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 3rem; align-items: start; }
-    .topic-list, .check-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 0.7rem; }
-    .topic-list li, .check-list li { display: flex; gap: 0.65rem; align-items: flex-start; }
-    .topic-list :global(svg) { color: var(--orange-500); flex: none; margin-top: 3px; }
-    .check-list li { color: var(--ink-600); }
-    .check-list :global(svg) { color: var(--orange-500); flex: none; margin-top: 2px; }
-    .ov-aside { display: grid; gap: 1.25rem; position: sticky; top: calc(var(--header-h) + 1rem); }
-    .ov-cta-card { background: var(--blue-50); border-color: var(--blue-100); }
-    @media (max-width: 900px) {
-      .ov-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .ov-aside { position: static; }
-    }
-  </style>
 </BaseLayout>
+
+<style>
+  .overview-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .overview-links a { color: inherit; }
+  .overview-links h2 { font-size: 1.35rem; margin-bottom: .65rem; }
+  .overview-links p { color: var(--ink-500); }
+  @media (max-width: 800px) { .overview-links { grid-template-columns: 1fr; } }
+</style>

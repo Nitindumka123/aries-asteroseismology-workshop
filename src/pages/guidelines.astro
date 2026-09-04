@@ -1,71 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import Icon from '../components/Icon.astro';
-
-const participation = [
-  'Participate actively in technical presentations, scientific roundtables, and collaborative sessions.',
-  'Deliver invited oral presentations and contributions within allotted timeframes to enable rich discussion.',
-  'Bring necessary presentation materials and dataset previews in standard formats.',
-  'Foster interdisciplinary cross-talk between asteroseismology, spectroscopy, star clusters, and machine learning.',
-  'Adhere to the venue and campus security regulations of Delhi University, South Campus at all times.',
-];
-const conduct = [
-  { icon: 'users', title: 'Respectful & Collaborative', text: 'Engage constructively with international researchers across career stages and specialisations.' },
-  { icon: 'shield', title: 'Professional Integrity', text: 'Maintain high standards of scientific integrity, open discussion, and mutual academic respect.' },
-  { icon: 'star', title: 'Active Engagement', text: 'Contribute actively towards defining strategic roadmaps for future ground and space missions.' },
-  { icon: 'info', title: 'Local Assistance', text: 'The Local Organising Committee (LOC) is on-site throughout the event to assist delegates with any logistical needs.' },
-];
 ---
 <BaseLayout title="Guidelines">
-  <PageHeader
-    eyebrow="For participants"
-    title="Guidelines"
-    intro="Guidelines and conduct expectations for delegates attending the International Workshop at Delhi University, South Campus."
-  />
-
-  <section class="section">
-    <div class="container gl-grid">
-      <div class="prose">
-        <span class="eyebrow">Workshop Participation</span>
-        <h2>Making the most of the workshop</h2>
-        <ul class="tick">
-          {participation.map((p) => <li><Icon name="check-circle" size={20} /> {p}</li>)}
-        </ul>
-        <div class="note" style="margin-top:1.5rem;">
-          <p class="note-title">Scientific Deliverables</p>
-          <p>The outcomes of this workshop will help formulate future collaborative projects and mission dataset strategies under the DST SAPTARISI framework.</p>
-        </div>
-      </div>
-      <aside class="gl-aside card accent">
-        <h3>Need assistance on-site?</h3>
-        <p>The Local Organising Committee at Delhi University South Campus and ARIES Nainital is available to assist all invited delegates.</p>
-        <a href="/contact" class="btn btn-primary" style="width:100%;">Contact Organising Team</a>
-      </aside>
-    </div>
-  </section>
-
-  <section class="section soft">
-    <div class="container">
-      <div class="section-head center"><span class="eyebrow">Conference Etiquette</span><h2>Code of Conduct &amp; Collaboration</h2></div>
-      <div class="grid grid-4">
-        {conduct.map((c) => (
-          <div class="card">
-            <span class="card-icon"><Icon name={c.icon} size={22} /></span>
-            <h4>{c.title}</h4>
-            <p>{c.text}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <style>
-    .gl-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 3rem; align-items: start; }
-    .tick { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 0.8rem; }
-    .tick li { display: flex; gap: 0.65rem; align-items: flex-start; color: var(--ink-700); }
-    .tick :global(svg) { color: var(--orange-500); flex: none; margin-top: 2px; }
-    .gl-aside { position: sticky; top: calc(var(--header-h) + 1rem); }
-    @media (max-width: 900px) { .gl-grid { grid-template-columns: 1fr; gap: 2rem; } .gl-aside { position: static; } }
-  </style>
+  <PageHeader eyebrow="Resources" title="Guidelines" intro="Guidelines will be provided soon." />
+  <section class="section"><div class="container narrow"><p class="placeholder">Will be provided soon.</p></div></section>
 </BaseLayout>
+
+<style>.placeholder { padding: 1.25rem; border-left: 4px solid var(--orange-500); background: var(--orange-50); color: var(--navy-900); font-family: var(--font-head); font-weight: 700; }</style>

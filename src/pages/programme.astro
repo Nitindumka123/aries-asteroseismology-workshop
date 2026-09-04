@@ -1,59 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import Icon from '../components/Icon.astro';
-import { topics } from '../data/site';
-
 ---
 <BaseLayout title="Programme">
-  <PageHeader
-    eyebrow="Academic content"
-    title="Programme"
-    intro="The workshop brings together scientific discussion across five themes in stellar variables, clusters, space missions, modeling, and spectroscopy."
-  />
-
-  <section class="section">
-    <div class="container">
-      <div class="section-head"><span class="eyebrow">Structure</span><h2>How the workshop is organised</h2></div>
-      <p class="programme-placeholder">Will be organised soon.</p>
-    </div>
-  </section>
-
-  <section class="section soft">
-    <div class="container">
-      <div class="section-head"><span class="eyebrow">Programme</span><h2>The Scientific Programme</h2><p>The workshop is focused around the following five themes from the proposal:</p></div>
-      <ol class="prog-themes">
-        {topics.map((t, i) => (
-          <li class="prog-theme">
-            <span class="pt-num">{String(i + 1).padStart(2, '0')}</span>
-            <div class="pt-body"><span class="pt-ic"><Icon name="star" size={18} /></span><p>{t}</p></div>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
+  <PageHeader eyebrow="Academic content" title="Programme" intro="Details about the workshop programme will be provided soon." />
   <section class="section">
     <div class="container narrow">
-      <div class="note">
-        <p class="note-title">Session Schedule &amp; Keynotes</p>
-        <p>The detailed session schedule and invited speaker line-up will be coordinated by the Scientific Organizing Committee and communicated to invited participants ahead of the workshop.</p>
-      </div>
-      <div class="cluster center" style="margin-top:1.75rem;">
-        <a href="/overview" class="btn btn-secondary">Scientific Overview</a>
-        <a href="/committees" class="btn btn-ghost">Organising Committees</a>
-      </div>
+      <div class="section-head"><span class="eyebrow">Structure</span><h2>How the workshop is organised</h2></div>
+      <p class="programme-placeholder">Details will be provided soon.</p>
     </div>
   </section>
-
-  <style>
-    .programme-placeholder { background: var(--blue-50); border: 1px solid var(--blue-100); border-left: 4px solid var(--blue-600); border-radius: var(--r-md); padding: 1.1rem 1.3rem; color: var(--navy-900); font-family: var(--font-head); font-weight: 700; }
-    .prog-themes { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .prog-theme { display: flex; gap: 1rem; align-items: stretch; background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
-    .pt-num { flex: none; width: 56px; background: var(--navy-900); color: var(--orange-400); display: grid; place-items: center; font-family: var(--font-head); font-weight: 800; font-size: 1.15rem; }
-    .pt-body { display: flex; gap: 0.6rem; align-items: center; padding: 1.1rem 1.2rem; }
-    .pt-ic { color: var(--orange-500); flex: none; }
-    .pt-body p { margin: 0; font-weight: 600; color: var(--navy-900); }
-    @media (max-width: 780px) { .prog-themes { grid-template-columns: 1fr; } }
-  </style>
 </BaseLayout>
+
+<style>
+  .programme-placeholder { background: var(--blue-50); border: 1px solid var(--blue-100); border-left: 4px solid var(--blue-600); border-radius: var(--r-md); padding: 1.1rem 1.3rem; color: var(--navy-900); font-family: var(--font-head); font-weight: 700; }
+</style>

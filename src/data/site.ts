@@ -54,31 +54,47 @@ export const partners = [
     website: 'https://www.aries.res.in',
   },
   {
-    name: 'Indian Institute of Technology Delhi',
-    acronym: 'IIT Delhi',
-    role: 'Joint Organiser',
-    note: 'Institute of National Importance contributing computational, theoretical, and instrumentation expertise to stellar astrophysics and high-performance computing.',
-    website: 'https://home.iitd.ac.in',
-  },
-  {
     name: 'Delhi University, South Campus',
     acronym: 'Delhi University',
     role: 'Host Campus & Venue',
     note: 'Host institute and venue for the workshop at Delhi University, South Campus, New Delhi.',
     website: 'http://south.du.ac.in',
   },
+  {
+    name: 'Indian Institute of Technology Delhi',
+    acronym: 'IIT Delhi',
+    role: 'Joint Organiser',
+    note: 'Institute of National Importance contributing computational, theoretical, and instrumentation expertise to stellar astrophysics and high-performance computing.',
+    website: 'https://home.iitd.ac.in',
+  },
 ];
 
 // ---- Navigation (order & labels are organized into clean dropdowns) ---------
 export const nav = [
   { label: 'Home', href: '/' },
-  { label: 'Overview', href: '/overview' },
-  { label: 'Programme', href: '/programme' },
+  {
+    label: 'Overview',
+    children: [
+      { label: 'Scientific Rationale', href: '/overview/scientific-rationale' },
+      { label: 'Workshop Theme', href: '/overview/workshop-theme' },
+      { label: 'Information to Participants', href: '/overview/information-to-participants' },
+    ],
+  },
+  {
+    label: 'Programme',
+    children: [
+      { label: 'Scientific Program', href: '/programme/scientific-program' },
+      { label: 'List of Participants', href: '/programme/list-of-participants' },
+      { label: 'Key Speakers', href: '/programme/key-speakers' },
+      { label: 'List of Posters', href: '/programme/list-of-posters' },
+    ],
+  },
   {
     label: 'People',
     children: [
-      { label: 'Committees', href: '/committees' },
-      { label: 'Key Organisers', href: '/organizers' },
+      { label: 'Committee', href: '/committees' },
+      { label: 'Key Organizers', href: '/organizers' },
+      { label: 'Sponsored', href: '/sponsored' },
     ],
   },
   { label: 'Registration', href: '/registration' },
@@ -87,16 +103,15 @@ export const nav = [
     children: [
       { label: 'Venue & Local Info', href: '/venue' },
       { label: 'Travel Details', href: '/venue-and-travel' },
-      { label: 'Visa Information', href: '/visa-information' },
+      { label: 'Accommodation', href: '/accommodation' },
     ],
   },
   {
     label: 'Resources',
     children: [
       { label: 'Workshop Handbook', href: '/downloads' },
-      { label: 'Photo Gallery', href: '/gallery' },
+      { label: 'Conference Poster', href: '/conference-poster' },
       { label: 'Guidelines', href: '/guidelines' },
-      { label: 'Contact Us', href: '/contact' },
     ],
   },
   {

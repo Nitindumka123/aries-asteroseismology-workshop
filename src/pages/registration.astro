@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import Icon from '../components/Icon.astro';
 import { event, convenor } from '../data/site';
-import { Country } from 'country-state-city';
+import { Country, State, City } from 'country-state-city';
 
 const countries = 'Afghanistan|Albania|Algeria|Andorra|Angola|Antigua and Barbuda|Argentina|Armenia|Australia|Austria|Azerbaijan|Bahamas|Bahrain|Bangladesh|Barbados|Belarus|Belgium|Belize|Benin|Bhutan|Bolivia|Bosnia and Herzegovina|Botswana|Brazil|Brunei|Bulgaria|Burkina Faso|Burundi|Cabo Verde|Cambodia|Cameroon|Canada|Central African Republic|Chad|Chile|China|Colombia|Comoros|Congo|Costa Rica|Cote d\'Ivoire|Croatia|Cuba|Cyprus|Czech Republic|Democratic Republic of the Congo|Denmark|Djibouti|Dominica|Dominican Republic|Ecuador|Egypt|El Salvador|Equatorial Guinea|Eritrea|Estonia|Eswatini|Ethiopia|Fiji|Finland|France|Gabon|Gambia|Georgia|Germany|Ghana|Greece|Grenada|Guatemala|Guinea|Guinea-Bissau|Guyana|Haiti|Honduras|Hungary|Iceland|India|Indonesia|Iran|Iraq|Ireland|Israel|Italy|Jamaica|Japan|Jordan|Kazakhstan|Kenya|Kiribati|Kuwait|Kyrgyzstan|Laos|Latvia|Lebanon|Lesotho|Liberia|Libya|Liechtenstein|Lithuania|Luxembourg|Madagascar|Malawi|Malaysia|Maldives|Mali|Malta|Marshall Islands|Mauritania|Mauritius|Mexico|Micronesia|Moldova|Monaco|Mongolia|Montenegro|Morocco|Mozambique|Myanmar|Namibia|Nauru|Nepal|Netherlands|New Zealand|Nicaragua|Niger|Nigeria|North Korea|North Macedonia|Norway|Oman|Pakistan|Palau|Palestine|Panama|Papua New Guinea|Paraguay|Peru|Philippines|Poland|Portugal|Qatar|Romania|Russia|Rwanda|Saint Kitts and Nevis|Saint Lucia|Saint Vincent and the Grenadines|Samoa|San Marino|Sao Tome and Principe|Saudi Arabia|Senegal|Serbia|Seychelles|Sierra Leone|Singapore|Slovakia|Slovenia|Solomon Islands|Somalia|South Africa|South Korea|South Sudan|Spain|Sri Lanka|Sudan|Suriname|Sweden|Switzerland|Syria|Taiwan|Tajikistan|Tanzania|Thailand|Timor-Leste|Togo|Tonga|Trinidad and Tobago|Tunisia|Turkey|Turkmenistan|Tuvalu|Uganda|Ukraine|United Arab Emirates|United Kingdom|United States|Uruguay|Uzbekistan|Vanuatu|Vatican City|Venezuela|Vietnam|Yemen|Zambia|Zimbabwe'.split('|');
 
@@ -19,10 +19,24 @@ const steps = [
   <PageHeader
     eyebrow="DELEGATE REGISTRATION"
     title="Online Registration"
-    intro="Please complete the form below to confirm your attendance and provide scientific, passport, and travel details for the invited workshop."
+    intro="Sign in to access the workshop registration form."
   />
 
-  <section class="section">
+  <section class="section login-section" id="registration-login">
+    <div class="container narrow">
+      <form class="login-card card accent" id="registration-login-form">
+        <span class="eyebrow">Registration access</span>
+        <h2>Workshop Registration Login</h2>
+        <p>Enter the registration credentials provided by the workshop organisers.</p>
+        <div class="login-field"><label for="registration-username">Username</label><input id="registration-username" name="username" type="text" autocomplete="username" required /></div>
+        <div class="login-field"><label for="registration-password">Password</label><input id="registration-password" name="password" type="password" autocomplete="current-password" required /></div>
+        <p class="login-error" id="registration-login-error" role="alert" hidden>Invalid credentials. Please try again.</p>
+        <button class="btn btn-primary" type="submit">Login</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="registration-content" hidden>
     <div class="container reg-layout">
       <!-- Left Column: Custom Styled Form Card -->
       <div class="reg-form-card">
@@ -181,7 +195,7 @@ const steps = [
                 <input type="text" id="placeOfBirth" name="placeOfBirth" />
               </div>
               <div class="form-field">
-                <label for="passportIssueDate">Passport Issue Date <span class="req">*</span></label>
+                <label for="passportIssueDate">Date of Issue <span class="req">*</span></label>
                 <input type="date" id="passportIssueDate" name="passportIssueDate" />
               </div>
               <div class="form-field">
@@ -189,7 +203,7 @@ const steps = [
                 <input type="text" id="passportIssuePlace" name="passportIssuePlace" />
               </div>
               <div class="form-field full-width">
-                <label for="passportExpiryDate">Passport Expiry Date <span class="req">*</span></label>
+                <label for="passportExpiryDate">Date of Expiry <span class="req">*</span></label>
                 <input type="date" id="passportExpiryDate" name="passportExpiryDate" />
               </div>
             </div>
@@ -355,6 +369,14 @@ const steps = [
   </section>
 
   <style>
+    .login-card { max-width: 520px; margin-inline: auto; }
+    .login-card h2 { margin-bottom: .5rem; }
+    .login-card > p { color: var(--ink-600); }
+    .login-field { display: grid; gap: .4rem; margin-top: 1rem; }
+    .login-field label { font-family: var(--font-head); font-weight: 700; color: var(--navy-900); }
+    .login-field input { width: 100%; height: 48px; padding: 0 1rem; border: 1.5px solid var(--line-strong); border-radius: var(--r-md); font: inherit; }
+    .login-error { color: #991b1b !important; background: #fef2f2; border: 1px solid #fecaca; border-radius: var(--r-md); padding: .7rem .8rem; margin-top: 1rem; }
+    .login-card .btn { margin-top: 1.25rem; }
     .reg-layout { display: grid; grid-template-columns: 1.85fr 1fr; gap: 2.5rem; align-items: start; }
     
     /* Left Form Card Styling */
@@ -517,6 +539,24 @@ const steps = [
   </style>
 
   <script>
+    const loginForm = document.getElementById('registration-login-form') as HTMLFormElement;
+    const loginSection = document.getElementById('registration-login') as HTMLElement;
+    const registrationContent = document.getElementById('registration-content') as HTMLElement;
+    const loginError = document.getElementById('registration-login-error') as HTMLElement;
+    const revealRegistration = () => { loginSection.hidden = true; registrationContent.hidden = false; };
+    loginForm?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const values = new FormData(loginForm);
+      const username = values.get('username')?.toString() || '';
+      const password = values.get('password')?.toString() || '';
+      if (username === 'All_User' && password === 'Register@123') {
+        loginError.hidden = true;
+        revealRegistration();
+      } else {
+        loginError.hidden = false;
+      }
+    });
+
     const DEFAULT_GOOGLE_SCRIPT_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxCAA244KlQF6Wu6PnGkMzekk-YmYIkBkhCQNIndsppLTmNO42PzlwwPR-ezlyOErw-Sw/exec';
     const GOOGLE_SCRIPT_WEBAPP_URL = (import.meta.env.PUBLIC_GOOGLE_SCRIPT_WEBAPP_URL || DEFAULT_GOOGLE_SCRIPT_WEBAPP_URL).trim();
 
@@ -553,7 +593,6 @@ const steps = [
       resetStateAndCity();
       if (!country) return;
       const countryCode = countrySelect.selectedOptions[0]?.dataset.code;
-      const { State } = await import('country-state-city/lib/state');
       selectedStates = countryCode ? State.getStatesOfCountry(countryCode) : [];
       setLocationOptions(stateSelect, selectedStates.length ? 'Select state / province / region' : 'No subdivisions available', selectedStates.map((state) => ({ name: state.name, code: state.isoCode })));
     }
@@ -563,7 +602,6 @@ const steps = [
       if (!country || !state) return;
       const countryCode = countrySelect.selectedOptions[0]?.dataset.code;
       const stateCode = selectedStates.find((item) => item.name === state)?.isoCode;
-      const { City } = await import('country-state-city/lib/city');
       const cities = countryCode && stateCode ? City.getCitiesOfState(countryCode, stateCode) : [];
       setLocationOptions(citySelect, cities.length ? 'Select city' : 'No cities available', cities.map((city) => ({ name: city.name })));
     }
