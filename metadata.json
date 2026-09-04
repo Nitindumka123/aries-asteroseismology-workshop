@@ -1,0 +1,6 @@
+{
+  "name": "ARIES Asteroseismology Workshop",
+  "description": "Synergistic Investigation of Stellar Clusters and Asteroseismology using High-resolution Spectroscopy and Space Photometry — ARIES, Delhi University & IIT Delhi",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
