@@ -1,66 +1,56 @@
 ---
-import { nav, event, institute } from '../data/site';
+import { nav } from '../data/site';
 import Icon from './Icon.astro';
 const path = (Astro.url.pathname.replace(/\/+$/, '') || '/');
 const isActive = (href?: string) => !!href && (href === '/' ? path === '/' : path === href || path.startsWith(href + '/'));
 const groupActive = (children?: { href: string }[]) => !!children?.some((c) => isActive(c.href));
 ---
 <header class="site-header" data-header>
-  <!-- ROW 1: WORKSHOP IDENTITY HEADER -->
+  <!-- ROW 1: WORKSHOP IDENTITY HEADER (Centered Title + Date, No Left Logo) -->
   <div class="workshop-identity-bar">
     <div class="workshop-identity-inner">
-      <!-- LEFT: Simple ARIES logo only -->
-      <div class="header-col header-col-left">
-        <a href="/" class="brand-link" aria-label="ARIES - Home">
-          <img
-            src="/images/aries-emblem.png"
-            alt="ARIES official emblem"
-            class="brand-logo"
-            width="130"
-            height="67"
-          />
-        </a>
-      </div>
-
-      <!-- CENTER: Workshop Title -->
-      <div class="header-col header-col-center">
+      <div class="workshop-identity-content">
         <span class="workshop-kicker">INTERNATIONAL WORKSHOP</span>
         <span class="workshop-on">on</span>
-        <div class="workshop-title">
-          <span class="title-primary">Synergistic Investigation of Stellar Clusters and Asteroseismology</span>
-          <span class="title-secondary">using High-resolution Spectroscopy and Space Photometry</span>
-        </div>
+        <h1 class="title-primary">Synergistic Investigation of Stellar Clusters and Asteroseismology</h1>
+        <p class="title-secondary">using High-resolution Spectroscopy and Space Photometry</p>
+        <p class="workshop-date">8–11 February 2027</p>
       </div>
 
-      <!-- RIGHT: Date -->
-      <div class="header-col header-col-right">
-        <span class="workshop-date">8–11 February 2027</span>
-        <button class="nav-toggle tablet-toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
-          <Icon name="menu" size={22} />
-          <span class="toggle-text">Menu</span>
-        </button>
-      </div>
-
-      <!-- MOBILE ONLY MENU BUTTON (Flows after date) -->
-      <div class="header-mobile-action">
-        <button class="mobile-menu-btn" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
-          <Icon name="menu" size={20} />
-          <span>Menu</span>
-        </button>
-      </div>
+      <!-- Mobile / Tablet Menu Button -->
+      <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <Icon name="menu" size={22} />
+        <span>Menu</span>
+      </button>
     </div>
   </div>
 
-  <!-- ROW 2: Existing navigation bar -->
+  <!-- ROW 2: PRIMARY NAVIGATION BAR -->
   <nav class="nav-bar" aria-label="Primary">
     <div class="nav-inner">
       <ul class="nav-list">
         {nav.map((item) => item.children ? (
           <li class="nav-item has-children">
-            <button class="nav-link nav-more" aria-expanded="false" aria-haspopup="true" class:list={[{ active: groupActive(item.children) }]}>{item.label}<Icon name="chevron-down" size={16} /></button>
-            <ul class="dropdown">{item.children.map((c) => <li><a href={c.href} class="dropdown-link" class:list={[{ active: isActive(c.href) }]}>{c.label}</a></li>)}</ul>
+            <button class="nav-link nav-more" aria-expanded="false" aria-haspopup="true" class:list={[{ active: groupActive(item.children) }]}>
+              {item.label}<Icon name="chevron-down" size={16} />
+            </button>
+            <ul class="dropdown">
+              {item.children.map((c) => (
+                <li>
+                  <a href={c.href} class="dropdown-link" class:list={[{ active: isActive(c.href) }]}>
+                    {c.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </li>
-        ) : <li class="nav-item"><a href={item.href} class="nav-link" class:list={[{ active: isActive(item.href) }]}>{item.label}</a></li>)}
+        ) : (
+          <li class="nav-item">
+            <a href={item.href} class="nav-link" class:list={[{ active: isActive(item.href) }]}>
+              {item.label}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   </nav>
@@ -68,18 +58,44 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
 
 <div class="drawer-overlay" data-overlay hidden></div>
 <aside id="mobile-drawer" class="mobile-drawer" data-drawer aria-hidden="true" aria-label="Site menu">
-  <div class="drawer-head"><span class="drawer-title">Menu</span><button class="drawer-close" data-nav-close aria-label="Close menu"><Icon name="close" size={24} /></button></div>
-  <nav aria-label="Mobile"><ul class="drawer-list">
-    {nav.map((item) => item.children ? (
-      <li><button class="drawer-acc" data-acc aria-expanded="false">{item.label}<Icon name="chevron-down" size={18} /></button><ul class="drawer-sub" data-acc-panel>{item.children.map((c) => <li><a href={c.href} class:list={[{ active: isActive(c.href) }]}>{c.label}</a></li>)}</ul></li>
-    ) : <li><a href={item.href} class:list={[{ active: isActive(item.href) }]}>{item.label}</a></li>)}
-  </ul></nav>
+  <div class="drawer-head">
+    <span class="drawer-title">Menu</span>
+    <button class="drawer-close" data-nav-close aria-label="Close menu">
+      <Icon name="close" size={24} />
+    </button>
+  </div>
+  <nav aria-label="Mobile">
+    <ul class="drawer-list">
+      {nav.map((item) => item.children ? (
+        <li>
+          <button class="drawer-acc" data-acc aria-expanded="false">
+            {item.label}<Icon name="chevron-down" size={18} />
+          </button>
+          <ul class="drawer-sub" data-acc-panel>
+            {item.children.map((c) => (
+              <li>
+                <a href={c.href} class:list={[{ active: isActive(c.href) }]}>
+                  {c.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ) : (
+        <li>
+          <a href={item.href} class:list={[{ active: isActive(item.href) }]}>
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
 </aside>
 
 <style>
   /* =========================================================================
      SITE HEADER — TWO-ROW ARCHITECTURE
-     Row 1: Workshop Identity (Logo | Title | Date)
+     Row 1: Workshop Identity (Centered Title + Next-Line Date)
      Row 2: Primary Navigation Bar
      ========================================================================= */
   .site-header {
@@ -87,6 +103,7 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     z-index: 100;
     background: #ffffff;
     width: 100%;
+    box-shadow: var(--shadow-sm);
   }
 
   /* ---- ROW 1: WORKSHOP IDENTITY HEADER ---- */
@@ -98,62 +115,35 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
   }
 
   .workshop-identity-inner {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    width: 100%;
-    max-width: 1440px;
-    margin-inline: auto;
-    padding: 1.35rem 2rem;
-    column-gap: 1.75rem;
-    box-sizing: border-box;
-  }
-
-  /* Left column: Short/simple ARIES logo */
-  .header-col-left {
-    justify-self: start;
+    position: relative;
     display: flex;
     align-items: center;
-    min-width: 130px;
-  }
-
-  .brand-link {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-    transition: opacity 0.15s ease;
-  }
-  .brand-link:hover {
-    opacity: 0.88;
-  }
-
-  .brand-logo {
-    display: block;
-    height: 52px;
-    width: auto;
-    max-width: 135px;
-    object-fit: contain;
-  }
-
-  /* Center column: Workshop Title */
-  .header-col-center {
-    justify-self: center;
-    text-align: center;
-    max-width: 900px;
+    justify-content: center;
     width: 100%;
+    max-width: 1320px;
+    margin-inline: auto;
+    padding: 1.6rem 2rem 1.45rem;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .workshop-identity-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .workshop-kicker {
     display: block;
     color: var(--orange-600);
     font-family: var(--font-head);
-    font-size: 0.82rem;
+    font-size: clamp(0.92rem, 1.12vw, 1.12rem);
     font-weight: 800;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     line-height: 1.2;
   }
@@ -162,67 +152,55 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     display: block;
     color: var(--ink-500);
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 0.95rem;
+    font-size: clamp(1.05rem, 1.25vw, 1.25rem);
     font-style: italic;
     line-height: 1.2;
-    margin-block: 0.12rem 0.22rem;
-  }
-
-  .workshop-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.22rem;
-    margin: 0;
-    padding: 0;
+    margin-block: 0.2rem 0.35rem;
   }
 
   .title-primary {
     display: block;
-    color: var(--navy-900);
+    color: var(--navy-950);
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(1.18rem, 1.45vw, 1.5rem);
-    font-weight: 700;
+    font-size: clamp(1.5rem, 2.2vw, 2.15rem);
+    font-weight: 800;
     line-height: 1.24;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
     text-align: center;
+    margin: 0;
   }
 
   .title-secondary {
     display: block;
     color: var(--navy-900);
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(1.08rem, 1.3vw, 1.36rem);
+    font-size: clamp(1.18rem, 1.6vw, 1.55rem);
     font-weight: 700;
-    line-height: 1.24;
+    line-height: 1.28;
     letter-spacing: -0.005em;
     text-align: center;
-  }
-
-  /* Right column: 8–11 February 2027 */
-  .header-col-right {
-    justify-self: end;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 0.85rem;
-    min-width: 130px;
-    text-align: right;
+    margin: 0.35rem 0 0;
   }
 
   .workshop-date {
     display: block;
     color: var(--orange-600);
     font-family: var(--font-head);
-    font-size: 1rem;
+    font-size: clamp(1.08rem, 1.35vw, 1.28rem);
     font-weight: 800;
-    line-height: 1.2;
-    white-space: nowrap;
-    letter-spacing: -0.01em;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+    margin: 0.75rem 0 0;
+    text-align: center;
   }
 
-  .tablet-toggle {
+  /* Menu toggle for tablet and mobile */
+  .nav-toggle {
     display: none;
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
     background: var(--navy-900);
     color: #ffffff;
     border: 0;
@@ -233,33 +211,11 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     font-family: var(--font-head);
     font-weight: 700;
     font-size: 0.85rem;
-  }
-  .tablet-toggle:hover {
-    background: var(--blue-700);
-  }
-
-  .header-mobile-action {
-    display: none;
-  }
-
-  .mobile-menu-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    background: var(--navy-900);
-    color: #ffffff;
-    border: 0;
-    border-radius: var(--r-md);
-    padding: 0.55rem 1.35rem;
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 0.92rem;
     cursor: pointer;
     box-shadow: var(--shadow-sm);
     transition: background-color 0.15s ease;
   }
-  .mobile-menu-btn:hover {
+  .nav-toggle:hover {
     background: var(--blue-700);
   }
 
@@ -310,6 +266,8 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     border-bottom: 3px solid transparent;
     white-space: nowrap;
     transition: color 0.15s ease, background-color 0.15s ease;
+    cursor: pointer;
+    text-decoration: none;
   }
   .nav-link:hover {
     color: var(--blue-700);
@@ -360,11 +318,12 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     font-weight: 600;
     font-size: 0.9rem;
     color: var(--ink-600);
+    text-decoration: none;
     transition: background-color 0.12s ease, color 0.12s ease;
   }
   .dropdown-link:hover,
   .dropdown-link.active {
-    background: var(--blue-50);
+    background: var(--bg-soft);
     color: var(--blue-700);
   }
 
@@ -380,13 +339,13 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     top: 0;
     right: 0;
     height: 100dvh;
-    width: min(360px, 92vw);
+    width: min(340px, 85vw);
     background: #ffffff;
     z-index: 201;
     transform: translateX(100%);
     transition: transform 0.28s ease;
     overflow-y: auto;
-    box-shadow: -8px 0 30px rgba(11, 21, 51, 0.18);
+    box-shadow: -4px 0 24px rgba(11, 21, 51, 0.2);
   }
   .mobile-drawer.open {
     transform: translateX(0);
@@ -405,16 +364,12 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     font-size: 1.1rem;
   }
   .drawer-close {
-    background: rgba(255, 255, 255, 0.12);
+    background: none;
     border: 0;
     color: #ffffff;
-    width: 38px;
-    height: 38px;
-    display: grid;
-    place-items: center;
-    border-radius: var(--r-sm);
+    padding: 0.25rem;
+    cursor: pointer;
   }
-
   .drawer-list {
     list-style: none;
     margin: 0;
@@ -434,6 +389,8 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     background: none;
     text-align: left;
     border-radius: var(--r-sm);
+    cursor: pointer;
+    text-decoration: none;
   }
   .drawer-list a.active,
   .drawer-acc.active {
@@ -456,79 +413,59 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     padding: 0.7rem 1rem;
     color: var(--ink-500);
     border-left: 3px solid var(--line);
+    text-decoration: none;
+  }
+  .drawer-sub a.active {
+    color: var(--orange-600);
+    border-left-color: var(--orange-500);
+    font-weight: 600;
   }
 
   /* =========================================================================
      RESPONSIVE BREAKPOINTS
      ========================================================================= */
-  /* Tablet breakpoint: under 1160px, hide desktop nav bar and show tablet toggle */
   @media (max-width: 1160px) {
     .nav-bar {
       display: none;
     }
-    .tablet-toggle {
+    .nav-toggle {
       display: inline-flex;
     }
     .workshop-identity-inner {
-      padding-inline: 1.5rem;
+      padding-right: 6rem;
     }
   }
 
-  /* Mobile breakpoint: under 960px, switch from 3-column to clean stacked flow */
-  @media (max-width: 960px) {
-    .tablet-toggle {
-      display: none;
-    }
+  @media (max-width: 768px) {
     .workshop-identity-inner {
-      display: flex;
+      padding: 1.15rem 1rem 1.25rem;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 1.15rem 1.25rem 1.35rem;
-      gap: 0.8rem;
+      gap: 0.75rem;
     }
-    .header-col-left {
-      min-width: 0;
-      justify-content: center;
-    }
-    .brand-logo {
-      height: 48px;
-    }
-    .header-col-center {
-      width: 100%;
-      max-width: 100%;
-      padding-inline: 0.25rem;
+    .nav-toggle {
+      position: static;
+      transform: none;
+      margin-top: 0.25rem;
     }
     .workshop-kicker {
-      font-size: 0.76rem;
-      letter-spacing: 0.1em;
+      font-size: clamp(0.85rem, 3.2vw, 0.95rem);
+      letter-spacing: 0.12em;
     }
     .workshop-on {
-      font-size: 0.88rem;
-      margin-block: 0.1rem 0.18rem;
+      font-size: 1rem;
+      margin-block: 0.15rem 0.25rem;
     }
     .title-primary {
-      font-size: clamp(1.05rem, 3.8vw, 1.28rem);
-      line-height: 1.28;
+      font-size: clamp(1.28rem, 5.2vw, 1.65rem);
+      line-height: 1.25;
     }
     .title-secondary {
-      font-size: clamp(0.95rem, 3.4vw, 1.15rem);
+      font-size: clamp(1.05rem, 4.2vw, 1.3rem);
       line-height: 1.28;
     }
-    .header-col-right {
-      min-width: 0;
-      justify-content: center;
-      text-align: center;
-    }
     .workshop-date {
-      font-size: 0.95rem;
-      text-align: center;
-    }
-    .header-mobile-action {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      margin-top: 0.25rem;
+      font-size: clamp(1.05rem, 3.8vw, 1.18rem);
+      margin-top: 0.55rem;
     }
   }
 </style>
@@ -583,4 +520,3 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     document.querySelectorAll('.dropdown.open').forEach((d) => d.classList.remove('open'));
   });
 </script>
-
