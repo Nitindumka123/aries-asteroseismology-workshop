@@ -1,16 +1,187 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import { topics } from '../../data/site';
+
+const themes = [
+  {
+    num: '01',
+    label: 'Theme 01',
+    title: 'Application of Machine Learning (ML) and Artificial Intelligence (AI) for the classification of the different types of stellar variables',
+  },
+  {
+    num: '02',
+    label: 'Theme 02',
+    title: 'Synergy between asteroseismology and stellar cluster studies',
+  },
+  {
+    num: '03',
+    label: 'Theme 03',
+    title: 'Asteroseismology from space missions',
+  },
+  {
+    num: '04',
+    label: 'Theme 04',
+    title: 'Asteroseismic modeling',
+  },
+  {
+    num: '05',
+    label: 'Theme 05',
+    title: 'Application of high-resolution spectroscopy for asteroseismology',
+  },
+];
 ---
 <BaseLayout title="Workshop Theme">
-  <PageHeader eyebrow="Overview" title="Workshop Theme" intro="The five scientific themes guiding the workshop." />
-  <section class="section"><div class="container"><ol class="themes">{topics.map((topic, i) => <li><span>{String(i + 1).padStart(2, '0')}</span><p>{topic}</p></li>)}</ol></div></section>
+  <PageHeader
+    eyebrow="Overview"
+    title="Workshop Theme"
+    intro="The five foundational scientific themes defining the international workshop programme and research discussions."
+  />
+
+  <section class="section themes-section">
+    <div class="container">
+      <div class="themes-grid">
+        {themes.map((theme) => (
+          <article class="theme-card">
+            <div class="card-accent" aria-hidden="true"></div>
+            <div class="card-body">
+              <div class="theme-num-col">
+                <span class="theme-number">{theme.num}</span>
+                <span class="theme-badge">{theme.label}</span>
+              </div>
+              <div class="theme-text-col">
+                <h2 class="theme-heading">{theme.title}</h2>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
-  .themes { display: grid; gap: 1rem; max-width: 900px; margin: 0 auto; padding: 0; list-style: none; counter-reset: theme; }
-  .themes li { display: flex; gap: 1rem; align-items: flex-start; border: 1px solid var(--line); border-left: 4px solid var(--orange-500); border-radius: var(--r-md); padding: 1.25rem; background: #fff; box-shadow: var(--shadow-sm); }
-  .themes span { color: var(--orange-600); font-family: var(--font-head); font-weight: 800; }
-  .themes p { margin: 0; color: var(--navy-900); font-weight: 600; }
+  .themes-section {
+    background: #ffffff;
+    padding-top: clamp(2rem, 4vw, 3.5rem);
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .themes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 960px;
+    margin-inline: auto;
+  }
+
+  /* Premium Academic Theme Card */
+  .theme-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    box-shadow: 0 4px 16px -2px rgba(16, 29, 71, 0.05), 0 1px 3px rgba(16, 29, 71, 0.03);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .theme-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px -4px rgba(16, 29, 71, 0.09), 0 2px 6px rgba(16, 29, 71, 0.04);
+    border-color: rgba(30, 51, 127, 0.35);
+  }
+
+  /* Refined Top Accent */
+  .card-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--orange-500) 0%, var(--orange-400) 60%, var(--navy-800) 100%);
+  }
+
+  .card-body {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+    align-items: center;
+    padding: clamp(1.75rem, 3vw, 2.35rem) clamp(1.5rem, 3vw, 2.5rem);
+    box-sizing: border-box;
+  }
+
+  /* Left Column: Number & Badge */
+  .theme-num-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.75rem 0.5rem;
+    background: #f4f7fc;
+    border: 1px solid rgba(30, 51, 127, 0.12);
+    border-radius: var(--r-md);
+  }
+
+  .theme-number {
+    font-family: var(--font-head);
+    font-size: clamp(2.4rem, 3.2vw, 3rem);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--blue-700);
+    letter-spacing: -0.03em;
+  }
+
+  .theme-badge {
+    margin-top: 0.35rem;
+    font-family: var(--font-head);
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--orange-600);
+  }
+
+  /* Right Column: Clear, High-Contrast Typography */
+  .theme-text-col {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-heading {
+    margin: 0;
+    font-family: var(--font-head);
+    font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+    font-weight: 700;
+    color: var(--navy-950);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 680px) {
+    .card-body {
+      grid-template-columns: 1fr;
+      gap: 1.15rem;
+      padding: 1.5rem 1.25rem;
+      align-items: flex-start;
+    }
+
+    .theme-num-col {
+      flex-direction: row;
+      gap: 0.75rem;
+      padding: 0.5rem 1rem;
+      align-self: flex-start;
+    }
+
+    .theme-number {
+      font-size: 1.85rem;
+    }
+
+    .theme-badge {
+      margin-top: 0;
+      font-size: 0.8rem;
+    }
+
+    .theme-heading {
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+  }
 </style>

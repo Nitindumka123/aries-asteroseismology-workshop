@@ -57,11 +57,14 @@ import { soc, loc, convenor } from '../data/site';
         <span class="card-icon"><Icon name="users" size={24} /></span>
         <div>
           <span class="eyebrow">Local Arrangements</span>
-          <h2>{loc.title}</h2>
-          <p class="muted">Coordinated by Delhi University, IIT Delhi and ARIES Nainital for venue management, delegate hospitality, and local transport.</p>
+          <h2>Local Organizing Committee (LOC)</h2>
+          <p class="muted">Details will be updated soon.</p>
         </div>
       </div>
-      <MemberGrid members={loc.members} highlightRoles={['Chair']} />
+      <div class="loc-update-box" role="status">
+        <p class="loc-update-title">Local Organizing Committee (LOC)</p>
+        <p class="loc-update-text">Details will be updated soon as local arrangements are finalized.</p>
+      </div>
     </div>
   </section>
 
@@ -77,5 +80,24 @@ import { soc, loc, convenor } from '../data/site';
     .conv-affil { color: var(--ink-600); font-size: 0.95rem; margin: 0 0 0.4rem; display: inline-flex; align-items: center; gap: 0.4rem; }
     .conv-mail { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; color: var(--blue-700); }
     .conv-mail:hover { color: var(--orange-600); }
+    .loc-update-box {
+      background: var(--bg-soft);
+      border: 1px dashed var(--line);
+      border-radius: var(--r-md);
+      padding: 1.5rem 1.75rem;
+      max-width: 620px;
+    }
+    .loc-update-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      color: var(--navy-900);
+      margin: 0 0 0.35rem;
+      font-size: 1.05rem;
+    }
+    .loc-update-text {
+      color: var(--ink-500);
+      margin: 0;
+      font-size: 0.95rem;
+    }
   </style>
 </BaseLayout>

@@ -1,7 +1,86 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../../components/PageHeader.astro';
+import Icon from '../../components/Icon.astro';
 ---
-<BaseLayout title="Key Speakers"><PageHeader eyebrow="Programme" title="Key Speakers" intro="Confirmed speaker information will be published here." /><section class="section"><div class="container narrow"><p class="placeholder">Details will be provided soon.</p></div></section></BaseLayout>
+<BaseLayout title="Key Speakers">
+  <PageHeader
+    eyebrow="Programme"
+    title="Key Speakers"
+    intro="Invited scientific speakers, keynote lecturers, and session leaders."
+  />
 
-<style>.placeholder { padding: 1.25rem; border-left: 4px solid var(--orange-500); background: var(--orange-50); color: var(--navy-900); font-family: var(--font-head); font-weight: 700; }</style>
+  <section class="section">
+    <div class="container coming-soon-container">
+      <div class="status-card">
+        <div class="status-icon" aria-hidden="true">
+          <Icon name="mic" size={32} />
+        </div>
+        <h2 class="status-title">Key Speakers</h2>
+        <p class="status-message">Details will be provided soon.</p>
+        <p class="status-note">
+          The confirmed line-up of keynote speakers, invited lectures, and plenary session leads will be published once the technical programme is finalized.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .coming-soon-container {
+    max-width: 680px;
+    margin-inline: auto;
+    padding-block: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .status-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--blue-700);
+    border-radius: var(--r-lg);
+    box-shadow: 0 4px 20px -2px rgba(16, 29, 71, 0.06);
+    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.75rem, 4vw, 2.75rem);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .status-icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: #eef3ff;
+    border: 1px solid rgba(30, 51, 127, 0.2);
+    color: var(--blue-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .status-title {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-head);
+    font-size: clamp(1.4rem, 2vw, 1.75rem);
+    font-weight: 700;
+    color: var(--navy-950);
+  }
+
+  .status-message {
+    margin: 0 0 1rem;
+    font-family: var(--font-head);
+    font-size: clamp(1.1rem, 1.4vw, 1.28rem);
+    font-weight: 600;
+    color: var(--blue-700);
+  }
+
+  .status-note {
+    margin: 0;
+    color: var(--ink-700);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    max-width: 480px;
+  }
+</style>

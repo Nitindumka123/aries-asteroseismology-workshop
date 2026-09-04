@@ -1,14 +1,150 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../../components/PageHeader.astro';
+import Icon from '../../components/Icon.astro';
 ---
 <BaseLayout title="Information to Participants">
-  <PageHeader eyebrow="Overview" title="Information to Participants" intro="Presentation and conduct guidance for workshop participants." />
-  <section class="section"><div class="container prose participant-info">
-    <h2>POSTER</h2><ul><li>A0 portrait physical poster.</li><li>Title/name should be prominent.</li><li>Include authors and email/contact information.</li><li>Content should be readable from approximately 2 metres.</li></ul>
-    <h2>ORAL PRESENTATION</h2><ul><li>LOC-provided laptops.</li><li>Speakers should test/copy their presentation beforehand.</li><li>Arrive approximately 15 minutes early.</li><li>Respect the allocated presentation duration.</li></ul>
-    <h2>CODE OF CONDUCT</h2><ul><li>Professional, considerate, respectful, and collaborative conduct is expected.</li><li>Maintain an inclusive environment.</li><li>No intimidation, hostility, or offensive environment.</li><li>No physical or verbal abuse.</li><li>No harassment, intimidation, or discrimination.</li><li>Participants should speak up/report concerns.</li><li>LOC can assist when needed.</li></ul>
-  </div></section>
+  <PageHeader
+    eyebrow="Overview"
+    title="Information to Participants"
+    intro="Guidelines, presentation specifications, and code of conduct for all registered participants and delegates."
+  />
+
+  <section class="section">
+    <div class="container info-layout">
+      <!-- Section 1: Posters -->
+      <article class="info-card">
+        <div class="info-card-header">
+          <div class="info-icon" aria-hidden="true">
+            <Icon name="file-text" size={22} />
+          </div>
+          <div>
+            <span class="info-kicker">Presentation Format</span>
+            <h2 class="info-title">Poster Presentations</h2>
+          </div>
+        </div>
+        <ul class="info-list">
+          <li><strong>Dimensions:</strong> Standard A0 format, strictly portrait orientation.</li>
+          <li><strong>Heading &amp; Identity:</strong> Poster title and presenter name should be prominent at the top.</li>
+          <li><strong>Authors &amp; Contact:</strong> Include complete co-author names, institutional affiliations, and corresponding email addresses.</li>
+          <li><strong>Readability:</strong> Visuals, diagrams, and typography should be legible from an viewing distance of approximately 2 metres.</li>
+        </ul>
+      </article>
+
+      <!-- Section 2: Oral Presentations -->
+      <article class="info-card">
+        <div class="info-card-header">
+          <div class="info-icon" aria-hidden="true">
+            <Icon name="award" size={22} />
+          </div>
+          <div>
+            <span class="info-kicker">Session Guidelines</span>
+            <h2 class="info-title">Oral Presentations</h2>
+          </div>
+        </div>
+        <ul class="info-list">
+          <li><strong>Audio-Visual Equipment:</strong> LOC-provided presentation laptops and digital projectors are available in the main lecture hall.</li>
+          <li><strong>Pre-Session Testing:</strong> Speakers must test and copy their slide deck to the session computer before their session begins.</li>
+          <li><strong>Reporting Time:</strong> Please arrive in the hall at least 15 minutes prior to the scheduled start of your technical session.</li>
+          <li><strong>Timing Discipline:</strong> Adhere strictly to the allocated presentation duration to ensure adequate time for Q&amp;A and discussion.</li>
+        </ul>
+      </article>
+
+      <!-- Section 3: Code of Conduct -->
+      <article class="info-card">
+        <div class="info-card-header">
+          <div class="info-icon" aria-hidden="true">
+            <Icon name="shield" size={22} />
+          </div>
+          <div>
+            <span class="info-kicker">Community Standards</span>
+            <h2 class="info-title">Code of Conduct</h2>
+          </div>
+        </div>
+        <ul class="info-list">
+          <li><strong>Professionalism &amp; Respect:</strong> Professional, considerate, and respectful conduct is expected of all participants at all times.</li>
+          <li><strong>Inclusive Environment:</strong> We are committed to fostering an inclusive, welcoming scientific forum free of hostility or intimidation.</li>
+          <li><strong>Zero Tolerance:</strong> Verbal or physical abuse, harassment, intimidation, or discrimination will not be tolerated.</li>
+          <li><strong>Reporting &amp; Assistance:</strong> Participants should immediately report any safety or conduct concerns to the LOC desk for assistance.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
 </BaseLayout>
 
-<style>.participant-info { max-width: 900px; margin-inline: auto; min-width: 0; }.participant-info h2:not(:first-child) { margin-top: 2.5rem; }</style>
+<style>
+  .info-layout {
+    max-width: 900px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .info-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    box-shadow: 0 3px 12px -2px rgba(16, 29, 71, 0.04);
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+  }
+
+  .info-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .info-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--r-md);
+    background: #eef3ff;
+    border: 1px solid rgba(30, 51, 127, 0.15);
+    color: var(--blue-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .info-kicker {
+    display: block;
+    font-family: var(--font-head);
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--blue-700);
+    margin-bottom: 0.15rem;
+  }
+
+  .info-title {
+    margin: 0;
+    font-family: var(--font-head);
+    font-size: clamp(1.2rem, 1.5vw, 1.4rem);
+    font-weight: 700;
+    color: var(--navy-950);
+  }
+
+  .info-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .info-list li {
+    color: var(--ink-700);
+    line-height: 1.6;
+    font-size: 0.98rem;
+  }
+
+  .info-list strong {
+    color: var(--navy-900);
+  }
+</style>

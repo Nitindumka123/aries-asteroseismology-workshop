@@ -101,8 +101,6 @@ export const nav = [
   {
     label: 'Venue & Travel',
     children: [
-      { label: 'Venue & Local Info', href: '/venue' },
-      { label: 'Travel Details', href: '/venue-and-travel' },
       { label: 'Accommodation', href: '/accommodation' },
     ],
   },
@@ -114,12 +112,7 @@ export const nav = [
       { label: 'Guidelines', href: '/guidelines' },
     ],
   },
-  {
-    label: 'Excursion & Social',
-    children: [
-      { label: 'Agra Taj Mahal Excursion', href: '/excursion' },
-    ],
-  },
+  { label: 'Taj Mahal Agra Excursion', href: '/excursion' },
 ];
 
 // ---- Carousel (Real, licensed campus & conference images) ------------------

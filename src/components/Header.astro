@@ -120,9 +120,9 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 1320px;
+    max-width: 1380px;
     margin-inline: auto;
-    padding: 1.6rem 2rem 1.45rem;
+    padding: 1.5rem 1.75rem 1.35rem;
     box-sizing: border-box;
     text-align: center;
   }
@@ -132,7 +132,7 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 1080px;
+    max-width: 1320px;
     width: 100%;
     margin: 0 auto;
   }
@@ -141,7 +141,7 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     display: block;
     color: var(--orange-600);
     font-family: var(--font-head);
-    font-size: clamp(0.92rem, 1.12vw, 1.12rem);
+    font-size: clamp(0.88rem, 1.05vw, 1.08rem);
     font-weight: 800;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -152,17 +152,18 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     display: block;
     color: var(--ink-500);
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(1.05rem, 1.25vw, 1.25rem);
+    font-size: clamp(0.98rem, 1.15vw, 1.18rem);
     font-style: italic;
     line-height: 1.2;
     margin-block: 0.2rem 0.35rem;
   }
 
+  /* Exactly 2 lines: Line 1 (primary) and Line 2 (secondary) */
   .title-primary {
     display: block;
     color: var(--navy-950);
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(1.5rem, 2.2vw, 2.15rem);
+    font-size: clamp(1.08rem, 1.68vw, 1.75rem);
     font-weight: 800;
     line-height: 1.24;
     letter-spacing: -0.015em;
@@ -174,12 +175,19 @@ const groupActive = (children?: { href: string }[]) => !!children?.some((c) => i
     display: block;
     color: var(--navy-900);
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(1.18rem, 1.6vw, 1.55rem);
+    font-size: clamp(0.95rem, 1.28vw, 1.35rem);
     font-weight: 700;
     line-height: 1.28;
     letter-spacing: -0.005em;
     text-align: center;
     margin: 0.35rem 0 0;
+  }
+
+  @media (min-width: 820px) {
+    .title-primary,
+    .title-secondary {
+      white-space: nowrap;
+    }
   }
 
   .workshop-date {
