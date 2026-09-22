@@ -15,7 +15,7 @@ export const event = {
   dates: '8–11 February 2027',
   datesShort: '8–11 Feb 2027',
   year: '2027',
-  venue: 'Institute of Informatics and Communication, South Campus, New Delhi',
+  venue: 'Indian Institute of Technology Delhi (IIT Delhi), Hauz Khas, New Delhi - 110016, India',
   seats: 'Invitation only',
   duration: '8–11 February 2027',
   tagline:
@@ -39,10 +39,10 @@ export const institute = {
 };
 
 export const host = {
-  name: 'South Campus',
-  acronym: 'South Campus',
-  note: 'Host campus for the International Workshop at the Institute of Informatics and Communication, South Campus, New Delhi.',
-  location: 'South Campus, New Delhi',
+  name: 'Indian Institute of Technology Delhi',
+  acronym: 'IIT Delhi',
+  note: 'Host campus for the International Workshop at Indian Institute of Technology Delhi (IIT Delhi), Hauz Khas, New Delhi.',
+  location: 'Hauz Khas, New Delhi - 110016, India',
 };
 
 export const partners = [
@@ -68,7 +68,7 @@ export const nav = [
   {
     label: 'Overview',
     children: [
-      { label: 'Scientific Rationale', href: '/overview/scientific-rationale' },
+      { label: 'Scientific Rationale & Objective', href: '/overview/scientific-rationale' },
       { label: 'Workshop Theme', href: '/overview/workshop-theme' },
       { label: 'Information to Participants', href: '/overview/information-to-participants' },
     ],
@@ -165,25 +165,25 @@ export const soc = {
 export const loc = {
   title: 'Local Organizing Committee (LOC)',
   members: [
-    { name: 'Dr. M. K. Das', role: 'Chair', affil: 'IIC, South Campus' },
+    { name: 'Dr. M. K. Das', role: 'Chair', affil: 'New Delhi' },
     { name: 'Dr. Satish K. Dubey', role: 'Member', affil: 'IIT Delhi' },
-    { name: 'Dr. Manoj Sharma', role: 'Member', affil: 'South Campus' },
-    { name: 'Dr. Sanjeev Singh', role: 'Member', affil: 'South Campus' },
-    { name: 'Dr. Mainpal Rajan', role: 'Member', affil: 'Venkateswar College, South Campus' },
+    { name: 'Dr. Manoj Sharma', role: 'Member', affil: 'New Delhi' },
+    { name: 'Dr. Sanjeev Singh', role: 'Member', affil: 'New Delhi' },
+    { name: 'Dr. Mainpal Rajan', role: 'Member', affil: 'Venkateswar College, New Delhi' },
     { name: 'Dr. Santosh Joshi', role: 'Member', affil: 'ARIES, Nainital' },
     { name: 'Dr. Sangeeta Baksi', role: 'Member', affil: 'ARIES, Nainital' },
     { name: 'Dr. Govind Nandkumar', role: 'Member', affil: 'ARIES, Nainital' },
   ],
 };
 
-// ---- Travel (South Campus) --------------------------------
+// ---- Travel (IIT Delhi) --------------------------------
 export const travel = {
-  mapUrl: 'https://maps.google.com/?q=Institute+of+Informatics+%26+Communication+(IIC)+South+Campus+Benito+Juarez+Marg+New+Delhi+110021+India',
+  mapUrl: 'https://maps.google.com/?q=Indian+Institute+of+Technology+Delhi+Hauz+Khas+New+Delhi+110016+India',
   points: [
-    { mode: 'By Air', place: 'Indira Gandhi International (IGI) Airport (approx. 8–10 km)' },
-    { mode: 'By Rail', place: 'New Delhi / Old Delhi / Hazrat Nizamuddin Stations' },
-    { mode: 'By Metro', place: 'Durgabai Deshmukh South Campus (Pink Line) / Dhaula Kuan (Airport Express)' },
-    { mode: 'By Road', place: 'Benito Juarez Marg / Dhaula Kuan arterial road network' },
+    { mode: 'By Air', place: 'Indira Gandhi International (IGI) Airport (DEL)' },
+    { mode: 'By Rail', place: 'New Delhi (NDLS) / Hazrat Nizamuddin (NZM) / Old Delhi (DLI) Stations' },
+    { mode: 'By Metro', place: 'IIT Delhi Metro Station (Magenta Line) / Hauz Khas Metro Station (Yellow & Magenta Line Interchange)' },
+    { mode: 'By Road', place: 'Outer Ring Road / Sri Aurobindo Marg, Hauz Khas, New Delhi' },
   ],
 };
 
@@ -193,7 +193,7 @@ export const contacts = {
     { name: 'Dr. Santosh Joshi', role: 'Convenor of the Workshop & co-Chair SOC', email: 'santosh@aries.res.in', affil: 'ARIES, Nainital' },
   ],
   locLeadership: [
-    { name: 'Dr. M. K. Das', role: 'Chair, Local Organizing Committee', affil: 'IIC, South Campus' },
+    { name: 'Dr. M. K. Das', role: 'Chair, Local Organizing Committee', affil: 'New Delhi' },
     { name: 'Dr. Satish K. Dubey', role: 'LOC Member & Joint Organiser', affil: 'IIT Delhi' },
   ],
   scientific: [
@@ -244,13 +244,13 @@ export const participants = [
   { no: 30, name: 'Dr. D. S. Mehta', affil: 'IIT Delhi', country: 'India' },
   { no: 31, name: 'Dr. Devasmita Dwibedi', affil: 'IIT Jodhpur', country: 'India' },
   { no: 32, name: 'Dr. Naveen Dwivedi', affil: 'IIIT Vadodara', country: 'India' },
-  { no: 33, name: 'Dr. H. P. Singh', affil: 'South Campus', country: 'India' },
-  { no: 34, name: 'Dr. Subhash Kumar', affil: 'South Campus', country: 'India' },
-  { no: 35, name: 'Dr. Arun Awasthi', affil: 'South Campus', country: 'India' },
-  { no: 36, name: 'Dr. Mainpal Rajan', affil: 'South Campus', country: 'India' },
-  { no: 37, name: 'Mr. Manoj Sharma', affil: 'South Campus', country: 'India' },
-  { no: 38, name: 'Dr. M. K. Das', affil: 'South Campus', country: 'India' },
-  { no: 39, name: 'Dr. Sanjeev Singh', affil: 'South Campus', country: 'India' },
+  { no: 33, name: 'Dr. H. P. Singh', affil: 'New Delhi', country: 'India' },
+  { no: 34, name: 'Dr. Subhash Kumar', affil: 'New Delhi', country: 'India' },
+  { no: 35, name: 'Dr. Arun Awasthi', affil: 'New Delhi', country: 'India' },
+  { no: 36, name: 'Dr. Mainpal Rajan', affil: 'New Delhi', country: 'India' },
+  { no: 37, name: 'Mr. Manoj Sharma', affil: 'New Delhi', country: 'India' },
+  { no: 38, name: 'Dr. M. K. Das', affil: 'New Delhi', country: 'India' },
+  { no: 39, name: 'Dr. Sanjeev Singh', affil: 'New Delhi', country: 'India' },
   { no: 40, name: 'Dr. Drishya K.', affil: 'University of Calicut', country: 'India' },
   { no: 41, name: 'Dr. Mathew Blesson', affil: 'Christ University', country: 'India' },
   { no: 42, name: 'Dr. Suman Bhattacharya', affil: 'Christ University', country: 'India' },

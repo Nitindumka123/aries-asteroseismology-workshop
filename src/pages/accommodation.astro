@@ -1,71 +1,136 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import Icon from '../components/Icon.astro';
 ---
 
 <BaseLayout title="Accommodation | Logistics">
   <PageHeader
     eyebrow="Logistics"
     title="Accommodation"
+    intro="Information on accommodation arrangements for workshop participants at IIT Delhi."
   />
 
   <section class="section" style="padding-top: 0.5rem;">
-    <div class="container narrow">
-      <article class="empty-state-card">
-        <div class="icon-bubble" aria-hidden="true">
-          <Icon name="building" size={32} />
+    <div class="container content-wrap">
+      <article class="accommodation-card">
+        <h2 class="main-heading">Accommodation Details</h2>
+
+        <p class="intro-paragraph">
+          Accommodation information will be provided based on the arrangements confirmed for workshop participants.
+        </p>
+
+        <div class="info-block">
+          <h3 class="section-subheading">IIT Delhi Guest Houses</h3>
+          <p class="body-paragraph">
+            The Indian Institute of Technology Delhi (IIT Delhi) campus features guest houses, including:
+          </p>
+          <ul class="guest-house-list">
+            <li>Gulmohar Guest House</li>
+            <li>Amaltas Guest House</li>
+          </ul>
+          <p class="body-note">
+            Please note that availability and room allocation in campus guest houses are subject to the institute's applicable arrangements and confirmation for registered participants.
+          </p>
         </div>
-        <h2 class="empty-title">Accommodation</h2>
-        <p class="status-badge-text">Will be updated soon.</p>
+
+        <div class="status-note-box">
+          <p class="status-text">
+            Further updates regarding confirmed accommodation arrangements and guidelines will be shared directly with registered participants.
+          </p>
+        </div>
       </article>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .empty-state-card {
-    background: #ffffff;
-    border: 1px solid var(--line);
-    border-radius: var(--r-lg);
-    padding: clamp(2.5rem, 5vw, 3.5rem) 2rem;
-    box-shadow: var(--shadow-sm);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 600px;
+  .content-wrap {
+    max-width: 860px;
     margin-inline: auto;
   }
 
-  .icon-bubble {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: var(--blue-50);
-    color: var(--blue-700);
-    display: grid;
-    place-items: center;
-    margin-bottom: 1.25rem;
-  }
-
-  .empty-title {
-    margin: 0 0 1rem;
-    font-size: clamp(1.4rem, 2.5vw, 1.75rem);
-    color: var(--navy-950);
-    font-weight: 700;
-  }
-
-  .status-badge-text {
-    display: inline-block;
-    font-family: var(--font-head);
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--ink-700);
-    background: #f1f5f9;
-    padding: 0.5rem 1.25rem;
-    border-radius: 9999px;
-    margin: 0;
+  .accommodation-card {
+    background: #ffffff;
     border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: clamp(1.5rem, 3.5vw, 2.5rem);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .main-heading {
+    margin: 0 0 1.5rem;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 800;
+    color: var(--navy-950);
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--line);
+  }
+
+  .intro-paragraph {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--navy-950);
+    font-weight: 500;
+    margin-bottom: 1.75rem;
+  }
+
+  .info-block {
+    margin-bottom: 2rem;
+  }
+
+  .section-subheading {
+    margin: 0 0 0.85rem;
+    font-family: var(--font-head);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-500);
+  }
+
+  .body-paragraph {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+    color: var(--navy-900);
+    line-height: 1.6;
+  }
+
+  .guest-house-list {
+    margin: 0 0 1rem;
+    padding-left: 1.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    color: var(--navy-950);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .body-note {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink-700);
+    line-height: 1.6;
+    background: #f8fafc;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 1rem 1.25rem;
+  }
+
+  .status-note-box {
+    background: #f0f7ff;
+    border: 1px solid #bfdbfe;
+    border-radius: var(--r-md);
+    padding: 1rem 1.25rem;
+  }
+
+  .status-text {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--blue-900);
+    font-weight: 500;
+    line-height: 1.5;
   }
 </style>
