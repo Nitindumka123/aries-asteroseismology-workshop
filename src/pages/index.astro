@@ -116,8 +116,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .poster-wrapper {
-    width: 100%;
-    max-width: 680px;
+    width: 94%;
+    max-width: 900px;
     margin-inline: auto;
     display: flex;
     justify-content: center;
@@ -125,13 +125,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .poster-image {
     width: 100%;
-    max-width: 680px;
+    max-width: 100%;
     height: auto;
     display: block;
     border-radius: 10px;
     box-shadow: 0 4px 6px -1px rgba(16, 29, 71, 0.07), 0 14px 30px -4px rgba(16, 29, 71, 0.13);
     border: 1px solid rgba(16, 29, 71, 0.1);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  @media (min-width: 768px) {
+    .poster-wrapper {
+      width: 78%;
+    }
   }
 
   .poster-image:hover {
