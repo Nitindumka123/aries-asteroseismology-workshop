@@ -10,7 +10,7 @@ export interface Props {
 }
 const { title, description } = Astro.props;
 const fullTitle = title === 'Home'
-  ? `${event.name} | ${institute.acronym} Nainital, IIT Delhi & Delhi University`
+  ? `${event.name} | ${institute.acronym} Nainital & IIT Delhi`
   : `${title} | ${event.name}`;
 const desc = description ?? `${event.name} — jointly organised by ${event.organisers}, ${event.dates}. ${event.tagline}`;
 ---

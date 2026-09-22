@@ -7,7 +7,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container poster-container">
       <div class="poster-wrapper">
         <img
-          src="/images/brics.png"
+          src="/images/poster.png"
           alt="International Workshop on Synergistic Investigation of Stellar Clusters and Asteroseismology using High-Resolution Spectroscopy and Space Photometry — Official Workshop Poster"
           class="poster-image"
           width="1056"
@@ -46,27 +46,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </article>
 
-        <!-- CARD 2: University of Delhi -->
-        <article class="organisation-card">
-          <div class="card-accent" aria-hidden="true"></div>
-          <div class="card-inner">
-            <div class="card-logo-area">
-              <img
-                src="/images/du-logo.jpg"
-                alt="University of Delhi official logo"
-                class="org-logo du-logo"
-                width="125"
-                height="100"
-                loading="eager"
-              />
-            </div>
-            <div class="card-name-area">
-              <h3 class="org-name">University of Delhi</h3>
-            </div>
-          </div>
-        </article>
-
-        <!-- CARD 3: IIT Delhi -->
+        <!-- CARD 2: IIT Delhi -->
         <article class="organisation-card">
           <div class="card-accent" aria-hidden="true"></div>
           <div class="card-inner">
@@ -180,12 +160,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     letter-spacing: -0.015em;
   }
 
-  /* 3 Equal Cards Grid: Clean maximum-width container */
+  /* 2 Equal Cards Grid: Clean maximum-width container */
   .organisers-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: clamp(1.5rem, 2.5vw, 2rem);
-    max-width: 1060px;
+    max-width: 720px;
     margin-inline: auto;
   }
 
@@ -260,11 +240,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .aries-logo {
     max-width: 185px;
     max-height: 90px;
-  }
-
-  .du-logo {
-    max-width: 125px;
-    max-height: 102px;
   }
 
   .iit-logo {

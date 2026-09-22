@@ -10,11 +10,14 @@ import PageHeader from '../../components/PageHeader.astro';
   />
 
   <section class="section">
-    <div class="container">
+    <div class="container content-wrap">
+      
+      <!-- BOX 1: SCIENTIFIC RATIONALE -->
       <article class="rationale-card">
+        <h2 class="card-heading">Scientific Rationale</h2>
         <div class="rationale-content prose">
           <p class="lead-text">
-            Understanding how stars form, evolve and die is one of the main goals of modern astrophysics. Asteroseismology, the study of stellar internal oscillations, offers a unique window into the deep interiors of stars. Space missions such as Kepler, GAIA, TESS and high-resolution spectroscopic observations have revolutionized our understanding of stellar physics by detecting pressure and gravity modes. Interpreting these observations using modelling allows us to probe internal stellar processes from the core to the surface and infer the basic parameters such as effective temperature, surface gravity, differential rotation, chemical composition, and mixing. The chemically peculiar (CP) stars are a group of main-sequence B-, A-, and F-type stars with unusual surface elemental abundances and abnormal spectral line strengths. The CP stars are important testbeds for understanding the interactions among pulsation, rotation, binarity, and chemical inhomogeneities in intermediate-mass stars. Star clusters provide ideal laboratories for testing the stellar evolution theory. Because the members of the star clusters share a common age, distance and chemical composition, their position in the H-R diagram offers unique constraints for the stellar modeling. The star cluster provides masses, luminosities and ages that can reduce the degeneracies in stellar modelling; however, asteroseismology reveals the internal physics that governs the evolutionary path of the cluster members. Despite the transformative successes of both the cluster and asteroseismology, particularly of the CP stars, the two fields have largely evolved in parallel and their synergy represents a natural step in astrophysics.
+            Understanding how stars form, evolve and die is one of the main goals of modern astrophysics. Asteroseismology, the study of stellar internal oscillations, offers a unique window to look into the deep interiors of stars. Space missions such as Kepler, Gaia, and TESS, along with ground-based high-resolution spectroscopic facilities, have revolutionized our understanding of stellar physics by detecting pressure and gravity modes. Interpreting these photometric and spectroscopic observations using modelling allows us to probe internal stellar processes from the core to the surface and infer the basic parameters such as effective temperature, surface gravity, differential rotation, chemical composition, and mixing. The chemically peculiar (CP) stars are a group of main-sequence B-, A-, and F-type stars with unusual surface elemental abundances and abnormal spectral line strengths. The CP stars are important testbeds for understanding pulsation, rotation, and binarity in the presence of chemical inhomogeneities in intermediate-mass stars. Star clusters provide ideal laboratories for testing the stellar evolution theory. Because the members of the star clusters share a common age, distance and chemical composition, their position in the H-R diagram offers unique constraints for the stellar modeling. The star cluster provides masses, luminosities and ages that can reduce the degeneracies in stellar modelling; however, asteroseismology reveals the internal physics that governs the evolutionary path of the cluster members. Despite the transformative successes of both the cluster and asteroseismology, particularly of the CP stars, the two fields have largely evolved in parallel and their synergy represents a natural step in astrophysics.
           </p>
 
           <div class="aim-divider" aria-hidden="true"></div>
@@ -24,20 +27,56 @@ import PageHeader from '../../components/PageHeader.astro';
           </p>
         </div>
       </article>
+
+      <!-- BOX 2: OBJECTIVE -->
+      <article class="rationale-card">
+        <h2 class="card-heading">Objective</h2>
+        <div class="rationale-content prose">
+          <p class="objective-paragraph">
+            Following two decades since the inception of the BRICS organisation, India resumed the presidency for the fourth occasion in 2026 and hosted the 18th BRICS summit on 12-13 September 2026 in New Delhi. Subsequent to these occurrences, the 12th Meeting of the BRICS Astronomy Working Group is likely to take place from 26 to 30 October 2026 at the Inter-University Centre for Astronomy and Astrophysics, Pune. Following these events, hosting an international conference at Delhi University South Campus from 8 to 11 February 2027 would signify another milestone in the BRICS endeavours.
+          </p>
+
+          <p class="objective-paragraph">
+            The primary objective of organising this workshop is to foster synergistic research between asteroseismology and stellar cluster studies by leveraging existing ground- and space-based observational resources to formulate a strategy for future missions and datasets that can be addressed by engaging astronomers from different parts of the globe to pinpoint the most promising avenues for joint research in forthcoming decades. Bringing together experts working in the area of observational and theoretical Asteroseismology from various regions of the globe will open novel collaborative opportunities in the realm of space sciences. Establishing a global partnership for automated identification and classification through the use of innovative machine learning (ML) and artificial intelligence (AI) methodologies on extensive sky surveys generating big data sets and in-depth analysis of variable sources constitutes an additional objective of this strive.
+          </p>
+
+          <p class="objective-paragraph">
+            The proposed international workshop will have a strong impact on the research trajectories of the national PhD and postdoctoral researchers, facilitating the enhancement of their knowledge and concepts through engagement with globally esteemed scientists possessing extensive experience in their disciplines. The present proposal is not only significant for producing collaborative scientific results but also crucial for forging a lasting long-term partnership and synergy among the partner institutions in science, technology, observational facilities, methodology, machine learning strategies, data acquisition, analysis and large data set management. This multinational initiative aims to stimulate dialogue on the development of new observational and computational facilities and their optimal utilisation, thereby enhancing our current understanding within the BRICS community. The face-to-face interactions during the workshop will not only reinforce the ongoing collaboration but also cultivate new partnerships within the BRICS consortium and beyond.
+          </p>
+        </div>
+      </article>
+
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .rationale-card {
+  .content-wrap {
     max-width: 880px;
     margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .rationale-card {
     background: #ffffff;
     border: 1px solid var(--line);
     border-radius: var(--r-lg);
     box-shadow: 0 4px 20px -2px rgba(16, 29, 71, 0.05);
     padding: clamp(1.8rem, 3.5vw, 2.75rem);
     box-sizing: border-box;
+  }
+
+  .card-heading {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-head);
+    font-size: clamp(1.35rem, 2.2vw, 1.6rem);
+    font-weight: 800;
+    color: var(--navy-950);
+    line-height: 1.3;
+    letter-spacing: -0.015em;
   }
 
   .rationale-content {
@@ -66,12 +105,21 @@ import PageHeader from '../../components/PageHeader.astro';
     font-weight: 500;
   }
 
+  .objective-paragraph {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    text-align: justify;
+    text-justify: inter-word;
+    color: var(--ink-700);
+  }
+
   @media (max-width: 640px) {
     .rationale-card {
       padding: 1.4rem 1.1rem;
     }
     .lead-text,
-    .aim-text {
+    .aim-text,
+    .objective-paragraph {
       text-align: left;
     }
   }

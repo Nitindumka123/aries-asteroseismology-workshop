@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import Icon from '../components/Icon.astro';
 
-const mapSearchQuery = 'Institute of Informatics & Communication (IIC), University of Delhi South Campus, Benito Juarez Marg, New Delhi, Delhi 110021, India';
+const mapSearchQuery = 'Institute of Informatics & Communication (IIC), South Campus, Benito Juarez Marg, New Delhi, Delhi 110021, India';
 const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(mapSearchQuery)}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
 const mapExternalUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapSearchQuery)}`;
 ---
@@ -30,12 +30,12 @@ const mapExternalUrl = `https://www.google.com/maps/search/?api=1&query=${encode
 
           <div class="address-box">
             <p class="address-line campus-line">
-              LIBRARY, UNIVERSITY OF DELHI SOUTH CAMPUS, South Campus, South Moti Bagh, New Delhi, Delhi 110021, India
+              LIBRARY, South Campus, South Moti Bagh, New Delhi, Delhi 110021, India
             </p>
             <div class="address-divider"></div>
             <p class="address-line postal-line">
               Institute of Informatics &amp; Communication (IIC)<br />
-              University of Delhi, South Campus<br />
+              South Campus<br />
               Benito Juarez Marg<br />
               New Delhi - 110021, India
             </p>
@@ -65,7 +65,7 @@ const mapExternalUrl = `https://www.google.com/maps/search/?api=1&query=${encode
 
           <div class="map-frame-wrapper">
             <iframe
-              title="Google Map: Institute of Informatics & Communication (IIC), University of Delhi South Campus"
+              title="Google Map: Institute of Informatics & Communication (IIC), South Campus"
               src={mapEmbedUrl}
               class="map-iframe"
               loading="lazy"

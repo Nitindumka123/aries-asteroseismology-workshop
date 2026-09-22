@@ -3,7 +3,7 @@
 // Authoritative source: Proposal for Organizing an International Workshop on
 // Synergistic Investigation of Stellar Clusters and Asteroseismology using
 // High-resolution Spectroscopy and Space Photometry (8–11 February 2027)
-// Jointly organized by ARIES, Delhi University & IIT Delhi
+// Jointly organized by ARIES & IIT Delhi
 // Sponsored by Department of Science and Technology (DST), Govt. of India
 // (Under the project DST/ICD/Call-5/BRICS/SAPTARISI/2023/G)
 // =============================================================================
@@ -11,11 +11,11 @@
 export const event = {
   name: 'Synergistic Investigation of Stellar Clusters and Asteroseismology using High-resolution Spectroscopy and Space Photometry',
   shortName: 'Stellar Clusters · Asteroseismology · Spectroscopy',
-  organisers: 'ARIES, Delhi University & IIT Delhi',
+  organisers: 'ARIES & IIT Delhi',
   dates: '8–11 February 2027',
   datesShort: '8–11 Feb 2027',
   year: '2027',
-  venue: 'Institute of Informatics and Communication, Delhi University, South Campus, New Delhi',
+  venue: 'Institute of Informatics and Communication, South Campus, New Delhi',
   seats: 'Invitation only',
   duration: '8–11 February 2027',
   tagline:
@@ -39,10 +39,10 @@ export const institute = {
 };
 
 export const host = {
-  name: 'Delhi University, South Campus',
-  acronym: 'Delhi University',
-  note: 'Host campus for the International Workshop at the Institute of Informatics and Communication, Delhi University, South Campus, New Delhi.',
-  location: 'Delhi University, South Campus, New Delhi',
+  name: 'South Campus',
+  acronym: 'South Campus',
+  note: 'Host campus for the International Workshop at the Institute of Informatics and Communication, South Campus, New Delhi.',
+  location: 'South Campus, New Delhi',
 };
 
 export const partners = [
@@ -52,13 +52,6 @@ export const partners = [
     role: 'Organising Institute & Project Lead',
     note: 'Premier autonomous national research institute under the Department of Science & Technology (DST), Govt. of India, specializing in observational astronomy and astrophysics at Manora Peak, Nainital.',
     website: 'https://www.aries.res.in',
-  },
-  {
-    name: 'Delhi University, South Campus',
-    acronym: 'Delhi University',
-    role: 'Host Campus & Venue',
-    note: 'Host institute and venue for the workshop at Delhi University, South Campus, New Delhi.',
-    website: 'http://south.du.ac.in',
   },
   {
     name: 'Indian Institute of Technology Delhi',
@@ -133,22 +126,15 @@ export const carousel = [
     title: 'IIT Delhi',
     text: '',
   },
-  {
-    src: '/images/delhi-university.jpg',
-    alt: 'Delhi University South Campus in New Delhi',
-    kicker: 'Workshop Venue',
-    title: 'Delhi University',
-    text: '',
-  },
 ];
 
 // ---- Workshop themes (Authoritative, from proposal) ------------------------
 export const topics = [
-  'Application of Machine Learning (ML) and Artificial Intelligence (AI) for the classification of the different types of stellar variables',
-  'Synergy between asteroseismology and stellar cluster studies',
-  'Asteroseismology from space missions',
-  'Asteroseismic modeling',
-  'Application of high-resolution spectroscopy for asteroseismology',
+  'Application of Machine Learning (ML) and Artificial Intelligence (AI) for the classification of the different types of stellar variables.',
+  'Synergy between Asteroseismology and stellar cluster studies',
+  'Asteroseismology from Space missions',
+  'Asteroseismic Modelling',
+  'Application of high-resolution spectroscopy for the Asteroseismology',
 ];
 
 // ---- Convenor --------------------------------------------------------------
@@ -179,20 +165,20 @@ export const soc = {
 export const loc = {
   title: 'Local Organizing Committee (LOC)',
   members: [
-    { name: 'Dr. M. K. Das', role: 'Chair', affil: 'IIC, Delhi University, South Campus' },
+    { name: 'Dr. M. K. Das', role: 'Chair', affil: 'IIC, South Campus' },
     { name: 'Dr. Satish K. Dubey', role: 'Member', affil: 'IIT Delhi' },
-    { name: 'Dr. Manoj Sharma', role: 'Member', affil: 'Delhi University, South Campus' },
-    { name: 'Dr. Sanjeev Singh', role: 'Member', affil: 'Delhi University, South Campus' },
-    { name: 'Dr. Mainpal Rajan', role: 'Member', affil: 'Venkateswar College, Delhi University South Campus' },
+    { name: 'Dr. Manoj Sharma', role: 'Member', affil: 'South Campus' },
+    { name: 'Dr. Sanjeev Singh', role: 'Member', affil: 'South Campus' },
+    { name: 'Dr. Mainpal Rajan', role: 'Member', affil: 'Venkateswar College, South Campus' },
     { name: 'Dr. Santosh Joshi', role: 'Member', affil: 'ARIES, Nainital' },
     { name: 'Dr. Sangeeta Baksi', role: 'Member', affil: 'ARIES, Nainital' },
     { name: 'Dr. Govind Nandkumar', role: 'Member', affil: 'ARIES, Nainital' },
   ],
 };
 
-// ---- Travel (Delhi University South Campus) --------------------------------
+// ---- Travel (South Campus) --------------------------------
 export const travel = {
-  mapUrl: 'https://maps.google.com/?q=Institute+of+Informatics+%26+Communication+(IIC)+University+of+Delhi+South+Campus+Benito+Juarez+Marg+New+Delhi+110021+India',
+  mapUrl: 'https://maps.google.com/?q=Institute+of+Informatics+%26+Communication+(IIC)+South+Campus+Benito+Juarez+Marg+New+Delhi+110021+India',
   points: [
     { mode: 'By Air', place: 'Indira Gandhi International (IGI) Airport (approx. 8–10 km)' },
     { mode: 'By Rail', place: 'New Delhi / Old Delhi / Hazrat Nizamuddin Stations' },
@@ -207,7 +193,7 @@ export const contacts = {
     { name: 'Dr. Santosh Joshi', role: 'Convenor of the Workshop & co-Chair SOC', email: 'santosh@aries.res.in', affil: 'ARIES, Nainital' },
   ],
   locLeadership: [
-    { name: 'Dr. M. K. Das', role: 'Chair, Local Organizing Committee', affil: 'IIC, Delhi University, South Campus' },
+    { name: 'Dr. M. K. Das', role: 'Chair, Local Organizing Committee', affil: 'IIC, South Campus' },
     { name: 'Dr. Satish K. Dubey', role: 'LOC Member & Joint Organiser', affil: 'IIT Delhi' },
   ],
   scientific: [
@@ -221,7 +207,6 @@ export const contacts = {
 export const imageCredits = [
   { label: 'ARIES Manora Peak Campus', by: 'ARIES, Nainital', lic: 'Official', via: 'aries.res.in' },
   { label: 'IIT Delhi Academic Campus', by: 'Azanti', lic: 'CC BY-SA 4.0', via: 'Wikimedia Commons' },
-  { label: 'Delhi University Campus', by: 'Academic contributor', lic: 'CC BY-SA 4.0', via: 'Wikimedia Commons' },
   { label: 'ARIES Institutional Identity', by: 'ARIES, Nainital', lic: 'Official', via: 'aries.res.in' },
 ];
 
@@ -259,13 +244,13 @@ export const participants = [
   { no: 30, name: 'Dr. D. S. Mehta', affil: 'IIT Delhi', country: 'India' },
   { no: 31, name: 'Dr. Devasmita Dwibedi', affil: 'IIT Jodhpur', country: 'India' },
   { no: 32, name: 'Dr. Naveen Dwivedi', affil: 'IIIT Vadodara', country: 'India' },
-  { no: 33, name: 'Dr. H. P. Singh', affil: 'Delhi University', country: 'India' },
-  { no: 34, name: 'Dr. Subhash Kumar', affil: 'Delhi University', country: 'India' },
-  { no: 35, name: 'Dr. Arun Awasthi', affil: 'Delhi University', country: 'India' },
-  { no: 36, name: 'Dr. Mainpal Rajan', affil: 'Delhi University', country: 'India' },
-  { no: 37, name: 'Mr. Manoj Sharma', affil: 'Delhi University', country: 'India' },
-  { no: 38, name: 'Dr. M. K. Das', affil: 'Delhi University', country: 'India' },
-  { no: 39, name: 'Dr. Sanjeev Singh', affil: 'Delhi University', country: 'India' },
+  { no: 33, name: 'Dr. H. P. Singh', affil: 'South Campus', country: 'India' },
+  { no: 34, name: 'Dr. Subhash Kumar', affil: 'South Campus', country: 'India' },
+  { no: 35, name: 'Dr. Arun Awasthi', affil: 'South Campus', country: 'India' },
+  { no: 36, name: 'Dr. Mainpal Rajan', affil: 'South Campus', country: 'India' },
+  { no: 37, name: 'Mr. Manoj Sharma', affil: 'South Campus', country: 'India' },
+  { no: 38, name: 'Dr. M. K. Das', affil: 'South Campus', country: 'India' },
+  { no: 39, name: 'Dr. Sanjeev Singh', affil: 'South Campus', country: 'India' },
   { no: 40, name: 'Dr. Drishya K.', affil: 'University of Calicut', country: 'India' },
   { no: 41, name: 'Dr. Mathew Blesson', affil: 'Christ University', country: 'India' },
   { no: 42, name: 'Dr. Suman Bhattacharya', affil: 'Christ University', country: 'India' },
