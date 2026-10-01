@@ -149,16 +149,17 @@ export const convenor = {
 export const soc = {
   title: 'Scientific Organizing Committee (SOC)',
   members: [
-    { name: 'Dr. Santosh Joshi', role: 'Asteroseismology', affil: 'ARIES, India' },
-    { name: 'Dr. Oleg Malkov', role: 'Big Data', affil: 'INASAN, Russia' },
-    { name: 'Dr. Kefeng Tan', role: 'Galactic Archaeology', affil: 'NAOC, China' },
-    { name: 'Dr. Hossein Safari', role: 'AI & ML', affil: 'ZNU, Iran' },
-    { name: 'Dr. Medupe Thebe', role: 'Asteroseismology', affil: 'NWU, South Africa' },
-    { name: 'Dr. Bharat K. Yerra', role: 'High-resolution Spectroscopy', affil: 'IIA, India' },
-    { name: 'Dr. Peter De Cat', role: 'Asteroseismology', affil: 'ROB, Belgium' },
-    { name: 'Dr. Sydney Barnes', role: 'Gyrochronology', affil: 'AIP, Potsdam, Germany' },
     { name: 'Dr. Benard Nsamba', role: 'Asteroseismic Modelling', affil: 'University of Kampala, Uganda' },
+    { name: 'Dr. Bharat K. Yerra', role: 'High-resolution Spectroscopy', affil: 'IIA, India' },
     { name: 'Dr. Eugene Semenko', role: 'High-resolution Spectroscopy', affil: 'NARIT, Thailand' },
+    { name: 'Dr. Hossein Safari', role: 'AI & ML', affil: 'ZNU, Iran' },
+    { name: 'Dr. Kefeng Tan', role: 'Galactic Archaeology', affil: 'NAOC, China' },
+    { name: 'Dr. Medupe Thebe', role: 'Asteroseismology', affil: 'NWU, South Africa' },
+    { name: 'Dr. Oleg Malkov', role: 'Big Data', affil: 'INASAN, Russia' },
+    { name: 'Dr. Peter De Cat', role: 'Asteroseismology', affil: 'ROB, Belgium' },
+    { name: 'Dr. Santosh Joshi', role: 'Asteroseismology', affil: 'ARIES, India' },
+    { name: 'Prof. Sarbani Basu', role: 'Cluster Asteroseismology', affil: 'Department of Astronomy, Yale University, USA' },
+    { name: 'Dr. Sydney Barnes', role: 'Gyrochronology', affil: 'AIP, Potsdam, Germany' },
   ],
 };
 
