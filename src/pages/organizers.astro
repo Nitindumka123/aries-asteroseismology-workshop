@@ -8,25 +8,25 @@ const leadership = [
   { role: 'Convenor & SOC co-Chair', name: convenor.name, affil: convenor.affil },
   { role: 'SOC co-Chair', name: 'Peter De Cat', affil: 'ROB, Belgium' },
   { role: 'LOC Chair', name: 'Dr. M. K. Das', affil: 'New Delhi' },
-  { role: 'Joint Organiser', name: 'Dr. Satish K. Dubey', affil: 'IIT Delhi' },
+  { role: 'LOC Member', name: 'Dr. Satish K. Dubey', affil: 'New Delhi' },
 ];
 ---
 <BaseLayout title="Key Organizers">
   <PageHeader
     eyebrow="Who's behind it"
     title="Key Organizers"
-    intro="The International Workshop is jointly organised by ARIES Nainital and IIT Delhi."
+    intro="The International Workshop is organized by ARIES Nainital."
   />
 
   <section class="section">
     <div class="container">
-      <div class="grid grid-2 org-inst">
+      <div class="org-inst">
         {partners.map((p, i) => (
           <article class="inst-card">
             <div class="inst-top">
               <span class="card-icon"><Icon name="building" size={26} /></span>
-              <span class={`chip ${i === 0 ? 'chip-blue' : 'chip-orange'}`}>
-                {i === 0 ? 'Lead Institute' : 'Joint Organiser'}
+              <span class="chip chip-blue">
+                Lead Institute
               </span>
             </div>
             <h2>{p.acronym}</h2>
@@ -57,7 +57,7 @@ const leadership = [
 
   <section class="section soft">
     <div class="container">
-      <div class="section-head"><span class="eyebrow">Leadership</span><h2>Guiding the Workshop</h2><p>The workshop is steered by senior researchers from ARIES Nainital, IIT Delhi, and international partner institutions.</p></div>
+      <div class="section-head"><span class="eyebrow">Leadership</span><h2>Guiding the Workshop</h2><p>The workshop is steered by senior researchers from ARIES Nainital and international partner institutions.</p></div>
       <div class="grid grid-4">
         {leadership.map((m) => (
           <div class="card accent lead-card">

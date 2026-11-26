@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import Icon from '../components/Icon.astro';
 
-const mapSearchQuery = 'Indian Institute of Technology Delhi, Hauz Khas, New Delhi, Delhi 110016, India';
+const mapSearchQuery = 'Indian National Science Academy, Bahadur Shah Zafar Marg, New Delhi, Delhi 110002, India';
 const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(mapSearchQuery)}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
 const mapExternalUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapSearchQuery)}`;
 ---
@@ -25,14 +25,14 @@ const mapExternalUrl = `https://www.google.com/maps/search/?api=1&query=${encode
           <h3 class="section-subheading">Venue / Location</h3>
 
           <div class="institution-name">
-            Indian Institute of Technology Delhi (IIT Delhi)
+            Indian National Science Academy (INSA)
           </div>
 
           <div class="address-box">
             <p class="address-line postal-line">
-              Indian Institute of Technology Delhi (IIT Delhi)<br />
-              Hauz Khas<br />
-              New Delhi - 110016, India
+              Indian National Science Academy (INSA)<br />
+              Bahadur Shah Zafar Marg<br />
+              New Delhi - 110002, India
             </p>
           </div>
         </div>
@@ -40,7 +40,7 @@ const mapExternalUrl = `https://www.google.com/maps/search/?api=1&query=${encode
         <!-- Event Dates Section -->
         <div class="dates-block">
           <h3 class="section-subheading">Event Dates</h3>
-          <p class="dates-value">8–11 February 2027</p>
+          <p class="dates-value">6–9 April 2027</p>
         </div>
 
         <!-- Google Maps Location Section -->
@@ -60,7 +60,7 @@ const mapExternalUrl = `https://www.google.com/maps/search/?api=1&query=${encode
 
           <div class="map-frame-wrapper">
             <iframe
-              title="Google Map: Indian Institute of Technology Delhi (IIT Delhi), Hauz Khas"
+              title="Google Map: Indian National Science Academy (INSA), New Delhi"
               src={mapEmbedUrl}
               class="map-iframe"
               loading="lazy"

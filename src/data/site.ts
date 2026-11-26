@@ -2,8 +2,8 @@
 // Central content for the ARIES International Workshop Portal.
 // Authoritative source: Proposal for Organizing an International Workshop on
 // Synergistic Investigation of Stellar Clusters and Asteroseismology using
-// High-resolution Spectroscopy and Space Photometry (8–11 February 2027)
-// Jointly organized by ARIES & IIT Delhi
+// High-resolution Spectroscopy and Space Photometry (6–9 April 2027)
+// Organized by ARIES
 // Sponsored by Department of Science and Technology (DST), Govt. of India
 // (Under the project DST/ICD/Call-5/BRICS/SAPTARISI/2023/G)
 // =============================================================================
@@ -11,13 +11,13 @@
 export const event = {
   name: 'Synergistic Investigation of Stellar Clusters and Asteroseismology using High-resolution Spectroscopy and Space Photometry',
   shortName: 'Stellar Clusters · Asteroseismology · Spectroscopy',
-  organisers: 'ARIES & IIT Delhi',
-  dates: '8–11 February 2027',
-  datesShort: '8–11 Feb 2027',
+  organisers: 'ARIES',
+  dates: '6–9 April 2027',
+  datesShort: '6–9 Apr 2027',
   year: '2027',
-  venue: 'Indian Institute of Technology Delhi (IIT Delhi), Hauz Khas, New Delhi - 110016, India',
+  venue: 'Indian National Science Academy (INSA), New Delhi - 110002, India',
   seats: 'Invitation only',
-  duration: '8–11 February 2027',
+  duration: '6–9 April 2027',
   tagline:
     'An international workshop fostering synergistic research between asteroseismology and stellar cluster studies to define strategies for future missions and datasets.',
   sponsorship:
@@ -39,10 +39,10 @@ export const institute = {
 };
 
 export const host = {
-  name: 'Indian Institute of Technology Delhi',
-  acronym: 'IIT Delhi',
-  note: 'Host campus for the International Workshop at Indian Institute of Technology Delhi (IIT Delhi), Hauz Khas, New Delhi.',
-  location: 'Hauz Khas, New Delhi - 110016, India',
+  name: 'Indian National Science Academy',
+  acronym: 'INSA',
+  note: 'Host venue for the International Workshop at Indian National Science Academy (INSA), New Delhi.',
+  location: 'New Delhi - 110002, India',
 };
 
 export const partners = [
@@ -52,13 +52,6 @@ export const partners = [
     role: 'Organising Institute & Project Lead',
     note: 'Premier autonomous national research institute under the Department of Science & Technology (DST), Govt. of India, specializing in observational astronomy and astrophysics at Manora Peak, Nainital.',
     website: 'https://www.aries.res.in',
-  },
-  {
-    name: 'Indian Institute of Technology Delhi',
-    acronym: 'IIT Delhi',
-    role: 'Joint Organiser',
-    note: 'Institute of National Importance contributing computational, theoretical, and instrumentation expertise to stellar astrophysics and high-performance computing.',
-    website: 'https://home.iitd.ac.in',
   },
 ];
 
@@ -119,13 +112,6 @@ export const carousel = [
     title: 'ARIES Nainital',
     text: '',
   },
-  {
-    src: '/images/iit-delhi.jpg',
-    alt: 'IIT Delhi academic institution campus',
-    kicker: 'Joint Organisation',
-    title: 'IIT Delhi',
-    text: '',
-  },
 ];
 
 // ---- Workshop themes (Authoritative, from proposal) ------------------------
@@ -167,7 +153,7 @@ export const loc = {
   title: 'Local Organizing Committee (LOC)',
   members: [
     { name: 'Dr. M. K. Das', role: 'Chair', affil: 'New Delhi' },
-    { name: 'Dr. Satish K. Dubey', role: 'Member', affil: 'IIT Delhi' },
+    { name: 'Dr. Satish K. Dubey', role: 'Member', affil: 'New Delhi' },
     { name: 'Dr. Manoj Sharma', role: 'Member', affil: 'New Delhi' },
     { name: 'Dr. Sanjeev Singh', role: 'Member', affil: 'New Delhi' },
     { name: 'Dr. Mainpal Rajan', role: 'Member', affil: 'Venkateswar College, New Delhi' },
@@ -177,14 +163,14 @@ export const loc = {
   ],
 };
 
-// ---- Travel (IIT Delhi) --------------------------------
+// ---- Travel (INSA) --------------------------------
 export const travel = {
-  mapUrl: 'https://maps.google.com/?q=Indian+Institute+of+Technology+Delhi+Hauz+Khas+New+Delhi+110016+India',
+  mapUrl: 'https://maps.google.com/?q=Indian+National+Science+Academy+New+Delhi+110002+India',
   points: [
     { mode: 'By Air', place: 'Indira Gandhi International (IGI) Airport (DEL)' },
     { mode: 'By Rail', place: 'New Delhi (NDLS) / Hazrat Nizamuddin (NZM) / Old Delhi (DLI) Stations' },
-    { mode: 'By Metro', place: 'IIT Delhi Metro Station (Magenta Line) / Hauz Khas Metro Station (Yellow & Magenta Line Interchange)' },
-    { mode: 'By Road', place: 'Outer Ring Road / Sri Aurobindo Marg, Hauz Khas, New Delhi' },
+    { mode: 'By Metro', place: 'ITO / Delhi Gate / Mandi House Metro Stations' },
+    { mode: 'By Road', place: 'Bahadur Shah Zafar Marg, New Delhi' },
   ],
 };
 
@@ -195,7 +181,7 @@ export const contacts = {
   ],
   locLeadership: [
     { name: 'Dr. M. K. Das', role: 'Chair, Local Organizing Committee', affil: 'New Delhi' },
-    { name: 'Dr. Satish K. Dubey', role: 'LOC Member & Joint Organiser', affil: 'IIT Delhi' },
+    { name: 'Dr. Satish K. Dubey', role: 'LOC Member & Organiser', affil: 'New Delhi' },
   ],
   scientific: [
     { name: 'Peter De Cat', role: 'co-Chair, Scientific Organizing Committee', affil: 'ROB, Belgium' },
@@ -207,7 +193,6 @@ export const contacts = {
 // ---- Image credits ---------------------------------------------------------
 export const imageCredits = [
   { label: 'ARIES Manora Peak Campus', by: 'ARIES, Nainital', lic: 'Official', via: 'aries.res.in' },
-  { label: 'IIT Delhi Academic Campus', by: 'Azanti', lic: 'CC BY-SA 4.0', via: 'Wikimedia Commons' },
   { label: 'ARIES Institutional Identity', by: 'ARIES, Nainital', lic: 'Official', via: 'aries.res.in' },
 ];
 
@@ -221,7 +206,7 @@ export const participants = [
   { no: 6, name: 'Mr. Athul Dileep', affil: 'ARIES, Nainital', country: 'India' },
   { no: 7, name: 'Mr. Surath C. Ghosh', affil: 'ARIES, Nainital', country: 'India' },
   { no: 8, name: 'Mr. Sohan Roy', affil: 'ARIES, Nainital', country: 'India' },
-  { no: 9, name: 'Dr. Vaibhav Pant', affil: 'IIT Delhi', country: 'India' },
+  { no: 9, name: 'Dr. Vaibhav Pant', affil: 'New Delhi', country: 'India' },
   { no: 10, name: 'Dr. Ram Sagar', affil: 'IIA, Bengaluru', country: 'India' },
   { no: 11, name: 'Dr. Bharat Kumar Yerra', affil: 'IIA, Bengaluru', country: 'India' },
   { no: 12, name: 'Dr. Sudhakar Reddy', affil: 'IIA, Bengaluru', country: 'India' },
@@ -241,8 +226,8 @@ export const participants = [
   { no: 26, name: 'Dr. Soumen Mondal', affil: 'SNBNCBS, Kolkata', country: 'India' },
   { no: 27, name: 'Dr. Sapnodip Pramanik', affil: 'IISER, Kolkata', country: 'India' },
   { no: 28, name: 'Dr. Anupam Bhardwaj', affil: 'IUCAA, Pune', country: 'India' },
-  { no: 29, name: 'Dr. Satish Kumar Dubey', affil: 'IIT Delhi', country: 'India' },
-  { no: 30, name: 'Dr. D. S. Mehta', affil: 'IIT Delhi', country: 'India' },
+  { no: 29, name: 'Dr. Satish Kumar Dubey', affil: 'New Delhi', country: 'India' },
+  { no: 30, name: 'Dr. D. S. Mehta', affil: 'New Delhi', country: 'India' },
   { no: 31, name: 'Dr. Devasmita Dwibedi', affil: 'IIT Jodhpur', country: 'India' },
   { no: 32, name: 'Dr. Naveen Dwivedi', affil: 'IIIT Vadodara', country: 'India' },
   { no: 33, name: 'Dr. H. P. Singh', affil: 'New Delhi', country: 'India' },
