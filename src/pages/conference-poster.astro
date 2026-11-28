@@ -12,26 +12,9 @@ import Icon from '../components/Icon.astro';
 
   <section class="section">
     <div class="container content-layout">
-      <div class="poster-actions">
-        <a
-          href="/images/WhatsApp%20Image%202026-11-26%20at%205.21.56%20PM.jpeg"
-          download="WhatsApp_Image_2026-11-26_at_5.21.56_PM.jpeg"
-          class="btn btn-primary download-btn"
-        >
-          <Icon name="download" size={18} />
-          <span>Download High-Resolution Poster</span>
-        </a>
-      </div>
-
-      <div class="poster-display-frame">
-        <img
-          src="/images/WhatsApp%20Image%202026-11-26%20at%205.21.56%20PM.jpeg"
-          alt="International Workshop on Synergistic Investigation of Stellar Clusters and Asteroseismology using High-Resolution Spectroscopy and Space Photometry — Official Poster"
-          class="poster-img"
-          width="1448"
-          height="1086"
-          loading="eager"
-        />
+      <div class="poster-update-box" role="status">
+        <p class="poster-update-title">Conference Poster Update</p>
+        <p class="poster-update-text">The official workshop poster is currently being updated and will be available for viewing and download soon.</p>
       </div>
     </div>
   </section>
@@ -44,51 +27,32 @@ import Icon from '../components/Icon.astro';
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  .poster-actions {
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: center;
     width: 100%;
   }
 
-  .download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.75rem 1.6rem;
-    font-weight: 600;
-    border-radius: var(--r-md);
-  }
-
-  .poster-display-frame {
+  .poster-update-box {
+    background: var(--bg-soft, #f8fafc);
+    border: 1px dashed var(--line, #cbd5e1);
+    border-radius: var(--r-md, 12px);
+    padding: 2.25rem 2.5rem;
+    max-width: 620px;
     width: 100%;
-    max-width: 760px;
-    display: flex;
-    justify-content: center;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(16, 29, 71, 0.08), 0 16px 36px -4px rgba(16, 29, 71, 0.15);
-    border: 1px solid rgba(16, 29, 71, 0.1);
-    overflow: hidden;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
   }
 
-  .poster-img {
-    width: 100%;
-    height: auto;
-    display: block;
+  .poster-update-title {
+    font-family: var(--font-head);
+    font-weight: 700;
+    color: var(--navy-900, #101d47);
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
   }
 
-  @media (max-width: 680px) {
-    .poster-display-frame {
-      max-width: 100%;
-      border-radius: 8px;
-    }
-
-    .download-btn {
-      width: 100%;
-      justify-content: center;
-    }
+  .poster-update-text {
+    color: var(--ink-500, #475569);
+    margin: 0;
+    font-size: 1.02rem;
+    line-height: 1.6;
   }
 </style>
